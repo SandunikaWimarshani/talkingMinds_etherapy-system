@@ -1,0 +1,44 @@
+.auth_form{
+    background-color:rgb(205, 172, 161);
+    padding: 40px;
+    border-radius: 5px;
+    margin-left: 800px;
+    margin-right: 500px;
+    align-items: center;
+    height: 500px;
+    margin-top: 20px;
+}
+
+.form_group{
+    height: 50px;
+}
+
+.user{
+    width: 500px;
+    height: 35px;
+    
+}
+
+.pass{
+    width: 500px;
+    height: 35px;
+}
+
+.auth_btn{
+    background-color: #75889E;
+    font-weight: 600;
+    width: 100px;
+    height: 50px;
+    margin-top: 10px;
+    cursor: pointer;
+    
+}
+
+.auth_form p{
+    margin-top: 30px;
+}
+
+.auth_form p a{
+    color: #42556b;
+}
+

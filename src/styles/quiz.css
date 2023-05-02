@@ -1,0 +1,87 @@
+
+.count{
+    font-size: 30px;
+    margin-left: 30px;
+    font-weight: 700;
+    color: rgb(125, 123, 123);
+
+}
+
+.q1{
+    font-size: 25px;
+    margin-left: 60px;
+    line-height: 1.5;
+    text-align: center;
+}
+
+.option-container{
+    display: inline-block;
+    width: 500px;
+    height: 100px;
+    margin-left: 700px;
+}
+
+.option{
+    background-color: rgba(183, 187, 191, 0.863);
+    border-radius: 30px;
+    font-size: 25px;
+    height: 40px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.option:hover{
+    background-color: rgba(140, 144, 148, 0.863);
+}
+
+.button-container{
+    display: flex;
+    
+}
+
+/* .pre{
+    width: 150px;
+    height:50px;
+    font-size: 25px;
+    margin-bottom: 20px;
+    margin-left: 50px;
+    margin-top: 50px;
+    cursor: pointer;
+    
+} */
+
+.pre{
+    width: 150px;
+    height:50px;
+    font-size: 25px;
+    margin-bottom: 50px;
+    margin-left: 50px;
+    margin-top: 50px;
+    cursor: pointer;
+    
+}
+
+.submit{
+    width: 250px;
+    height:50px;
+    font-size: 25px;
+    margin-bottom: 70px;
+    margin-left: 1300px;
+    margin-top: 50px;
+    cursor: pointer;
+    font-family: 'Times New Roman', Times, serif;
+    
+}
+
+.next{
+    width: 150px;
+    height:50px;
+    font-size: 25px;
+    margin-bottom: 50px;
+    margin-left: 1350px;
+    margin-top: 50px;
+    cursor: pointer;
+    font-family: 'Times New Roman', Times, serif;
+    
+}
+

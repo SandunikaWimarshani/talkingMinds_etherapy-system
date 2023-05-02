@@ -1,0 +1,61 @@
+
+.hero_section{
+    background-image: '../assets/images/background.jpg';
+    background-color: #eed5c4;
+   
+
+}
+
+.hero_content h2{
+    color:  #722354;
+    font-size: 75px;
+    font-weight: bold;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-top: 10px ;
+    text-align: center;
+}
+
+.hero_content p{
+    color: rgb(46, 90, 92);
+    line-height: 28px;
+    font-size: 20px;
+    margin: 20px;
+}
+
+.hero_content p:nth-child(1){
+    font-weight: 500;
+}
+
+.start_btn{
+    border: none;
+    outline: none;
+    padding: 8px 20px;
+    border-radius: 5px;
+    background-color:rgb(38, 162, 162);
+    color: black;
+    cursor: pointer;
+    font-size: 30px;
+    margin: 50px;
+    width: 200px;
+    height: 100px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.start_btn a:hover{
+    color: aliceblue;
+}
+
+.hero_content{
+    padding-top: 45px;
+
+}
+
+.hero_img{
+    width: 100%;
+    height: 100%;
+    margin-top: -250px;
+    margin-left: 60%;
+    margin-bottom: 15px;
+    
+   
+}

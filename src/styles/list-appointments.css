@@ -1,0 +1,42 @@
+.booking_title{
+    margin-left: 270px;
+    font-size: 50px;
+    margin-top: 15px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight:bold
+}
+
+.columns{
+    width: 200px;
+    height: 100px;
+    align-items: center;
+    margin-left: 10px;
+    font-size: 22px;
+    font-weight:600;
+}
+
+.table{
+    margin-left: 25px;
+    border-radius: 5px;
+    font-size: 17px;
+    font-weight: 400;
+    row-gap: 10px;
+}
+
+.dlt-btn{
+    width: 80px;
+    height: 30px;
+    font-size: 17px;
+    font-weight:600;
+    background-color: rgb(230, 96, 96);
+    cursor: pointer;
+}
+
+.edit-btn{
+    width: 80px;
+    height: 30px;
+    font-size: 17px;
+    font-weight:600;
+    background-color: rgb(104, 104, 199);
+    cursor: pointer;
+}
