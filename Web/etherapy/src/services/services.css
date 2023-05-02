@@ -1,0 +1,26 @@
+.service_item{
+    padding: 50px;
+    background-color: #d2c9b7;
+    box-sizing: 10px;
+    width: 1000px;
+    margin-left: 80px;
+}
+
+
+.select_person{
+    padding: 50px;
+    background-color: #d2c9b7;
+    box-sizing: 10px;
+    width: 1000px;
+    margin-left: 500px;
+    margin-top: 10px;
+}
+
+.talk{
+    padding: 50px;
+    background-color: #d2c9b7;
+    box-sizing: 10px;
+    width: 1000px;
+    margin-left: 80px;
+    margin-top: 10px;
+}

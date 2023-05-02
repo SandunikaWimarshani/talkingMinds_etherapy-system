@@ -1,0 +1,57 @@
+.profile_title{
+    font-weight: bold;
+   
+}
+
+.profile_data{
+    margin-top: 10px;
+    font-size: 30px;
+}
+
+.proImg{
+    margin-left:500px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.specialties{
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+.profile_subtitle{
+    font-size: 25px;
+    font-weight: 600;
+    margin-left: 50px;
+}
+
+.profile_title-review{
+    margin-left: 20px;
+    
+}
+
+.ri-star-fill{
+    color: rgb(183, 183, 78);
+}
+
+.profile_desc{
+    font-size: 22px;
+    font-weight: 100;
+    margin-left: 10px;
+}
+
+.btn_book{
+    width: 25%;
+    height: 50px;
+    margin-bottom: 10px;
+    margin-left: 500px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    font-weight: 800;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20px;
+    background-color: rgb(208, 159, 175);
+    cursor: pointer;
+    align-items: center;
+}

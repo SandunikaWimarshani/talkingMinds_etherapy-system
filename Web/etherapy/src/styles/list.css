@@ -1,0 +1,110 @@
+.section{
+    height: 1200px;
+
+}
+
+.section_title{
+    color: #4B0150;
+    font-weight: 500;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+
+.profile_item{
+    float: left;
+    width: 25%;
+    padding: 65px;
+}
+
+
+
+.profile_img1{
+    width: 200px;
+    height: 500px;
+    margin-left: 20px;   
+    
+}
+
+.profile_img2{
+    width: auto;
+    height: 500px;
+    margin-left: 72px; 
+    margin-top: 2px;  
+    
+}
+
+.profile_img3{
+    width: auto;
+    height: 500px;
+    margin-left: 600px; 
+    margin-top: -75px;  
+    
+}
+
+.profile_img4{
+    width: auto;
+    height: 500px;
+    margin-left: 600px; 
+    margin-top: -80px;  
+    
+}
+
+.profile_name{
+    margin-top: -0px;
+ 
+    color: brown;
+    text-align: center;
+}
+
+.profile_name1{
+    margin-top: -0px;
+    margin-left: -1570px;
+    color: brown;
+    text-align: center;
+
+}
+
+.profile_name2{
+    margin-top: -0px;
+    margin-left:0px;
+    color: brown;
+    width: 200px;
+
+}
+
+.profile_name3{
+    margin-top: -0px;
+    margin-left: 0px;
+    color: brown;
+    width: 200px;
+}
+
+.pro{
+    margin-left:20px;
+    font-weight: bold;
+    margin-top: 2px;
+    width: 200px;
+
+}
+
+.work_btn{
+    width: 150px;
+    height: 60px;
+    margin-left: 50px;
+    margin-top: -350px;
+    color: rgb(1, 27, 27);
+    background-color:darkgray;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.auth_form input[type='file']{
+    color: rgb(11, 11, 55);
+    cursor: pointer;
+}
+
+
+
+
