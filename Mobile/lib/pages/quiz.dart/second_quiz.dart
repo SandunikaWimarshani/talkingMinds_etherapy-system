@@ -37,22 +37,7 @@ class _SecondQuizState extends State<SecondQuiz> {
           iconSize: 20,
           color: Colors.black,
         ),
-        actions: [
-          TextButton(
-            // ignore: sort_child_properties_last
-            child: const Text('Next'),
-            style: TextButton.styleFrom(
-              textStyle: const TextStyle(fontSize: 10,
-              color: Colors. black
-              ),
-              
-              backgroundColor: Colors.transparent
-            ),
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) =>  const ThirdQuiz()));
-            },
-          )
-        ],
+        
         
     ),
 
@@ -229,6 +214,7 @@ class _SecondQuizState extends State<SecondQuiz> {
                           
                         ),
                       )
+                      
                       )
                     ],
                   ),
@@ -274,6 +260,33 @@ class _SecondQuizState extends State<SecondQuiz> {
               ],
             ),
           ),
+          InkWell(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const ThirdQuiz()),
+                      );
+                   
+                  },
+                  child:Container(
+                    width:double.maxFinite,
+                  alignment: Alignment.center,
+                  padding: EdgeInsets.all(kDefaultPadding*0.6),
+                  decoration: const BoxDecoration(
+                    color: Color.fromARGB(255, 180, 109, 163),
+                    borderRadius: BorderRadius.all(Radius.circular(10))
+                  ),
+                  child: const Text("NEXT",
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold
+                  ),
+                  
+                  ),
+                  
+                    
+                  ),
+                 )
           
         ],
         ),

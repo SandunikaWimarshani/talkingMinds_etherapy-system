@@ -100,7 +100,11 @@ class _ListsState extends State<Lists> {
           
           Column(
             children: [
-              Row(
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const Profile()));
+                },
+              child:Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
@@ -134,6 +138,7 @@ class _ListsState extends State<Lists> {
                     ],
                   )
                 ],
+              )
               )
             ],
           ),
@@ -194,7 +199,11 @@ class _ListsState extends State<Lists> {
           ),
           Column(
             children: [
-              Row(
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const Profile()));
+                },
+              child:Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
@@ -223,6 +232,7 @@ class _ListsState extends State<Lists> {
                     ] 
                   )
                 ],
+              )
               )
             ],
           ),

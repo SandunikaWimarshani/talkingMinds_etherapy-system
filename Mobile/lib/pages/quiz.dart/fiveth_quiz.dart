@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:therapy_application/pages/appointment.dart';
+import 'package:therapy_application/pages/list.dart';
 import 'package:therapy_application/pages/new.dart';
 import 'package:therapy_application/pages/quiz.dart/fourth_quiz.dart';
 import 'package:therapy_application/pages/schedule.dart';
@@ -39,22 +40,7 @@ class _FivethQuizState extends State<FivethQuiz> {
           iconSize: 20,
           color: Colors.black,
         ),
-        actions: [
-          TextButton(
-            // ignore: sort_child_properties_last
-            child: const Text('Done'),
-            style: TextButton.styleFrom(
-              textStyle: const TextStyle(fontSize: 15,
-              color: Colors. black
-              ),
-              
-              backgroundColor: Colors.transparent
-            ),
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) =>  const New()));
-            },
-          )
-        ],
+       
         
     ),
 
@@ -354,6 +340,34 @@ class _FivethQuizState extends State<FivethQuiz> {
               
             ),
           ),
+          
+          InkWell(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const Lists()),
+                      );
+                   
+                  },
+                  child:Container(
+                  width:double.maxFinite,
+                  alignment: Alignment.bottomCenter,
+                  padding: EdgeInsets.all(kDefaultPadding*1.2),
+                  decoration: const BoxDecoration(
+                    color: Color.fromARGB(255, 180, 109, 163),
+                    borderRadius: BorderRadius.all(Radius.circular(20))
+                  ),
+                  child: const Text("DONE",
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold
+                  ),
+                  
+                  ),
+                  
+                    
+                  ),
+                 )
           
         ],
         ),

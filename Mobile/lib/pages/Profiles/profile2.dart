@@ -84,7 +84,7 @@ class _ProfileState extends State<Profile> {
               height: MediaQuery.of(context).size.height / 3,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage('assets/pro1.jpg'),
+                  image: AssetImage('assets/pro2.jpg'),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -103,87 +103,16 @@ class _ProfileState extends State<Profile> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: const [
-                            Text(
-                              'Clients',
-                              style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w400,
-                                color: Colors.white,
-                              ),
-                            ),
-                            SizedBox(height: 8),
-                            Text(
-                              '1.8k',
-                              style: TextStyle(
-                                fontSize: 15,
-                                fontWeight: FontWeight.w500,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ],
-                        ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: const [
-                            Text(
-                              'Experience',
-                              style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w400,
-
-                              color: Colors.white
-                            ),
-                            
-                            ),
-                            SizedBox(height: 8,),
-                            Text("10 years",
-                            style: TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.w500,
-                              color: Colors.white
-                            ),
-                            
-                            )
-                          ],
-                        ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: const [
-                            Text("Rating",
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w400,
-                              color: Colors.white
-                            ),
-                            
-                            ),
-                            SizedBox(height: 8,),
-                            Text("4.9k",
-                            style: TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.w500,
-                              color: Colors.white
-                            ),
-                            
-                            )
-                          ],
-                        )
-                      ],
-                    ),
-                  )
-                ],
-              ),
+                     
             ),
+                  ),
+                
             const SizedBox(height: 10,),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Column(
                 children:  [
-                  const Text("Mr. Henry Wilson",
+                  const Text("Mr. Allan Lewis",
                   style: TextStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.w500,
@@ -194,12 +123,23 @@ class _ProfileState extends State<Profile> {
                   const SizedBox(height: 5,),
                   Row(
                     children: const [
-                      Text(" STRESS, ANXIETY, ADDICTIONS, TRAUMA AND \nABUSE, SELF ESTEEM, DEPRESSION")
+                      Text(" Specialties : Relationship issues, Family conflicts, Sleeping disorders, Parenting issues, Anger management")
                     ],
                   ),
+
                   const SizedBox(height: 15,),
                   const Text(
-                    "License number : KY LPCC 103842",
+                    "I have been a licensed mental health counselor (LMHC) for more than six years. I have worked with individuals, couples, families, and groups in non-profit, residential, and clinical practice settings. I also have expertise assisting individuals. I've had a lot of experience working with folks who want to improve their lives. I've developed a broad range of abilities, expertise, and solutions to help with problems like depression, anxiety, addiction, finding one's purpose, trauma, grief/loss issues, and low self-esteem.",
+                    style: TextStyle(
+                      color: Color.fromARGB(255, 78, 52, 80),
+                      fontWeight: FontWeight.w400
+                    ),
+                    textAlign: TextAlign.justify,
+
+                    ),
+                  const SizedBox(height: 15,),
+                  const Text(
+                    "OR LCSW L9824",
                     style: TextStyle(
                       color: Color.fromARGB(255, 78, 52, 80),
                       fontWeight: FontWeight.w400
@@ -258,12 +198,18 @@ class _ProfileState extends State<Profile> {
 
                
               ),
+          ]
+        )
+      ),
+    
+    
+    
            
           
         
      
       bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
+          type: BottomNavigationBarType.fixed,
           onTap: (index) {
             if(index == 0){
               Navigator.push(context, MaterialPageRoute(builder: (context) => const Welcome()));
@@ -288,6 +234,7 @@ class _ProfileState extends State<Profile> {
             icon: Icon(Icons.home),
             label: 'Home',
             ),
+          
           BottomNavigationBarItem(
             icon: Icon(Icons.event_available_outlined),
             label: 'Appoinmnets'
@@ -301,13 +248,9 @@ class _ProfileState extends State<Profile> {
             label: 'Settings'
           )
         ]),
-    
-      
-      
-      
-    );
+        
+        );
 
-    
-    
+
   }
 }

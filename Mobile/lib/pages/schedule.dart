@@ -31,7 +31,7 @@ class _ScheduleState extends State<Schedule> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   TextEditingController _date = TextEditingController();
 
-  void addAppointmentToFirebase(String userName, String counselorName, DateTime selectedDate, String mode) async {
+  void addAppointmentToFirebase(String name, String email, String counselorName, DateTime selectedDate) async {
   // get a reference to the appointment collection
   final appointmentCollection = FirebaseFirestore.instance.collection('appointment');
   
@@ -41,13 +41,18 @@ class _ScheduleState extends State<Schedule> {
   // format the date using the desired format
   final formattedDate = DateFormat('yyyy-MM-dd').format(selectedDate);
   
+  // format the date using the desired format
+  final formattedTime = DateFormat('hh:mm').format(selectedDate);
+  
   // create a map of the appointment data
   final appointmentData = {
-    'id': newAppointment.id,
-    'user_name': userName,
-    'counselor_name': counselorName,
+   
+    'name': name,
+    'email': email,
+    'counselorName': counselorName,
     'date': formattedDate,
-    'mode': mode,
+    'time': formattedTime,
+    
   };
   
   // store the appointment data in Firebase Firestore
@@ -57,7 +62,7 @@ class _ScheduleState extends State<Schedule> {
 
   @override
   Widget build(BuildContext context) {
-   var modeList;
+   
    return Scaffold(
     resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
@@ -245,16 +250,7 @@ class _ScheduleState extends State<Schedule> {
                   },
                 ),
 
-                  // const Padding(
-                  //   padding: EdgeInsets.symmetric(horizontal: 10),
-                  //   child: TextField(
-                  //     decoration: InputDecoration(
-                  //       border: OutlineInputBorder(),
-                  //       label: Text("Preferable mode ( Video or Audio)"),
-                        
-                  //     ),
-                  //   )
-                  // ),
+                  
 
     
 
@@ -274,9 +270,23 @@ class _ScheduleState extends State<Schedule> {
                         
                   minWidth: double.infinity,
                   height: 60,
-                  onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => const Appointment()));
-                  },
+                  onPressed: () async {
+              // validate the form
+              if (_formKey.currentState!.validate()) {
+                // get the appointment details from the form
+                final Name = _nameController.text;
+                final Email = _emailController.text;
+                final counselorName = _counselornameController.text;
+                final selectedDate = DateTime.parse(_dateController.text);
+                
+
+                // save the appointment data to Firebase Firestore
+                addAppointmentToFirebase(Name, Email, counselorName, selectedDate);
+
+                // navigate to the next page
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const Appointment()));
+              }
+            },
 
                   color: const Color.fromARGB(186, 140, 92, 126),
                   shape: RoundedRectangleBorder(
