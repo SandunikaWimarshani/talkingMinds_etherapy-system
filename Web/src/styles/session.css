@@ -1,0 +1,17 @@
+.session_topic{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 50px;
+    margin-left: 750px;
+}
+
+.sessionName{
+    font-size: 25px;
+    margin-left: 250px;
+}
+
+.sessionPassword{
+    font-size: 25px;
+    margin-left: 500px;
+    
+
+}

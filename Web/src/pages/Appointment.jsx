@@ -106,7 +106,7 @@ function Appointments() {
              </select>
             </FormGroup> */}
 
-            <button className='book_btn'><Link to = '/List_appointments'>  SUBMIT </Link></button>
+            <button className='book_btn'><Link to = '/Confirm_appointments'>  SUBMIT </Link></button>
             
             
           </Form>

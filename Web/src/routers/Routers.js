@@ -29,9 +29,6 @@ import Dashboard  from '../admin/Dashboard'
 import Video from '../pages/video'
 
 
-
-
-
 import ProfileOne from '../components/Profiles/ProfileOne'
 import ProfileTwo from '../components/Profiles/ProfileTwo'
 import ProfileThree from '../components/Profiles/ProfileThree'
@@ -41,6 +38,9 @@ import ProfileSix from '../components/Profiles/ProfileSix'
 
 import ListAppointments from '../pages/List_appointments'
 import EditAppointment from '../pages/Edit_appointments'
+import ConfirmAppointment from '../pages/Confirm_appointments'
+
+import Session from '../pages/Session'
 
 import View from '../pages/View'
 
@@ -62,10 +62,6 @@ function Routers() {
     <Route path='admin' element={<Admin/>} />
 
     <Route path='video' element={<Video/>} />
-
-
-
-  
     
     <Route path='profileOne' element={<ProfileOne/>} />
     <Route path='profileTwo' element={<ProfileTwo/>} />
@@ -76,6 +72,9 @@ function Routers() {
 
     <Route path='List_appointments' element={<ListAppointments/>} />
     <Route path='Edit_appointmnets' element = {<EditAppointment/>} />
+    <Route path='Confirm_appointments' element = {<ConfirmAppointment/>} />
+
+    <Route path='Session' element = {<Session/>} />
   
     <Route path='view' element={<View/>} />
 
