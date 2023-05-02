@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import {Link} from 'react-router-dom';
 
 import '../styles/session.css'
 
@@ -32,7 +33,7 @@ const Session = () => {
 
         </div>
        
-        <button className='book_btn'type="submit">Join Session</button>
+        <button className='book_btn'type="submit"><Link to = '/Chatbot'>Join Session</Link></button>
       </form>
     </div>
   );

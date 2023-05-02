@@ -40,6 +40,8 @@ import ListAppointments from '../pages/List_appointments'
 import EditAppointment from '../pages/Edit_appointments'
 import ConfirmAppointment from '../pages/Confirm_appointments'
 
+import Chatbot from '../pages/Chatbot'
+
 import Session from '../pages/Session'
 
 import View from '../pages/View'
@@ -74,6 +76,7 @@ function Routers() {
     <Route path='Edit_appointmnets' element = {<EditAppointment/>} />
     <Route path='Confirm_appointments' element = {<ConfirmAppointment/>} />
 
+    <Route path='Chatbot' element = {<Chatbot/>} />
     <Route path='Session' element = {<Session/>} />
   
     <Route path='view' element={<View/>} />
