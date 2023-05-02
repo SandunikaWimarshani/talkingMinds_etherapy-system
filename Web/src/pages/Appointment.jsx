@@ -19,7 +19,7 @@ function Appointments() {
   const [entercounselorname, setEntercounselorname] = useState('')
   const [enterdate, setEnterdate] = useState('')
   const [entertime, setEntertime] = useState('')
-  const [entermode, setEntermode] = useState('')
+ 
   
   const appointmentRef = collection (db, 'appointment')
 
@@ -49,7 +49,7 @@ function Appointments() {
   const AddAppointments = async(event) => {
     event.preventDefault();
 
-    if(enteryourname === '' || enteryouremail === '' || entercounselorname === '' || enterdate ==='' || entertime === '' || entermode ==='') return;
+    if(enteryourname === '' || enteryouremail === '' || entercounselorname === '' || enterdate ==='' || entertime === '') return;
     
     await addDoc(appointmentRef, {
       name:enteryourname,
@@ -57,7 +57,7 @@ function Appointments() {
       counselorName: entercounselorname,
       date: enterdate,
       time: entertime,
-      mode: entermode
+     
     });
   }
   
@@ -97,14 +97,14 @@ function Appointments() {
               <input type='time' className='tboxTime' placeholder='Enter Time' value= {entertime} onChange={e => setEntertime(e.target.value)}></input>
             </FormGroup>
 
-            <FormGroup className='box_group'>
+            {/* <FormGroup className='box_group'>
               <span className='topic'> Conversation Mode </span>
              <select className='tboxMode'  value= {entermode} onChange={e => setEntermode(e.target.value)} required>
              <option value=''> </option>
               <option value='video'> Video Conversation</option>
               <option value='audio'> Audio Conversation</option>
              </select>
-            </FormGroup>
+            </FormGroup> */}
 
             <button className='book_btn'><Link to = '/List_appointments'>  SUBMIT </Link></button>
             
