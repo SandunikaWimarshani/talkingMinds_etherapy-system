@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "34214729472",
+    "project_id": "e-therapy-app",
+    "storage_bucket": "e-therapy-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:34214729472:android:47eb1f63d978fab70685e5",
+        "android_client_info": {
+          "package_name": "com.example.therapy_application"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "34214729472-thg1aukhg247lo4eo9dimglpm2akjf9b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKl74ztr-NnKAw1kT4eyL7FYe5Xjg3jGk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "34214729472-thg1aukhg247lo4eo9dimglpm2akjf9b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
