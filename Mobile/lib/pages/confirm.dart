@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:therapy_application/pages/appointment.dart';
 import 'package:therapy_application/pages/confirm.dart';
+import 'package:therapy_application/pages/meeting.dart';
 import 'package:therapy_application/pages/schedule.dart';
 import 'package:therapy_application/pages/settings.dart';
 import 'package:therapy_application/pages/welcome.dart';
 import 'package:therapy_application/widgets/completed_schedule.dart';
 import 'package:therapy_application/widgets/upcoming_schedule.dart';
 
-class Appointment extends StatefulWidget {
-  const Appointment({super.key});
+class Confirm extends StatefulWidget {
+  const Confirm({super.key});
 
   @override
-  State<Appointment> createState() => _AppointmentState();
+  State<Confirm> createState() => _ConfirmState();
 }
 
-class _AppointmentState extends State<Appointment> {
+class _ConfirmState extends State<Confirm> {
   int myIndex = 0;
   
   @override
@@ -29,7 +31,7 @@ class _AppointmentState extends State<Appointment> {
         backgroundColor: Colors.white,
         leading: IconButton(
           onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) =>  const Schedule()));
+            Navigator.push(context, MaterialPageRoute(builder: (context) =>  Meeting()));
           },
           icon: const Icon(Icons.arrow_back_ios_new_sharp),
           iconSize: 20,
@@ -47,7 +49,7 @@ class _AppointmentState extends State<Appointment> {
               backgroundColor: Colors.transparent
             ),
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) =>  Confirm()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) =>  Meeting()));
             },
           ),
           
@@ -83,7 +85,7 @@ class _AppointmentState extends State<Appointment> {
           children:  [
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 15),
-              child: Text("Schedule Session",
+              child: Text("Confirm Appointments",
               style: TextStyle(
                 fontSize: 32,
                 fontWeight: FontWeight.w500
