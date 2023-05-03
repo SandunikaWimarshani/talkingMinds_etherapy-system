@@ -33,7 +33,8 @@ const Session = () => {
 
         </div>
        
-        <button className='book_btn'type="submit"><Link to = '/Chatbot'>Join Session</Link></button>
+        <button className='book_btn'type="submit"><Link to = '/Meeting'>Join Session</Link></button>
+        <button className='book_btn'type="submit"><Link to = '/Chatbot'>Open Chatbot</Link></button>
       </form>
     </div>
   );

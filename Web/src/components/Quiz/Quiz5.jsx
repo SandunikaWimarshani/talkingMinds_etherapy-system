@@ -62,7 +62,7 @@ function Quiz5() {
 
         <div className='button-container'>
           <button className='pre'><Link to = '/Quiz4'>Previous</Link></button>
-          <button className='submit'><Link to = '/List'>Submit</Link></button>
+          <button className='submit'><Link to = '/List'>Done</Link></button>
           
         </div>
       </div>
