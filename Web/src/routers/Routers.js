@@ -22,6 +22,9 @@ import Quiz4 from '../components/Quiz/Quiz4'
 import Quiz5 from '../components/Quiz/Quiz5'
 import FrontScreen from '../components/Quiz/Frontscreen'
 import Dashboard  from '../admin/Dashboard'
+import Counselor_profile  from '../admin/Counselor_profile'
+import User_profile  from '../admin/User_profile'
+
 
 
 // import User from '../admin/User'
@@ -63,7 +66,10 @@ function Routers() {
     <Route path='signup' element={<SignUp/>} />
     <Route path='c_login' element={<CounselorLogin/>} />
     <Route path='Create_couns' element={<CreateCounselor/>} />
+
     <Route path='admin' element={<Admin/>} />
+    <Route path='Counselor_profile' element={<Counselor_profile/>} />
+    <Route path='User_profile' element={<User_profile/>} />
 
     <Route path='video' element={<Video/>} />
     
@@ -98,6 +104,7 @@ function Routers() {
     <Route path='/*' element={<AppointmentRoute/>} />
       
       <Route path='dashboard' element={<Dashboard/>} />
+    
    
      
    

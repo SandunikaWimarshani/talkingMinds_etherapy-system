@@ -12,7 +12,15 @@ const admin_nav = [
     path: '/dashboard'
   },
 
-  
+  {
+    display: 'Counselor Profile',
+    path: '/counselor_profile'
+  },
+
+  {
+    display: 'User Profile',
+    path: '/user_profile'
+  },
 
   
  

@@ -1,144 +1,168 @@
-/* eslint-disable no-undef */
-import React, {useState} from 'react'
-import { Container, Row, Col, Form, FormGroup } from 'reactstrap'
-import { Link} from 'react-router-dom';
+import React, { useState } from 'react';
+import { Container, Row, Col, Form, FormGroup } from 'reactstrap';
+import { useNavigate } from 'react-router-dom';
+import { collection, addDoc } from 'firebase/firestore';
+import { db } from '../firebase config';
+import { getStorage, ref, uploadBytes } from 'firebase/storage';
+import {  storage } from '../firebase config';
+import { Link } from 'react-router-dom'
 
-//import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
-//import { ref, uploadBytesResumable, getDownloadURL} from 'firebase/auth'
-//import { signInWithEmailAndPassword } from 'firebase/auth';
-
-//import {auth} from '../firebase config'
-//import { storage } from '../firebase config'
-//import { setDoc, doc } from 'firebase/firestore';
-
-//import {db} from '../firebase config'
-
-//import { toast } from 'react-toastify';
+import '../styles/createprofile.css'
 
 
+function CreateCouns() {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [specialties, setSpecialties] = useState('');
+  const [licening, setLicening] = useState('');
+  const [description, setDescription] = useState('');
+  const [image, setImage] = useState(null);
 
+//   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
-import '../styles/login.css'
+  const handleCreateProfile = async (e) => {
+    e.preventDefault();
+  
+   
+     try {
+      // Create a new document in the "counselors" collection
+      const docRef = await addDoc(collection(db, 'counselors'), {
+        name,
+        email,
+        specialties,
+        licening,
+        description,
+        imageUrl: await uploadImage(),
+      });
+      console.log('Counselor profile created with ID:', docRef.id);
 
-function C_login() {
+  
+       // Redirect the user to the home page after creating the profile
+       navigate('/');
+    } catch (error) {
+      console.error('Error creating counselor profile:', error);
+    }
+  };
 
-    const [name, setname] = useState('')
-    const [email, setemail] = useState('')
-    const [password, setPassword] = useState('');
-    //const [file, setFile] = useState(null);
-    //const [ setLoading] = useState(false);
+  // Function to upload image to Firebase Storage and get its download URL
+const uploadImage = async () => {
+    // Create a reference to the Firebase Storage root directory
+    const storageRef = ref(storage, 'images');
+  
+    // Create a reference to the selected image file
+    const fileRef = storageRef.child(image.name);
+  
+    // Upload the image bytes to Firebase Storage
+    await uploadBytes(fileRef, image);
+  
+    // Get the download URL of the uploaded image
+    return await fileRef.getDownloadURL();
+  }
 
+  const handleImageChange = (e) => {
+    if (e.target.files[0]) {
+      setImage(e.target.files[0]);
+    }
+  };
 
-
-    //const navigate = useNavigate()
-
-    /*const C_login = async (e) => {
-        e.preventDefault()
-        setLoading(true)
-
-        try {
-            const user = userCredential.user;
-
-            const userCredential = await signInWithEmailAndPassword(auth, name, email, password, file)
-
-            const storageRef = ref(storage, 'images/${Date.now() + username')
-            const uploadTask = uploadBytesResumable(storageRef, file)
-
-            uploadTask.on(
-                (error) => {
-                toast.error(error.message);
-            }, () => {
-                getDownloadURL(uploadTask.snapshot.ref).then(async,
-                    (downloadURL) => {
-
-                        update counselor profile
-                        await updateProfile(user, {
-                            displayName: name,
-                            photoURL: downloadURL,
-                        });
-
-                        // store counselor data in firebase databse
-                        await setDoc(doc (db, 'users', user.uid),{
-                            uid: user.uid,
-                            displayName: name,
-                            email,
-                            photoURL: downloadURL,
-                        });
-
-                    });
-                    
-            }
-            );
-
-            
-            
-            setLoading(false)
-            toast.success('Account created')
-            navigate('/c_login')
-            
-          
-            
-        } catch (error) {
-            setLoading(false)
-           toast.error("Something went wrong");
-            
-            
-        }*/
+  
   
 
   return (
-  
-   
-        <section>
-            
-            <Container>
-                <Row>
-                
-                    <Col lg='6' className='auto_text'>
-                        <h3 className='login_title'>
-                            <center>
-                            <Form className='auth_form' onSubmit={C_login}>
-                            <h1> COUNSELOR LOGIN </h1>
-                            <h5> We appreciate your participation. We require passionate, qualified counselors. We're interested in finding out more about you.</h5>
-                                <FormGroup className='form_group'>
-                                    <input type='text' className='user' placeholder='Enter Full Name' value={name} onChange={e => setname(e.target.value)}></input>
-                                </FormGroup>
-                                
-                                <FormGroup className='form_group'>
-                                    <input type='email' className='user' placeholder='Enter Email' value={email} onChange={e => setemail(e.target.value)}></input>
-                                </FormGroup>
+    <section>
+      <Container>
+        <Row>
+          <Col lg="6" className="auto_text">
+            <h3 className="login_title">
+              <center>
+                <Form className="auth_form_profile" onSubmit={handleCreateProfile}>
+                  <h1>Create Counselor Profile</h1>
+ <h4> We appreciate your participation. We require passionate, qualified counselors. We're interested in finding out more about you.</h4>
 
-                                <FormGroup className='form_group'>
-                                    <input type='password' className='pass' placeholder='Enter Password' value={password} onChange={e => setPassword(e.target.value)}></input>
-                                </FormGroup>
+                  <FormGroup className="form_group">
+                    <input
+                      type="text"
+                      className="user"
+                      placeholder="Enter Full Name"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                    />
+                  </FormGroup>
 
-                                <FormGroup className='form_group'>
-                                  <input type='file'  onChange={(e) => setFile(e.target.files[0])}
-                                  />
-                                </FormGroup>
+                  <FormGroup className="form_group">
+                    <input
+                      type="email"
+                      className="user"
+                      placeholder="Enter Email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
+                  </FormGroup>
 
-                                <button type='submit' className='buy_btn auth_btn'><Link to= '/dashboard'> Create account </Link>
-                                    
-                                </button>
+                  <FormGroup className="form_group">
+                    <input
+                      type="password"
+                      className="pass"
+                      placeholder="Enter Password"
+                    //   value={password}
+                    //   onChange={(e) => setPassword(e.target.value)}
+                    />
+                  </FormGroup>
 
-                                
-                            </Form>
-                            </center>
-                            
-                        </h3>
+                  <FormGroup className="form_group">
+                    <input
+                      type="specialties"
+                      className="user"
+                      placeholder="Enter your specialties"
+                      value={specialties}
+                      onChange={(e) => setSpecialties(e.target.value)}
+                    />
+                  </FormGroup>
 
-                    </Col>
-                    
-                    
-                </Row>
-            </Container>
+                  <FormGroup className="form_group">
+                    <input
+                      type="licening"
+                      className="user"
+                      placeholder="Enter Your License number"
+                      value={licening}
+                      onChange={(e) => setLicening(e.target.value)}
+                    />
+                  </FormGroup>
 
-           
-        </section>
+                  <FormGroup className="form_group">
+                    <input
+                      type="description"
+                      className="user_des"
+                      placeholder="Enter more about you"
+                      value={description}
+                      onChange={(e) => setDescription(e.target.value)}
+                    />
+                  </FormGroup>
 
-  
-  )
-  
-  }
+                  <FormGroup className="form_group">
+                    <input
+                      type="file"
+                      className='img_class'
+                     
+                      onChange={(e) => setImage(e.target.files[0])}
+                    />
+                  </FormGroup>
 
-export default C_login
+                  
+
+                  <button type="submit" className="create_btn"><Link to= '/Counselor_Profile'>
+                    Create Profile
+                    </Link>
+                  </button>
+                </Form>
+              </center>
+            </h3>
+          </Col>
+        </Row>
+      </Container>
+    </section>
+  );
+}
+
+export default CreateCouns;
