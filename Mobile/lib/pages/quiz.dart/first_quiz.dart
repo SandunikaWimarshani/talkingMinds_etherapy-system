@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:therapy_application/pages/appointment.dart';
 import 'package:therapy_application/pages/first.dart';
 import 'package:therapy_application/pages/quiz.dart/second_quiz.dart';
 import 'package:therapy_application/pages/schedule.dart';
 import 'package:therapy_application/pages/settings.dart';
 import 'package:therapy_application/pages/welcome.dart';
+import 'package:cloud_firestore/cloud_firestore.dart'; // add Firebase Cloud Firestore dependency
 
 class FirstQuiz extends StatefulWidget {
   const FirstQuiz({super.key});
@@ -16,7 +19,14 @@ class FirstQuiz extends StatefulWidget {
 class _FirstQuizState extends State<FirstQuiz> {
   int myIndex = 0;
    int selectedAnswerIndex = -1; // initialize with -1 to indicate no answer selected
-  
+  final FirebaseFirestore _db = FirebaseFirestore.instance; // create a Firebase Cloud Firestore instance
+
+  void _storeAnswer() async {
+    await _db.collection('Clients').add({
+      'question': 'What type of therapy are you looking for?',
+      'answer': selectedAnswerIndex >= 0 ? selectedAnswerIndex + 1 : null, // store answer index (1-based) or null if no answer selected
+    }); // store answer in the "Clients" collection
+  }
   
   @override
   Widget build(BuildContext context) {
@@ -231,7 +241,7 @@ class _FirstQuizState extends State<FirstQuiz> {
               Navigator.push(context, MaterialPageRoute(builder: (context) => const Appointment()));
             }
             if(index ==3){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const Settings()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const Appointment()));
             }
             setState(() {
               myIndex = index;

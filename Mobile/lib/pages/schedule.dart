@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:therapy_application/pages/appointment.dart';
-import 'package:therapy_application/pages/profile.dart';
+
 import 'package:therapy_application/pages/settings.dart';
 import 'package:therapy_application/pages/welcome.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -73,7 +73,7 @@ class _ScheduleState extends State<Schedule> {
         backgroundColor: Colors.white,
         leading: IconButton(
           onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) =>  const Profile()));
+            Navigator.push(context, MaterialPageRoute(builder: (context) =>  const Appointment()));
           },
           icon: const Icon(Icons.arrow_back_ios_new_sharp),
           iconSize: 20,

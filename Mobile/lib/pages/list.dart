@@ -1,6 +1,7 @@
 // ignore_for_file: unused_import
 
 import 'package:flutter/material.dart';
+import 'package:therapy_application/pages/Profiles/profile1.dart';
 import 'package:therapy_application/pages/appointment.dart';
 import 'package:therapy_application/pages/feedback.dart';
 import 'package:therapy_application/pages/profile.dart';
@@ -102,7 +103,7 @@ class _ListsState extends State<Lists> {
             children: [
               GestureDetector(
                 onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => const Profile()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const profileOne()));
                 },
               child:Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
