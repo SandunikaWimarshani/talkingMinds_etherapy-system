@@ -46,7 +46,7 @@ function CreateCouns() {
   };
 
   // Function to upload image to Firebase Storage and get its download URL
-const uploadImage = async () => {
+    const uploadImage = async () => {
     // Create a reference to the Firebase Storage root directory
     const storageRef = ref(storage, 'images');
   
@@ -78,7 +78,7 @@ const uploadImage = async () => {
               <center>
                 <Form className="auth_form_profile" onSubmit={handleCreateProfile}>
                   <h1>Create Counselor Profile</h1>
- <h4> We appreciate your participation. We require passionate, qualified counselors. We're interested in finding out more about you.</h4>
+                    <h4> We appreciate your participation. We require passionate, qualified counselors. We're interested in finding out more about you.</h4>
 
                   <FormGroup className="form_group">
                     <input
