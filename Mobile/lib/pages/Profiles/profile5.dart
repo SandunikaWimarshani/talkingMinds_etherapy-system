@@ -6,14 +6,14 @@ import 'package:therapy_application/pages/schedule.dart';
 import 'package:therapy_application/pages/settings.dart';
 import 'package:therapy_application/pages/welcome.dart';
 
-class profileOne extends StatefulWidget {
-  const profileOne({Key? key}) : super(key: key);
+class profileFive extends StatefulWidget {
+  const profileFive({Key? key}) : super(key: key);
 
   @override
-  _profileOneState createState() => _profileOneState();
+  _profileFiveState createState() => _profileFiveState();
 }
 
-class _profileOneState extends State<profileOne> {
+class _profileFiveState extends State<profileFive> {
   int myIndex = 0;
 
   @override
@@ -84,7 +84,7 @@ class _profileOneState extends State<profileOne> {
               height: MediaQuery.of(context).size.height / 3,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage('assets/pro1.jpg'),
+                  image: AssetImage('assets/pro5.jpg'),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -107,7 +107,7 @@ class _profileOneState extends State<profileOne> {
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Column(
                 children:  [
-                  const Text("Mr. Henry Wilson",
+                  const Text("Mrs. Jessica Megan",
                   style: TextStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.w500,
@@ -132,11 +132,13 @@ class _profileOneState extends State<profileOne> {
                           TextSpan(
                             text:'Specialties : \n', style: TextStyle(fontWeight: FontWeight.bold)
                           ),
-                          TextSpan(text: 'Depression, Coping with life changes, Family of Origin Issues, Forgiveness, Men\'s Issues, Sexuality, Social Anxiety and Phobia'),
+                          TextSpan(text: 'Communication Problems, Control Issues, Women Issues, Workplace Issues, Young Adult Issues'),
                         ],
                       ),
                     ),
                   ),
+                  
+                  
                   
                   
 
@@ -156,7 +158,7 @@ class _profileOneState extends State<profileOne> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'I have 12 years of professional work experience',
+                                'I have three years of professional counseling experience and ten years of experience in the domains of social work, mental health, and medicine.',
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 18,
@@ -164,18 +166,17 @@ class _profileOneState extends State<profileOne> {
                               ),
                               SizedBox(height: 10,),
                               Text(
-                                'I have expertise assisting people with difficulties relating to stress and anxiety, relationships, and intimate relationships. In my opinion, you are the authority on your experience, and you possess a variety of skills that will help you go through difficult situations. It requires bravery to start the process of looking for a more rewarding and happy existence. To help you with that process, I am here.'
+                                'I have expertise working with individuals who are dealing with stress and anxiety,abuse and trauma, depression and mood disorders, as well as the physiological effects that mental health has on our bodies.  I think everyone should be treated with decency, compassion, and respect. I take satisfaction in considering people as a whole as well  as their individual components.'
                               )
                             ],
                           ),
                         ),
                       )
                     ],
-                    
                   ),
                   const SizedBox(height: 15,),
                   const Text(
-                    "License number : KY LPCC 103842",
+                    "License number : MO LCDW 3020034052",
                     style: TextStyle(
                       color: Color.fromARGB(255, 78, 52, 80),
                       fontWeight: FontWeight.bold

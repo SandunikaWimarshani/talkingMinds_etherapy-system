@@ -6,14 +6,14 @@ import 'package:therapy_application/pages/schedule.dart';
 import 'package:therapy_application/pages/settings.dart';
 import 'package:therapy_application/pages/welcome.dart';
 
-class profileOne extends StatefulWidget {
-  const profileOne({Key? key}) : super(key: key);
+class profileSix extends StatefulWidget {
+  const profileSix({Key? key}) : super(key: key);
 
   @override
-  _profileOneState createState() => _profileOneState();
+  _profileSixState createState() => _profileSixState();
 }
 
-class _profileOneState extends State<profileOne> {
+class _profileSixState extends State<profileSix> {
   int myIndex = 0;
 
   @override
@@ -84,7 +84,7 @@ class _profileOneState extends State<profileOne> {
               height: MediaQuery.of(context).size.height / 3,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage('assets/pro1.jpg'),
+                  image: AssetImage('assets/pro6.jpg'),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -107,7 +107,7 @@ class _profileOneState extends State<profileOne> {
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Column(
                 children:  [
-                  const Text("Mr. Henry Wilson",
+                  const Text("Mr. Peter Nelson",
                   style: TextStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.w500,
@@ -132,7 +132,7 @@ class _profileOneState extends State<profileOne> {
                           TextSpan(
                             text:'Specialties : \n', style: TextStyle(fontWeight: FontWeight.bold)
                           ),
-                          TextSpan(text: 'Depression, Coping with life changes, Family of Origin Issues, Forgiveness, Men\'s Issues, Sexuality, Social Anxiety and Phobia'),
+                          TextSpan(text: 'Family conflicts, Communication Problems, \nControl Issues, Coping with Natural or Human-Caused Disaster, Disruptive Mood Dysregulation Disorder'),
                         ],
                       ),
                     ),
@@ -156,7 +156,7 @@ class _profileOneState extends State<profileOne> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'I have 12 years of professional work experience',
+                                'I have 8 years of experience working with couples, families, and people of all ages as a licensed marriage and family therapist',
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 18,
@@ -164,7 +164,7 @@ class _profileOneState extends State<profileOne> {
                               ),
                               SizedBox(height: 10,),
                               Text(
-                                'I have expertise assisting people with difficulties relating to stress and anxiety, relationships, and intimate relationships. In my opinion, you are the authority on your experience, and you possess a variety of skills that will help you go through difficult situations. It requires bravery to start the process of looking for a more rewarding and happy existence. To help you with that process, I am here.'
+                                'I have worked with people who had a variety of issues, including as depression, anxiety, marital problems, parenting troubles, and pressures in general. All concerns are welcomed in my counseling without any bias. I think everyone deserves to be treated with decency, kindness, and respect. Each client receives treatment from me according to their specific needs, goals, and circumstances. Everyone has the capacity for change.'
                               )
                             ],
                           ),
@@ -175,7 +175,7 @@ class _profileOneState extends State<profileOne> {
                   ),
                   const SizedBox(height: 15,),
                   const Text(
-                    "License number : KY LPCC 103842",
+                    "License number : IA LMFT 176398",
                     style: TextStyle(
                       color: Color.fromARGB(255, 78, 52, 80),
                       fontWeight: FontWeight.bold

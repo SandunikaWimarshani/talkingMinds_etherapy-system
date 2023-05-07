@@ -6,14 +6,14 @@ import 'package:therapy_application/pages/schedule.dart';
 import 'package:therapy_application/pages/settings.dart';
 import 'package:therapy_application/pages/welcome.dart';
 
-class Profile extends StatefulWidget {
-  const Profile({Key? key}) : super(key: key);
+class profileTwo extends StatefulWidget {
+  const profileTwo({Key? key}) : super(key: key);
 
   @override
-  _ProfileState createState() => _ProfileState();
+  _profileTwoState createState() => _profileTwoState();
 }
 
-class _ProfileState extends State<Profile> {
+class _profileTwoState extends State<profileTwo> {
   int myIndex = 0;
 
   @override
@@ -98,15 +98,10 @@ class _ProfileState extends State<Profile> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     ),
                   ),
-                  SizedBox(
-                    height: 80,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                     
+                  
+                ],
+              ),
             ),
-                  ),
-                
             const SizedBox(height: 10,),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -121,28 +116,68 @@ class _ProfileState extends State<Profile> {
                   
                   ),
                   const SizedBox(height: 5,),
-                  Row(
-                    children: const [
-                      Text(" Specialties : Relationship issues, Family conflicts, Sleeping disorders, Parenting issues, Anger management")
-                    ],
+                  Container(
+                    padding: EdgeInsets.all(10.0),
+                    decoration: BoxDecoration(
+                      color: Color.fromARGB(255, 227, 232, 213),
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    child: RichText(
+                      text: TextSpan(
+                        style: TextStyle(
+                          fontSize: 16.0,
+                          color: Colors.black
+                        ),
+                        children: [
+                          TextSpan(
+                            text:'Specialties : \n', style: TextStyle(fontWeight: FontWeight.bold)
+                          ),
+                          TextSpan(text: 'Relationship issues, Family conflicts, Sleeping \ndisorders, Parenting issues, Anger management'),
+                        ],
+                      ),
+                    ),
                   ),
+                 
+
+                
 
                   const SizedBox(height: 15,),
-                  const Text(
-                    "I have been a licensed mental health counselor (LMHC) for more than six years. I have worked with individuals, couples, families, and groups in non-profit, residential, and clinical practice settings. I also have expertise assisting individuals. I've had a lot of experience working with folks who want to improve their lives. I've developed a broad range of abilities, expertise, and solutions to help with problems like depression, anxiety, addiction, finding one's purpose, trauma, grief/loss issues, and low self-esteem.",
-                    style: TextStyle(
-                      color: Color.fromARGB(255, 78, 52, 80),
-                      fontWeight: FontWeight.w400
-                    ),
-                    textAlign: TextAlign.justify,
-
-                    ),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Container(
+                          padding: EdgeInsets.all(20),
+                          decoration: BoxDecoration(
+                            color: Color.fromARGB(255, 240, 222, 192),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'I have been a licensed mental health counselor for more than six years',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18,
+                                ),
+                              ),
+                              SizedBox(height: 10,),
+                              Text(
+                                'I have worked with individuals, couples, families, and groups in non-profit, residential, and clinical practice settings. I also have expertise assisting individuals. I have had a lot of experience working with folks who want to improve their lives. I have developed a broad range of abilities, expertise, and solutions to help with problems like depression, anxiety, addiction, finding ones purpose, trauma, grief/loss issues, and low self-esteem.'
+                              )
+                            ],
+                          ),
+                        ),
+                      )
+                    ],
+                    
+                  ),
                   const SizedBox(height: 15,),
                   const Text(
-                    "OR LCSW L9824",
+                    "License number : OR LCSW L9824",
                     style: TextStyle(
                       color: Color.fromARGB(255, 78, 52, 80),
-                      fontWeight: FontWeight.w400
+                      fontWeight: FontWeight.bold
                     ),
                     textAlign: TextAlign.justify,
 
@@ -155,36 +190,23 @@ class _ProfileState extends State<Profile> {
                   const SizedBox(height: 30,),
           // ignore: sized_box_for_whitespace
           Container(
-            width: MediaQuery.of(context).size.width*0.8,
+            width: MediaQuery.of(context).size.width*0.75,
             padding: const EdgeInsets.symmetric(
               vertical: 10,
               horizontal: 10,
             ),
-            decoration: const BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(40)),
-              color: Color.fromARGB(255, 167, 77, 141)
-    
-            ),
+           
             
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
-                
-                 Expanded(
-                  child: Text(
-                    'Join with Me',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                    
+            
+            child: ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const Schedule()
                   ),
-    
-                )
-                
-              ],
+                );
+              },
+              child: const Text('Book Appointment'),
             ),
           )
           
@@ -198,24 +220,18 @@ class _ProfileState extends State<Profile> {
 
                
               ),
-          ]
-        )
-      ),
-    
-    
-    
            
           
         
      
       bottomNavigationBar: BottomNavigationBar(
-          type: BottomNavigationBarType.fixed,
+        type: BottomNavigationBarType.fixed,
           onTap: (index) {
             if(index == 0){
               Navigator.push(context, MaterialPageRoute(builder: (context) => const Welcome()));
             } 
             if(index ==1){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const Schedule()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const Lists()));
             }
             if(index ==2){
               Navigator.push(context, MaterialPageRoute(builder: (context) => const Appointment()));
@@ -234,10 +250,9 @@ class _ProfileState extends State<Profile> {
             icon: Icon(Icons.home),
             label: 'Home',
             ),
-          
           BottomNavigationBarItem(
-            icon: Icon(Icons.event_available_outlined),
-            label: 'Appoinmnets'
+            icon: Icon(Icons.list_alt_outlined),
+            label: 'List'
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.feedback_outlined),
@@ -248,9 +263,13 @@ class _ProfileState extends State<Profile> {
             label: 'Settings'
           )
         ]),
-        
-        );
+    
+      
+      
+      
+    );
 
-
+    
+    
   }
 }

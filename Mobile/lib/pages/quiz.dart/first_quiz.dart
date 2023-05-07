@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:therapy_application/pages/appointment.dart';
 import 'package:therapy_application/pages/first.dart';
+import 'package:therapy_application/pages/list.dart';
 import 'package:therapy_application/pages/quiz.dart/second_quiz.dart';
 import 'package:therapy_application/pages/schedule.dart';
 import 'package:therapy_application/pages/settings.dart';
@@ -235,7 +236,7 @@ class _FirstQuizState extends State<FirstQuiz> {
               Navigator.push(context, MaterialPageRoute(builder: (context) => const Welcome()));
             } 
             if(index ==1){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const Schedule()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const Lists()));
             }
             if(index ==2){
               Navigator.push(context, MaterialPageRoute(builder: (context) => const Appointment()));
@@ -256,8 +257,8 @@ class _FirstQuizState extends State<FirstQuiz> {
             ),
           
           BottomNavigationBarItem(
-            icon: Icon(Icons.event_available_outlined),
-            label: 'Appoinmnets'
+            icon: Icon(Icons.list_alt_outlined),
+            label: 'List'
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.feedback_outlined),

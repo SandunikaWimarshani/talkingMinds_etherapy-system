@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:therapy_application/pages/appointment.dart';
+import 'package:therapy_application/pages/list.dart';
 import 'package:therapy_application/pages/quiz.dart/fourth_quiz.dart';
 import 'package:therapy_application/pages/quiz.dart/second_quiz.dart';
 import 'package:therapy_application/pages/schedule.dart';
@@ -337,7 +338,7 @@ class _ThirdQuizState extends State<ThirdQuiz> {
               Navigator.push(context, MaterialPageRoute(builder: (context) => const Welcome()));
             } 
             if(index ==1){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const Schedule()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const Lists()));
             }
             if(index ==2){
               Navigator.push(context, MaterialPageRoute(builder: (context) => const Appointment()));
@@ -358,8 +359,8 @@ class _ThirdQuizState extends State<ThirdQuiz> {
             ),
           
           BottomNavigationBarItem(
-            icon: Icon(Icons.event_available_outlined),
-            label: 'Appoinmnets'
+            icon: Icon(Icons.list_alt_outlined),
+            label: 'List'
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.feedback_outlined),

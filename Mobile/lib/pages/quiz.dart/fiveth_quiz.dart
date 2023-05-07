@@ -340,6 +340,7 @@ class _FivethQuizState extends State<FivethQuiz> {
               
             ),
           ),
+          const Spacer(),
           
           InkWell(
                   onTap: () {
@@ -352,10 +353,10 @@ class _FivethQuizState extends State<FivethQuiz> {
                   child:Container(
                   width:double.maxFinite,
                   alignment: Alignment.bottomCenter,
-                  padding: EdgeInsets.all(kDefaultPadding*1.2),
+                  padding: EdgeInsets.all(kDefaultPadding*2.5),
                   decoration: const BoxDecoration(
                     color: Color.fromARGB(255, 180, 109, 163),
-                    borderRadius: BorderRadius.all(Radius.circular(20))
+                    borderRadius: BorderRadius.all(Radius.circular(200))
                   ),
                   child: const Text("DONE",
                   style: TextStyle(
@@ -367,7 +368,8 @@ class _FivethQuizState extends State<FivethQuiz> {
                   
                     
                   ),
-                 )
+                 ),
+                 
           
         ],
         ),
@@ -382,7 +384,7 @@ class _FivethQuizState extends State<FivethQuiz> {
               Navigator.push(context, MaterialPageRoute(builder: (context) => const Welcome()));
             } 
             if(index ==1){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const Schedule()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const Lists()));
             }
             if(index ==2){
               Navigator.push(context, MaterialPageRoute(builder: (context) => const Appointment()));
@@ -403,8 +405,8 @@ class _FivethQuizState extends State<FivethQuiz> {
             ),
           
           BottomNavigationBarItem(
-            icon: Icon(Icons.event_available_outlined),
-            label: 'Appoinmnets'
+            icon: Icon(Icons.list_alt_outlined),
+            label: 'List'
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.feedback_outlined),

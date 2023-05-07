@@ -6,14 +6,14 @@ import 'package:therapy_application/pages/schedule.dart';
 import 'package:therapy_application/pages/settings.dart';
 import 'package:therapy_application/pages/welcome.dart';
 
-class profileOne extends StatefulWidget {
-  const profileOne({Key? key}) : super(key: key);
+class profileThree extends StatefulWidget {
+  const profileThree({Key? key}) : super(key: key);
 
   @override
-  _profileOneState createState() => _profileOneState();
+  _profileThreeState createState() => _profileThreeState();
 }
 
-class _profileOneState extends State<profileOne> {
+class _profileThreeState extends State<profileThree> {
   int myIndex = 0;
 
   @override
@@ -84,7 +84,7 @@ class _profileOneState extends State<profileOne> {
               height: MediaQuery.of(context).size.height / 3,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage('assets/pro1.jpg'),
+                  image: AssetImage('assets/pro3.jpg'),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -107,7 +107,7 @@ class _profileOneState extends State<profileOne> {
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Column(
                 children:  [
-                  const Text("Mr. Henry Wilson",
+                  const Text("Mrs. Jessica Megan",
                   style: TextStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.w500,
@@ -116,7 +116,7 @@ class _profileOneState extends State<profileOne> {
                   
                   ),
                   const SizedBox(height: 5,),
-                  Container(
+                   Container(
                     padding: EdgeInsets.all(10.0),
                     decoration: BoxDecoration(
                       color: Color.fromARGB(255, 227, 232, 213),
@@ -132,7 +132,7 @@ class _profileOneState extends State<profileOne> {
                           TextSpan(
                             text:'Specialties : \n', style: TextStyle(fontWeight: FontWeight.bold)
                           ),
-                          TextSpan(text: 'Depression, Coping with life changes, Family of Origin Issues, Forgiveness, Men\'s Issues, Sexuality, Social Anxiety and Phobia'),
+                          TextSpan(text: 'Addictions, Parenting issues, Caregiver Issues and Stress,Dependent Personality, Divorce and Separation, Domestic Violence, Emptiness, \nFamily Problems'),
                         ],
                       ),
                     ),
@@ -156,7 +156,7 @@ class _profileOneState extends State<profileOne> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'I have 12 years of professional work experience',
+                                'I have approximately 10 years of experience working with people, kids, teens, and couples as a licensed mental health counselor.',
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 18,
@@ -164,7 +164,7 @@ class _profileOneState extends State<profileOne> {
                               ),
                               SizedBox(height: 10,),
                               Text(
-                                'I have expertise assisting people with difficulties relating to stress and anxiety, relationships, and intimate relationships. In my opinion, you are the authority on your experience, and you possess a variety of skills that will help you go through difficult situations. It requires bravery to start the process of looking for a more rewarding and happy existence. To help you with that process, I am here.'
+                                'I have spent the past five years collaborating closely with victims of severe trauma and domestic violence. I am passionate about assisting people in becoming their best self. This, in my opinion, frequently calls for the effort of raising our awareness of how our emotions affect our behavior.Any person who is committed to changing their unhealthy thought patterns and behaviors in order to become the person they have always wanted to be is someone I look forward to working with.'
                               )
                             ],
                           ),
@@ -175,7 +175,7 @@ class _profileOneState extends State<profileOne> {
                   ),
                   const SizedBox(height: 15,),
                   const Text(
-                    "License number : KY LPCC 103842",
+                    "License number : WA LICSW 67312063",
                     style: TextStyle(
                       color: Color.fromARGB(255, 78, 52, 80),
                       fontWeight: FontWeight.bold

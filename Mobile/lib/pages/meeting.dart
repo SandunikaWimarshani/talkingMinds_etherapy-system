@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:therapy_application/pages/appointment.dart';
 import 'package:therapy_application/pages/chatScreen.dart';
 import 'package:therapy_application/pages/confirm.dart';
+import 'package:therapy_application/pages/list.dart';
 import 'package:therapy_application/pages/meeting.dart';
 import 'package:therapy_application/pages/schedule.dart';
 import 'package:therapy_application/pages/settings.dart';
@@ -108,7 +109,7 @@ class _MeetingState extends State<Meeting> {
               Navigator.push(context, MaterialPageRoute(builder: (context) => const Welcome()));
             } 
             if(index ==1){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const Schedule()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const Lists()));
             }
             if(index ==2){
               Navigator.push(context, MaterialPageRoute(builder: (context) => const Appointment()));
@@ -129,8 +130,8 @@ class _MeetingState extends State<Meeting> {
             ),
           
           BottomNavigationBarItem(
-            icon: Icon(Icons.event_available_outlined),
-            label: 'Appoinmnets'
+            icon: Icon(Icons.list_alt_outlined),
+            label: 'List'
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.feedback_outlined),

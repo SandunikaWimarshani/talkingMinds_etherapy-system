@@ -6,14 +6,14 @@ import 'package:therapy_application/pages/schedule.dart';
 import 'package:therapy_application/pages/settings.dart';
 import 'package:therapy_application/pages/welcome.dart';
 
-class profileOne extends StatefulWidget {
-  const profileOne({Key? key}) : super(key: key);
+class profileFour extends StatefulWidget {
+  const profileFour({Key? key}) : super(key: key);
 
   @override
-  _profileOneState createState() => _profileOneState();
+  _profileFourState createState() => _profileFourState();
 }
 
-class _profileOneState extends State<profileOne> {
+class _profileFourState extends State<profileFour> {
   int myIndex = 0;
 
   @override
@@ -84,7 +84,7 @@ class _profileOneState extends State<profileOne> {
               height: MediaQuery.of(context).size.height / 3,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage('assets/pro1.jpg'),
+                  image: AssetImage('assets/pro4.jpg'),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -107,7 +107,7 @@ class _profileOneState extends State<profileOne> {
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Column(
                 children:  [
-                  const Text("Mr. Henry Wilson",
+                  const Text("Mr. Harry Jake",
                   style: TextStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.w500,
@@ -132,7 +132,7 @@ class _profileOneState extends State<profileOne> {
                           TextSpan(
                             text:'Specialties : \n', style: TextStyle(fontWeight: FontWeight.bold)
                           ),
-                          TextSpan(text: 'Depression, Coping with life changes, Family of Origin Issues, Forgiveness, Men\'s Issues, Sexuality, Social Anxiety and Phobia'),
+                          TextSpan(text: 'Relationship issues, Anger management, Career \ndifficulties, Isolation/Loneliness, Panic Disorder and Panic Attacks'),
                         ],
                       ),
                     ),
@@ -156,7 +156,7 @@ class _profileOneState extends State<profileOne> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'I have 12 years of professional work experience',
+                                'I have three years of professional work experience.',
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 18,
@@ -164,18 +164,17 @@ class _profileOneState extends State<profileOne> {
                               ),
                               SizedBox(height: 10,),
                               Text(
-                                'I have expertise assisting people with difficulties relating to stress and anxiety, relationships, and intimate relationships. In my opinion, you are the authority on your experience, and you possess a variety of skills that will help you go through difficult situations. It requires bravery to start the process of looking for a more rewarding and happy existence. To help you with that process, I am here.'
+                                'I have expertise working with clients who are dealing with depression, self-esteem issues, sorrow and loss, stress and anxiety, and motivation. I collaborate with my clients to provide a setting that is open and safe so that ideas and emotions can be expressed without worrying about being judged. I am pleased of you for starting therapy—it might be brave to make the decision to do so.'
                               )
                             ],
                           ),
                         ),
                       )
                     ],
-                    
                   ),
                   const SizedBox(height: 15,),
                   const Text(
-                    "License number : KY LPCC 103842",
+                    "License number : OR LCSW L9824",
                     style: TextStyle(
                       color: Color.fromARGB(255, 78, 52, 80),
                       fontWeight: FontWeight.bold

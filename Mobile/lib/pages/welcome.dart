@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:therapy_application/pages/appointment.dart';
 import 'package:therapy_application/pages/first.dart';
+import 'package:therapy_application/pages/list.dart';
 import 'package:therapy_application/pages/schedule.dart';
 import 'package:therapy_application/pages/settings.dart';
 
@@ -122,11 +123,21 @@ class _WelcomeState extends State<Welcome> {
                 
                  // ignore: prefer_const_constructors
                  Expanded(
+                  child:TweenAnimationBuilder(
+                    tween: Tween<double>(begin: 1, end: 0.9),
+                    duration: const Duration(milliseconds: 500),
+                    builder: (context, value, child) {
+                      return Transform.scale(
+                        scale: value,
+                        child: child,
+                      );
+                    },
+                 
                   child: const Text(
                     'Get Started',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: 18,
+                      fontSize: 25,
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
                     ),
@@ -136,7 +147,7 @@ class _WelcomeState extends State<Welcome> {
     
                 ),
                 
-                
+                 )
               ],
             ),
           )
@@ -151,48 +162,48 @@ class _WelcomeState extends State<Welcome> {
         
 
         
-        bottomNavigationBar: BottomNavigationBar(
-          type: BottomNavigationBarType.fixed,
-          onTap: (index) {
-            if(index == 0){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const Welcome()));
-            } 
-            if(index ==1){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const Schedule()));
-            }
-            if(index ==2){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const Appointment()));
-            }
-            if(index ==3){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const Settings()));
-            }
-            setState(() {
-              myIndex = index;
-            });
+        // bottomNavigationBar: BottomNavigationBar(
+        //   type: BottomNavigationBarType.fixed,
+        //   onTap: (index) {
+        //     if(index == 0){
+        //       Navigator.push(context, MaterialPageRoute(builder: (context) => const Welcome()));
+        //     } 
+        //     if(index ==1){
+        //       Navigator.push(context, MaterialPageRoute(builder: (context) => const Lists()));
+        //     }
+        //     if(index ==2){
+        //       Navigator.push(context, MaterialPageRoute(builder: (context) => const Appointment()));
+        //     }
+        //     if(index ==3){
+        //       Navigator.push(context, MaterialPageRoute(builder: (context) => const Settings()));
+        //     }
+        //     setState(() {
+        //       myIndex = index;
+        //     });
             
-          },
-          currentIndex: myIndex,
-          items: const [
-          BottomNavigationBarItem(
+        //   },
+        //   currentIndex: myIndex,
+        //   items: const [
+        //   BottomNavigationBarItem(
             
-            icon: Icon(Icons.home),
-            label: 'Home',
-            ),
+        //     icon: Icon(Icons.home),
+        //     label: 'Home',
+        //     ),
             
           
-          BottomNavigationBarItem(
-            icon: Icon(Icons.event_available_outlined),
-            label: 'Appoinmnets'
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.feedback_outlined),
-            label: 'Feedback'
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Settings'
-          )
-        ]),
+        //   BottomNavigationBarItem(
+        //     icon: Icon(Icons.list_alt_outlined),
+        //     label: 'List'
+        //   ),
+        //   BottomNavigationBarItem(
+        //     icon: Icon(Icons.feedback_outlined),
+        //     label: 'Feedback'
+        //   ),
+        //   BottomNavigationBarItem(
+        //     icon: Icon(Icons.settings),
+        //     label: 'Settings'
+        //   )
+        // ]),
         
         );
 

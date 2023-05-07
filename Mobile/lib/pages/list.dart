@@ -2,9 +2,13 @@
 
 import 'package:flutter/material.dart';
 import 'package:therapy_application/pages/Profiles/profile1.dart';
+import 'package:therapy_application/pages/Profiles/profile2.dart';
+import 'package:therapy_application/pages/Profiles/profile3.dart';
+import 'package:therapy_application/pages/Profiles/profile4.dart';
+import 'package:therapy_application/pages/Profiles/profile5.dart';
+import 'package:therapy_application/pages/Profiles/profile6.dart';
 import 'package:therapy_application/pages/appointment.dart';
 import 'package:therapy_application/pages/feedback.dart';
-import 'package:therapy_application/pages/profile.dart';
 import 'package:therapy_application/pages/schedule.dart';
 import 'package:therapy_application/pages/settings.dart';
 import 'package:therapy_application/pages/welcome.dart';
@@ -65,46 +69,31 @@ class _ListsState extends State<Lists> {
             
           )
         ],*/
-        actions: [
-          TextButton(
-            // ignore: sort_child_properties_last
-            child: const Text('Next'),
-            style: TextButton.styleFrom(
-              textStyle: const TextStyle(fontSize: 10,
-              color: Colors. black
-              ),
-              
-              backgroundColor: Colors.transparent
-            ),
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) =>  const Profile()));
-            },
-          )
-        ],
+        
       ),
       body: ListView(
         padding: const EdgeInsets.all(14),
         children:  [
           
           
-          const Spacer(),
+          
 
           //Counselor list
           const SizedBox(height: 15,),
-          const Text("List of Counselors",
+          const Text("Choose your Counselors",
           style: TextStyle(
             fontSize: 22,
             fontWeight: FontWeight.bold
           ),
           
           ),
+          const Spacer(),
+         
           
           Column(
             children: [
               GestureDetector(
-                onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => const profileOne()));
-                },
+                
               child:Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -122,50 +111,70 @@ class _ListsState extends State<Lists> {
 
                 
                   
-                  const SizedBox(width: 10,),
+                  const SizedBox(width: 35,),
                   Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children:  const [
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children:   [
                       Text("Mr. Henry Wilson",
                       style: TextStyle(
                         fontSize: 16,
-                        fontWeight: FontWeight.bold
+                        fontWeight: FontWeight.bold,
+                        
                       ),
                       
                       
                       ),
-                      SizedBox(height: 8,),
+                      Row(
+                       children: [
+                    Icon(Icons.star, color: Colors.yellow),
+                    Icon(Icons.star, color: Colors.yellow),
+                    Icon(Icons.star, color: Colors.yellow),
+                    Icon(Icons.star, color: Colors.yellow),
+                    Icon(Icons.star, color: Colors.yellow),
+                    ],
+
+                ),
+         
+                      
+                     
                       
                     ],
-                  )
+                  ),
                 ],
-              )
-              )
+              ),
+              
+              ),
+              
             ],
           ),
-         Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
-                
-                 Expanded(
-                  child: Text(
-                    'Join with Me',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                    
-                  ),
-    
-                )
-                
-              ],
+          
+          Container(
+            width: MediaQuery.of(context).size.width*0.1,
+            padding: const EdgeInsets.symmetric(
+              vertical: 5,
+              horizontal: 5,
             ),
+         
+         
+         child:ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            primary: Color.fromARGB(255, 96, 81, 101),
+          ),
+          child: const Text("Join with Me"),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const profileOne()),
+            );
+          },
+         ),
+          ),
+
           Column(
             children: [
-              Row(
+              GestureDetector(
+                
+              child:Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
@@ -179,31 +188,66 @@ class _ListsState extends State<Lists> {
                       )
                     ),
                   ),
+
+                
                   
-                  const SizedBox(width: 10,),
+                  const SizedBox(width: 35,),
                   Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children:  const[
-                       Text("Mr. Allan Lewis",
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children:   [
+                      Text("Mr. Allan Lewis",
                       style: TextStyle(
                         fontSize: 16,
-                        fontWeight: FontWeight.bold
+                        fontWeight: FontWeight.bold,
+                        
                       ),
                       
+                      
                       ),
+                      Row(
+                       children: [
+                    Icon(Icons.star, color: Colors.yellow),
+                    Icon(Icons.star, color: Colors.yellow),
+                    Icon(Icons.star, color: Colors.yellow),
+                    
+                    ],
+
+                ),
+                     
                       
                     ],
                   )
                 ],
               )
+              )
             ],
           ),
+          Container(
+            width: MediaQuery.of(context).size.width*0.1,
+            padding: const EdgeInsets.symmetric(
+              vertical: 5,
+              horizontal: 5,
+            ),
+         
+         
+         child:ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            primary: Color.fromARGB(255, 96, 81, 101),
+          ),
+          child: const Text("Join with Me"),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const profileTwo()),
+            );
+          },
+         ),
+          ),
+
           Column(
             children: [
               GestureDetector(
-                onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => const Profile()));
-                },
+                
               child:Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -218,28 +262,67 @@ class _ListsState extends State<Lists> {
                       )
                     ),
                   ),
+
+                
                   
-                  const SizedBox(width: 10,),
+                  const SizedBox(width: 35,),
                   Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children:  const[
-                       Text("Mrs. Jessica Megan",
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children:  [
+                      Text("Mrs. Jessica Megan",
                       style: TextStyle(
                         fontSize: 16,
-                        fontWeight: FontWeight.bold
+                        fontWeight: FontWeight.bold,
+                        
                       ),
                       
+                      
                       ),
-                    ] 
+                      Row(
+                       children: [
+                    Icon(Icons.star, color: Colors.yellow),
+                    Icon(Icons.star, color: Colors.yellow),
+                    Icon(Icons.star, color: Colors.yellow),
+                    Icon(Icons.star, color: Colors.yellow),
+                    
+                    ],
+
+                ),
+                     
+                      
+                    ],
                   )
                 ],
               )
               )
             ],
           ),
+          Container(
+            width: MediaQuery.of(context).size.width*0.1,
+            padding: const EdgeInsets.symmetric(
+              vertical: 5,
+              horizontal: 5,
+            ),
+         
+         
+         child:ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            primary: Color.fromARGB(255, 96, 81, 101),
+          ),
+          child: const Text("Join with Me"),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const profileThree()),
+            );
+          },
+         ),
+          ),
           Column(
             children: [
-              Row(
+              GestureDetector(
+                
+              child:Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
@@ -253,30 +336,65 @@ class _ListsState extends State<Lists> {
                       )
                     ),
                   ),
+
+                
                   
-                  const SizedBox(width: 10,),
+                  const SizedBox(width: 35,),
                   Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children:  const[
-                       Text("Mr. Harry Jake",
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children:  [
+                      Text("Mr. Harry Jake",
                       style: TextStyle(
                         fontSize: 16,
-                        fontWeight: FontWeight.bold
+                        fontWeight: FontWeight.bold,
+                        
                       ),
                       
-                      ),
                       
-                       
-                       
+                      ),
+                      Row(
+                       children: [
+                    Icon(Icons.star, color: Colors.yellow),
+                    Icon(Icons.star, color: Colors.yellow),
+                    
+                    ],
+
+                ),
+                     
+                      
                     ],
                   )
                 ],
               )
+              )
             ],
           ),
-          Column(
+          Container(
+            width: MediaQuery.of(context).size.width*0.1,
+            padding: const EdgeInsets.symmetric(
+              vertical: 5,
+              horizontal: 5,
+            ),
+         
+         
+         child:ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            primary: Color.fromARGB(255, 96, 81, 101),
+          ),
+          child: const Text("Join with Me"),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const profileFour()),
+            );
+          },
+         ),
+          ),
+           Column(
             children: [
-              Row(
+              GestureDetector(
+                
+              child:Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
@@ -290,25 +408,135 @@ class _ListsState extends State<Lists> {
                       )
                     ),
                   ),
+
+                
                   
-                  const SizedBox(width: 10,),
+                  const SizedBox(width: 35,),
                   Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
-                       Text("Miss. Isla Lauren",
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children:   [
+                      Text("Mrs. Jessica Megan",
                       style: TextStyle(
                         fontSize: 16,
-                        fontWeight: FontWeight.bold
+                        fontWeight: FontWeight.bold,
+                        
                       ),
                       
-                      ),
                       
-                       
+                      ),
+                      Row(
+                       children: [
+                    Icon(Icons.star, color: Colors.yellow),
+                    Icon(Icons.star, color: Colors.yellow),
+                    Icon(Icons.star, color: Colors.yellow),
+                    
+                    ],
+
+                ),
+                     
+                      
                     ],
                   )
                 ],
               )
+              )
             ],
+          ),
+          Container(
+            width: MediaQuery.of(context).size.width*0.1,
+            padding: const EdgeInsets.symmetric(
+              vertical: 5,
+              horizontal: 5,
+            ),
+         
+         
+         child:ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            primary: Color.fromARGB(255, 96, 81, 101),
+          ),
+          child: const Text("Join with Me"),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const profileFive()),
+            );
+          },
+         ),
+          ),
+
+          Column(
+            children: [
+              GestureDetector(
+                
+              child:Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    width: 100,
+                    height: 100,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      image: const DecorationImage(
+                        image: AssetImage('assets/pro6.jpg'),
+                        fit: BoxFit.cover
+                      )
+                    ),
+                  ),
+
+                
+                  
+                  const SizedBox(width: 35,),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children:   [
+                      Text("Mr. Peter Nelson",
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        
+                      ),
+                      
+                      
+                      ),
+                      Row(
+                       children: [
+                    Icon(Icons.star, color: Colors.yellow),
+                    Icon(Icons.star, color: Colors.yellow),
+                    Icon(Icons.star, color: Colors.yellow),
+                    Icon(Icons.star, color: Colors.yellow),
+                    
+                    ],
+
+                ),
+                     
+                      
+                    ],
+                  )
+                ],
+              )
+              )
+            ],
+          ),
+          Container(
+            width: MediaQuery.of(context).size.width*0.1,
+            padding: const EdgeInsets.symmetric(
+              vertical: 5,
+              horizontal: 5,
+            ),
+         
+         
+         child:ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            primary: Color.fromARGB(255, 96, 81, 101),
+          ),
+          child: const Text("Join with Me"),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const profileSix()),
+            );
+          },
+         ),
           ),
 
           
@@ -322,7 +550,7 @@ class _ListsState extends State<Lists> {
               Navigator.push(context, MaterialPageRoute(builder: (context) => const Welcome()));
             } 
             if(index ==1){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const Schedule()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const Lists()));
             }
             if(index ==2){
               Navigator.push(context, MaterialPageRoute(builder: (context) => const Appointment()));
@@ -343,8 +571,8 @@ class _ListsState extends State<Lists> {
             ),
           
           BottomNavigationBarItem(
-            icon: Icon(Icons.event_available_outlined),
-            label: 'Appoinmnets'
+            icon: Icon(Icons.list_alt_outlined),
+            label: 'List'
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.feedback_outlined),

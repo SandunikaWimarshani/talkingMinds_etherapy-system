@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:therapy_application/pages/appointment.dart';
-import 'package:therapy_application/pages/profile.dart';
+import 'package:therapy_application/pages/list.dart';
 import 'package:therapy_application/pages/schedule.dart';
 import 'package:therapy_application/pages/settings.dart';
 import 'package:therapy_application/pages/welcome.dart';
@@ -52,7 +52,7 @@ class _FeedbackState extends State<Feedback> {
               backgroundColor: Colors.transparent
             ),
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) =>  const Profile()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) =>  const Lists()));
             },
           )
         ],
@@ -124,7 +124,7 @@ class _FeedbackState extends State<Feedback> {
               Navigator.push(context, MaterialPageRoute(builder: (context) => const Welcome()));
             } 
             if(index ==1){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const Schedule()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const Lists()));
             }
             if(index ==2){
               Navigator.push(context, MaterialPageRoute(builder: (context) => const Feedback()));
@@ -147,8 +147,8 @@ class _FeedbackState extends State<Feedback> {
             
           
           BottomNavigationBarItem(
-            icon: Icon(Icons.event_available_outlined),
-            label: 'Appoinmnets'
+            icon: Icon(Icons.list_alt_outlined),
+            label: 'List'
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.feedback_outlined),
