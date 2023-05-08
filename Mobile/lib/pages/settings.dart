@@ -1,5 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:therapy_application/pages/Chat/feedbackPage.dart';
+
+import 'package:therapy_application/pages/Settings/event.dart';
+import 'package:therapy_application/pages/Settings/profile.dart';
 import 'package:therapy_application/pages/appointment.dart';
 import 'package:therapy_application/pages/list.dart';
 import 'package:therapy_application/pages/schedule.dart';
@@ -14,6 +18,7 @@ class Settings extends StatefulWidget {
 
 class _SettingsState extends State<Settings> {
   int myIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,23 +37,7 @@ class _SettingsState extends State<Settings> {
           iconSize: 20,
           color: Colors.black,
         ),
-        actions: [
-          TextButton(
-            // ignore: sort_child_properties_last
-            child: const Text('Next'),
-            style: TextButton.styleFrom(
-              textStyle: const TextStyle(fontSize: 10,
-              color: Colors. black
-              ),
-              
-              backgroundColor: Colors.transparent
-            ),
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) =>  const Schedule()));
-            },
-          ),
-          
-        ],
+        
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -56,7 +45,7 @@ class _SettingsState extends State<Settings> {
                     children: const [
                        CircleAvatar(
                         radius: 20,
-                        backgroundImage: AssetImage('assets/cover.png'),
+                        backgroundImage: AssetImage('assets/Images/cover.png'),
                       ),
                        Text("talkingMinds",
                        textAlign: TextAlign.start,
@@ -74,132 +63,167 @@ class _SettingsState extends State<Settings> {
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children:  [
-          const Text("Settings",
-          style: TextStyle(
-            fontSize: 22,
-            fontWeight: FontWeight.bold,
-            color: Color.fromARGB(255, 144, 41, 103)
-          ),
-          
-          ),
-          const SizedBox(height: 30,),
-          const ListTile(
-            leading: CircleAvatar(
-              radius: 30,
-              backgroundImage: AssetImage('assets/logo.jpg'),
-            ),
-            title: Text("",
-            style: TextStyle(
-              fontWeight: FontWeight.w500,
-              fontSize: 25,
-            ),
-            
-            ),
-            
-          ),
-          const Divider(height: 50,),
-          ListTile(
-            onTap: () {},
-            leading: Container(
-              padding: const EdgeInsets.all(10),
-              decoration: const BoxDecoration(
-                color: Color.fromARGB(255, 224, 157, 179),
-                shape: BoxShape.circle,
-              ),
-              child: const Icon(
-                CupertinoIcons.person,
-                size:25,
+        children: [
+          const Padding(
+            padding: EdgeInsets.only(left: 16, top: 16, bottom: 8),
+            child: Text(
+              'Settings',
+              style: TextStyle(
+                fontSize: 22,
+                fontWeight: FontWeight.bold,
+                color: Color.fromARGB(255,144,41,103),
               ),
             ),
-            title: const Text("Profile",
-            style: TextStyle(
-              fontWeight: FontWeight.w500,
-              fontSize: 15,
-            ),
-            
-            ),
-            trailing: const Icon(Icons.arrow_forward_ios_rounded),
-              
-            
-          ),
-          const SizedBox(height: 20,),
-          ListTile(
-            onTap: () {},
-            leading: Container(
-              padding: const EdgeInsets.all(10),
-              decoration: const BoxDecoration(
-                color: Color.fromARGB(255, 224, 157, 179),
-                shape: BoxShape.circle,
-              ),
-              child: const Icon(
-               Icons.notifications_none_outlined,
-                size:25,
-              ),
-            ),
-            title: const Text("Notification",
-            style: TextStyle(
-              fontWeight: FontWeight.w500,
-              fontSize: 15,
-            ),
-            
-            ),
-            trailing: const Icon(Icons.arrow_forward_ios_rounded),
-              
-            
-          ),
-          const SizedBox(height: 20,),
-          ListTile(
-            onTap: () {},
-            leading: Container(
-              padding: const EdgeInsets.all(10),
-              decoration: const BoxDecoration(
-                color: Color.fromARGB(255, 224, 157, 179),
-                shape: BoxShape.circle,
-              ),
-              child: const Icon(
-               Icons.privacy_tip_outlined,
-                size:25,
-              ),
-            ),
-            title: const Text("Privacy",
-            style: TextStyle(
-              fontWeight: FontWeight.w500,
-              fontSize: 15,
-            ),
-            
-            ),
-            trailing: const Icon(Icons.arrow_forward_ios_rounded),
-              
-            
-          ),
-          const SizedBox(height: 20,),
-          ListTile(
-            onTap: () {},
-            leading: Container(
-              padding: const EdgeInsets.all(10),
-              decoration: const BoxDecoration(
-                color: Color.fromARGB(255, 224, 157, 179),
-                shape: BoxShape.circle,
-              ),
-              child: const Icon(
-               Icons.logout_outlined,
-                size:25,
-              ),
-            ),
-            title: const Text("Log out",
-            style: TextStyle(
-              fontWeight: FontWeight.w500,
-              fontSize: 15,
-            ),
-            
-            ),
-            trailing: const Icon(Icons.arrow_forward_ios_rounded),
-              
-            
           ),
 
-        ]   
+          const Divider(
+            color: Colors.black,
+            height: 0,
+            thickness: 0.5,
+            indent: 16,
+            endIndent: 16,
+          ),
+
+            ListTile(
+            onTap: () {
+              Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const Profile()),
+            );
+            },
+            leading: Container(
+              padding: const EdgeInsets.all(10),
+              decoration: const BoxDecoration(
+                color: Color.fromARGB(255, 224, 157, 179),
+                shape: BoxShape.circle,
+              ),
+              child: const Icon(
+                Icons.person,
+                size: 25,
+              ),
+            ),
+            title: const Text(
+              'Profile',
+              style: TextStyle(
+                fontWeight: FontWeight.w500,
+                fontSize: 15,
+              ),
+            ),
+            trailing: const Icon(Icons.arrow_forward_ios_rounded),
+          ),
+          const Divider(
+            color: Colors.black,
+            height: 0,
+            
+            indent: 16,
+            endIndent: 16,
+          ),
+
+          ListTile(
+            onTap: () {
+              Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const Event()),
+            );
+            },
+            leading: Container(
+              padding: const EdgeInsets.all(10),
+              decoration: const BoxDecoration(
+                color: Color.fromARGB(255, 224, 157, 179),
+                shape: BoxShape.circle,
+              ),
+              child: const Icon(
+                Icons.notifications,
+                size: 25,
+              ),
+            ),
+            title: const Text(
+              'Notification',
+              style: TextStyle(
+                fontWeight: FontWeight.w500,
+                fontSize: 15,
+              ),
+            ),
+            trailing: const Icon(Icons.arrow_forward_ios_rounded),
+          ),
+          const Divider(
+            color: Colors.black,
+            height: 0,
+           
+            indent: 16,
+            endIndent: 16,
+          ),
+
+          ListTile(
+            onTap: () {
+              Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const FeedbackPage()),
+            );
+            },
+            leading: Container(
+              padding: const EdgeInsets.all(10),
+              decoration: const BoxDecoration(
+                color: Color.fromARGB(255, 224, 157, 179),
+                shape: BoxShape.circle,
+              ),
+              child: const Icon(
+                Icons.feedback,
+                size: 25,
+              ),
+            ),
+            title: const Text(
+              'Feedback',
+              style: TextStyle(
+                fontWeight: FontWeight.w500,
+                fontSize: 15,
+              ),
+            ),
+            trailing: const Icon(Icons.arrow_forward_ios_rounded),
+          ),
+          const Divider(
+            color: Colors.black,
+            height: 0,
+           
+            indent: 16,
+            endIndent: 16,
+          ),
+
+          ListTile(
+            onTap: () {},
+            leading: Container(
+              padding: const EdgeInsets.all(10),
+              decoration: const BoxDecoration(
+                color: Color.fromARGB(255, 224, 157, 179),
+                shape: BoxShape.circle,
+              ),
+              child: const Icon(
+                Icons.privacy_tip,
+                size: 25,
+              ),
+            ),
+            title: const Text(
+              'Policy Privacy',
+              style: TextStyle(
+                fontWeight: FontWeight.w500,
+                fontSize: 15,
+              ),
+            ),
+            trailing: const Icon(Icons.arrow_forward_ios_rounded),
+          ),
+          const Divider(
+            color: Colors.black,
+            height: 0,
+            thickness: 0.5,
+            indent: 16,
+            endIndent: 16,
+          ),
+
+          
+
+
+        ],
+
         
       ),
       
@@ -237,8 +261,8 @@ class _SettingsState extends State<Settings> {
             label: 'List'
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.feedback_outlined),
-            label: 'Feedback'
+            icon: Icon(Icons.task_alt),
+            label: 'Schedule'
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),

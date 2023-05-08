@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:therapy_application/pages/Chat/Messages.dart';
+import 'package:therapy_application/pages/Chat/chatScreen.dart';
+import 'package:therapy_application/pages/Video/videocall.dart';
 import 'package:therapy_application/pages/appointment.dart';
 import 'package:therapy_application/pages/confirm.dart';
 import 'package:therapy_application/pages/list.dart';
@@ -6,8 +9,7 @@ import 'package:therapy_application/pages/meeting.dart';
 import 'package:therapy_application/pages/schedule.dart';
 import 'package:therapy_application/pages/settings.dart';
 import 'package:therapy_application/pages/welcome.dart';
-import 'package:therapy_application/widgets/completed_schedule.dart';
-import 'package:therapy_application/widgets/upcoming_schedule.dart';
+
 
 class Confirm extends StatefulWidget {
   const Confirm({super.key});
@@ -32,7 +34,7 @@ class _ConfirmState extends State<Confirm> {
         backgroundColor: Colors.white,
         leading: IconButton(
           onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) =>  Meeting()));
+            Navigator.push(context, MaterialPageRoute(builder: (context) =>  const Meeting()));
           },
           icon: const Icon(Icons.arrow_back_ios_new_sharp),
           iconSize: 20,
@@ -50,7 +52,7 @@ class _ConfirmState extends State<Confirm> {
               backgroundColor: Colors.transparent
             ),
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) =>  Meeting()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) =>  const Meeting()));
             },
           ),
           
@@ -62,7 +64,7 @@ class _ConfirmState extends State<Confirm> {
                     children: const [
                        CircleAvatar(
                         radius: 20,
-                        backgroundImage: AssetImage('assets/cover.png'),
+                        backgroundImage: AssetImage('assets/Images/cover.png'),
                       ),
                        Text("talkingMinds",
                        textAlign: TextAlign.start,
@@ -94,10 +96,15 @@ class _ConfirmState extends State<Confirm> {
           
           
               ),
+              
+              
             ),
+            
+          
           ]
         )
       ),
+      
    
 
     
@@ -133,8 +140,8 @@ class _ConfirmState extends State<Confirm> {
             label: 'List'
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.feedback_outlined),
-            label: 'Feedback'
+            icon: Icon(Icons.task_alt),
+            label: 'Schedule'
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),

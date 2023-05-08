@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:therapy_application/pages/appointment.dart';
-import 'package:therapy_application/pages/feedback.dart';
+
 import 'package:therapy_application/pages/list.dart';
 import 'package:therapy_application/pages/schedule.dart';
 import 'package:therapy_application/pages/settings.dart';
@@ -43,7 +43,7 @@ class _profileSixState extends State<profileSix> {
               children: const [
                 CircleAvatar(
                   radius: 20,
-                  backgroundImage: AssetImage('assets/cover.png'),
+                  backgroundImage: AssetImage('assets/Images/cover.png'),
                 ),
                 SizedBox(width: 10),
                 Text(
@@ -58,23 +58,7 @@ class _profileSixState extends State<profileSix> {
             ),
           ],
         ),
-        actions: [
-          TextButton(
-            child: const Text(
-              'Next',
-              style: TextStyle(fontSize: 10, color: Colors.black),
-            ),
-            style: TextButton.styleFrom(
-              backgroundColor: Colors.transparent,
-            ),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const Schedule()),
-              );
-            },
-          ),
-        ],
+        
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -84,7 +68,7 @@ class _profileSixState extends State<profileSix> {
               height: MediaQuery.of(context).size.height / 3,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage('assets/pro6.jpg'),
+                  image: AssetImage('assets/Images/pro6.jpg'),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -256,8 +240,8 @@ class _profileSixState extends State<profileSix> {
             label: 'List'
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.feedback_outlined),
-            label: 'Feedback'
+            icon: Icon(Icons.task_alt),
+            label: 'Schedule'
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),

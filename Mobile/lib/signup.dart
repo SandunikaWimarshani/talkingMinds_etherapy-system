@@ -49,7 +49,7 @@ class _SignupState extends State<Signup> {
                     children: const [
                        CircleAvatar(
                         radius: 20,
-                        backgroundImage: AssetImage('assets/cover.png'),
+                        backgroundImage: AssetImage('assets/Images/cover.png'),
                       ),
                        Text("talkingMinds",
                        textAlign: TextAlign.start,

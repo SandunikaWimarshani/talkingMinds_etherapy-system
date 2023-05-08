@@ -8,7 +8,7 @@ import 'package:therapy_application/pages/Profiles/profile4.dart';
 import 'package:therapy_application/pages/Profiles/profile5.dart';
 import 'package:therapy_application/pages/Profiles/profile6.dart';
 import 'package:therapy_application/pages/appointment.dart';
-import 'package:therapy_application/pages/feedback.dart';
+
 import 'package:therapy_application/pages/schedule.dart';
 import 'package:therapy_application/pages/settings.dart';
 import 'package:therapy_application/pages/welcome.dart';
@@ -40,7 +40,7 @@ class _ListsState extends State<Lists> {
                     children: const [
                        CircleAvatar(
                         radius: 20,
-                        backgroundImage: AssetImage('assets/cover.png'),
+                        backgroundImage: AssetImage('assets/Images/cover.png'),
                       ),
                        Text("talkingMinds",
                        textAlign: TextAlign.start,
@@ -103,7 +103,7 @@ class _ListsState extends State<Lists> {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       image: const DecorationImage(
-                        image: AssetImage('assets/pro1.jpg'),
+                        image: AssetImage('assets/Images/pro1.jpg'),
                         fit: BoxFit.cover
                       )
                     ),
@@ -183,7 +183,7 @@ class _ListsState extends State<Lists> {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       image: const DecorationImage(
-                        image: AssetImage('assets/pro2.jpg'),
+                        image: AssetImage('assets/Images/pro2.jpg'),
                         fit: BoxFit.cover
                       )
                     ),
@@ -257,7 +257,7 @@ class _ListsState extends State<Lists> {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       image: const DecorationImage(
-                        image: AssetImage('assets/pro3.jpg'),
+                        image: AssetImage('assets/Images/pro3.jpg'),
                         fit: BoxFit.cover
                       )
                     ),
@@ -331,7 +331,7 @@ class _ListsState extends State<Lists> {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       image: const DecorationImage(
-                        image: AssetImage('assets/pro4.jpg'),
+                        image: AssetImage('assets/Images/pro4.jpg'),
                         fit: BoxFit.cover
                       )
                     ),
@@ -403,7 +403,7 @@ class _ListsState extends State<Lists> {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       image: const DecorationImage(
-                        image: AssetImage('assets/pro5.jpg'),
+                        image: AssetImage('assets/Images/pro5.jpg'),
                         fit: BoxFit.cover
                       )
                     ),
@@ -477,7 +477,7 @@ class _ListsState extends State<Lists> {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       image: const DecorationImage(
-                        image: AssetImage('assets/pro6.jpg'),
+                        image: AssetImage('assets/Images/pro6.jpg'),
                         fit: BoxFit.cover
                       )
                     ),
@@ -575,8 +575,8 @@ class _ListsState extends State<Lists> {
             label: 'List'
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.feedback_outlined),
-            label: 'Feedback'
+            icon: Icon(Icons.task_alt),
+            label: 'Schedule'
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),

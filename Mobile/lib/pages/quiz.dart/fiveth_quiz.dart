@@ -340,7 +340,7 @@ class _FivethQuizState extends State<FivethQuiz> {
               
             ),
           ),
-          const Spacer(),
+         
           
           InkWell(
                   onTap: () {
@@ -353,7 +353,7 @@ class _FivethQuizState extends State<FivethQuiz> {
                   child:Container(
                   width:double.maxFinite,
                   alignment: Alignment.bottomCenter,
-                  padding: EdgeInsets.all(kDefaultPadding*2.5),
+                  padding: EdgeInsets.all(kDefaultPadding*1.75),
                   decoration: const BoxDecoration(
                     color: Color.fromARGB(255, 180, 109, 163),
                     borderRadius: BorderRadius.all(Radius.circular(200))
@@ -377,46 +377,46 @@ class _FivethQuizState extends State<FivethQuiz> {
       ),
       
     ),
-    bottomNavigationBar: BottomNavigationBar(
-      type: BottomNavigationBarType.fixed,
-          onTap: (index) {
-            if(index == 0){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const Welcome()));
-            } 
-            if(index ==1){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const Lists()));
-            }
-            if(index ==2){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const Appointment()));
-            }
-            if(index ==3){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const Settings()));
-            }
-            setState(() {
-              myIndex = index;
-            });
+    // bottomNavigationBar: BottomNavigationBar(
+    //   type: BottomNavigationBarType.fixed,
+    //       onTap: (index) {
+    //         if(index == 0){
+    //           Navigator.push(context, MaterialPageRoute(builder: (context) => const Welcome()));
+    //         } 
+    //         if(index ==1){
+    //           Navigator.push(context, MaterialPageRoute(builder: (context) => const Lists()));
+    //         }
+    //         if(index ==2){
+    //           Navigator.push(context, MaterialPageRoute(builder: (context) => const Appointment()));
+    //         }
+    //         if(index ==3){
+    //           Navigator.push(context, MaterialPageRoute(builder: (context) => const Settings()));
+    //         }
+    //         setState(() {
+    //           myIndex = index;
+    //         });
             
-          },
-          currentIndex: myIndex,
-          items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-            ),
+    //       },
+    //       currentIndex: myIndex,
+    //       items: const [
+    //       BottomNavigationBarItem(
+    //         icon: Icon(Icons.home),
+    //         label: 'Home',
+    //         ),
           
-          BottomNavigationBarItem(
-            icon: Icon(Icons.list_alt_outlined),
-            label: 'List'
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.feedback_outlined),
-            label: 'Feedback'
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Settings'
-          )
-        ]),
+    //       BottomNavigationBarItem(
+    //         icon: Icon(Icons.list_alt_outlined),
+    //         label: 'List'
+    //       ),
+    //       BottomNavigationBarItem(
+    //         icon: Icon(Icons.feedback_outlined),
+    //         label: 'Feedback'
+    //       ),
+    //       BottomNavigationBarItem(
+    //         icon: Icon(Icons.settings),
+    //         label: 'Settings'
+    //       )
+    //     ]),
     
     
     );

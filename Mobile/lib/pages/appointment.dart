@@ -4,8 +4,7 @@ import 'package:therapy_application/pages/list.dart';
 import 'package:therapy_application/pages/schedule.dart';
 import 'package:therapy_application/pages/settings.dart';
 import 'package:therapy_application/pages/welcome.dart';
-import 'package:therapy_application/widgets/completed_schedule.dart';
-import 'package:therapy_application/widgets/upcoming_schedule.dart';
+
 
 class Appointment extends StatefulWidget {
   const Appointment({super.key});
@@ -60,7 +59,7 @@ class _AppointmentState extends State<Appointment> {
                     children: const [
                        CircleAvatar(
                         radius: 20,
-                        backgroundImage: AssetImage('assets/cover.png'),
+                        backgroundImage: AssetImage('assets/Images/cover.png'),
                       ),
                        Text("talkingMinds",
                        textAlign: TextAlign.start,
@@ -131,8 +130,8 @@ class _AppointmentState extends State<Appointment> {
             label: 'List'
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.feedback_outlined),
-            label: 'Feedback'
+            icon: Icon(Icons.task_alt),
+            label: 'Schedule'
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),

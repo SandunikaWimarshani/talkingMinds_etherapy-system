@@ -96,7 +96,7 @@ class _NewState extends State<New> {
                 height: MediaQuery.of(context).size.height/2,
                 decoration: const BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage('assets/cover.png'),
+                    image: AssetImage('assets/Images/cover.png'),
                   ),
                   
     
@@ -146,8 +146,8 @@ class _NewState extends State<New> {
             label: 'List'
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.feedback_outlined),
-            label: 'Feedback'
+            icon: Icon(Icons.task_alt),
+            label: 'Schedule'
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),

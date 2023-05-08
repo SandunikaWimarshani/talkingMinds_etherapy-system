@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:therapy_application/pages/appointment.dart';
-import 'package:therapy_application/pages/chatScreen.dart';
+import 'package:therapy_application/pages/Chat/chatScreen.dart';
 import 'package:therapy_application/pages/confirm.dart';
 import 'package:therapy_application/pages/list.dart';
 import 'package:therapy_application/pages/meeting.dart';
 import 'package:therapy_application/pages/schedule.dart';
 import 'package:therapy_application/pages/settings.dart';
 import 'package:therapy_application/pages/welcome.dart';
-import 'package:therapy_application/widgets/completed_schedule.dart';
-import 'package:therapy_application/widgets/upcoming_schedule.dart';
+
 
 class Meeting extends StatefulWidget {
   const Meeting({super.key});
@@ -63,7 +62,7 @@ class _MeetingState extends State<Meeting> {
                     children: const [
                        CircleAvatar(
                         radius: 20,
-                        backgroundImage: AssetImage('assets/cover.png'),
+                        backgroundImage: AssetImage('assets/Images/cover.png'),
                       ),
                        Text("talkingMinds",
                        textAlign: TextAlign.start,
@@ -134,8 +133,8 @@ class _MeetingState extends State<Meeting> {
             label: 'List'
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.feedback_outlined),
-            label: 'Feedback'
+            icon: Icon(Icons.task_alt),
+            label: 'Schedule'
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),

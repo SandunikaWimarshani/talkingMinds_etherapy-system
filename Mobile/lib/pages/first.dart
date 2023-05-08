@@ -52,7 +52,7 @@ class _FirstState extends State<First> {
                 height: MediaQuery.of(context).size.height/5,
                 decoration: const BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage('assets/cover.png'),
+                    image: AssetImage('assets/Images/cover.png'),
                   ),
                   
     
@@ -124,46 +124,46 @@ class _FirstState extends State<First> {
         ],
       ),
         
-        bottomNavigationBar: BottomNavigationBar(
-          type: BottomNavigationBarType.fixed,
-          onTap: (index) {
-            if(index == 0){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const Welcome()));
-            } 
-            if(index ==1){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const Lists()));
-            }
-            if(index ==2){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const Appointment()));
-            }
-            if(index ==3){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const Settings()));
-            }
-            setState(() {
-              myIndex = index;
-            });
+        // bottomNavigationBar: BottomNavigationBar(
+        //   type: BottomNavigationBarType.fixed,
+        //   onTap: (index) {
+        //     if(index == 0){
+        //       Navigator.push(context, MaterialPageRoute(builder: (context) => const Welcome()));
+        //     } 
+        //     if(index ==1){
+        //       Navigator.push(context, MaterialPageRoute(builder: (context) => const Lists()));
+        //     }
+        //     if(index ==2){
+        //       Navigator.push(context, MaterialPageRoute(builder: (context) => const Appointment()));
+        //     }
+        //     if(index ==3){
+        //       Navigator.push(context, MaterialPageRoute(builder: (context) => const Settings()));
+        //     }
+        //     setState(() {
+        //       myIndex = index;
+        //     });
             
-          },
-          currentIndex: myIndex,
-          items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-            ),
+        //   },
+        //   currentIndex: myIndex,
+        //   items: const [
+        //   BottomNavigationBarItem(
+        //     icon: Icon(Icons.home),
+        //     label: 'Home',
+        //     ),
           
-          BottomNavigationBarItem(
-            icon: Icon(Icons.list_alt_outlined),
-            label: 'List'
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.feedback_outlined),
-            label: 'Feedback'
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Settings'
-          )
-        ]),
+        //   BottomNavigationBarItem(
+        //     icon: Icon(Icons.list_alt_outlined),
+        //     label: 'List'
+        //   ),
+        //   BottomNavigationBarItem(
+        //     icon: Icon(Icons.task_alt),
+        //     label: 'Schedule'
+        //   ),
+        //   BottomNavigationBarItem(
+        //     icon: Icon(Icons.settings),
+        //     label: 'Settings'
+        //   )
+        // ]),
         
         );
 

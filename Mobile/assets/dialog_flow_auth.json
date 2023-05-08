@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "talkingmindsbot-rdic",
+  "private_key_id": "cddea6e338f5f3c2b76e01368d28d3bbe5411ce8",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDQQhmqnqK0iT/P\nYjtxaj4xnrw5llzGfAKTXQW92O+yvawXxhbURc861re2uDpIuOgekSiwuBQhhlC1\nwi2zYrwM0etvTx6mcZH7BF/a2egwiqXjf26HcGfNTW0p/tHduxi2xfVd6VXP4ggm\nSlOq+RUkSDf36fAAB3jfF3DzGUPEECmD6SL9kfDdSKFqFWoB7YHuAtzp8UGKDpoB\nO0u0PpIg5lQ5aA0VI9DFQLGOXhy6eyG1Jfzj8HaXMDh+qhCrlYXEmF7kgxqsfbxb\nhPooB3/hqdnOrPtoFcNQqANW/+S2GCbX4JnOH1TO7Q4NQAYCLPxbO4tDHxt323Lz\nq6mQkYkHAgMBAAECggEAQ5iw7AiBl0fVRmMEGFP7y+9R+P8tLd+ilmJjMrPvWXzn\nFvBdCJmAIgD/sHcrs98QuJs1MecN4bPPDq/wVYF+uEqKuJ5dvHiwgWFyG38PNnJK\nVgVOwvdhOeofvLnRNL89zlWCxvCtwcQEESme7qfajOREBlwQYnIKcZ8SMlXJASIH\nrg6mtAc7lxxjgI/XOGeWhyWCCIJsvvB+czoWuBp/edv9LoPNNxdrq0XGubqImUMm\n1ODB0ODQLRcnaGga0A+0hQo4HQ6OcX1oI/UhMoDUXANrH0Rte1v8jRwR/U5aGtjI\nqfaI/O9eBXR7tB3K+UmdsMtu41dEHc9k90mSS669QQKBgQD1Llg9GvQD3LPJg65W\nG+7cdEKSMxc6gKtO8wRtlqJD+C5gmaNDmaDmKNvfPna5f95WF3lKcVFS64POnAgK\nMeRJ8ZFBDu3AmNlWPezklFwxQhqqwyB+pBv2hwqBmZuyzIm/W6YEh1r0tG2b/x0O\nsp9saJRXvkI01mpc5O6q3DVQkwKBgQDZcqlkKwq5IQbmYNOVlI8TDca6a1EnqHho\nwqFsMZ8aNqMSNcGQpPNuSQAwMB4LeaDvJEZGNoNmIHceUDOnQW+12KCFDT9Vpb54\nZEtKJfxKIuIvTTcIXpQh+rV9lVYMo4c8zTUPUEtR5I187WJsZPer73ZkieQ5dr+1\n/TvFveESPQKBgQDI2zusa31GALNEvdy/bEjFT3UOAk7gPXKZzdpt0L6EAjg0KQko\nIx4+D3D4tVpb4xYI31gdFTIzRP+I7ihj+bV0ojKF4q4BXvaFgVulcqkILYhdJldj\niBvkXYLM40M7OfcKzhD2mtB3sawt5NQwK0MRc6c7LoFced9O1Ll1PctrgwKBgQCG\nypYIWsoF4lw1mNXvxiw+gm6rBnVDISKqxeNsfwICLNY/JoV7lVS1C5mLRXiKYnYJ\nZ7IMOiSPvRY5+ztZta16yvMOJx0YiWqdlIY7S3qtthwBeFrh3Eb1HUU9uMGjigb+\nALKgcISQGh4+z6QQTzJcKU95mSSZHmxOctCHjmGjfQKBgDI3X8yplR4f3zDzFXHm\nEaVjQd0fylV9GWNPdyWpjUAIbEUoHiY0GSMgRs+tX1x/4vCegavjxA6oRyc6fg4h\noArHI+VrpkGd+t/f5COKrnioH8XFLnlfk9VyyOJ3yVLJOwWVOY/IBgWrlFQZLyv5\nrtsSs7ExSa0O46E8kYEIredy\n-----END PRIVATE KEY-----\n",
+  "client_email": "talking-minds@talkingmindsbot-rdic.iam.gserviceaccount.com",
+  "client_id": "114792725328632024573",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/talking-minds%40talkingmindsbot-rdic.iam.gserviceaccount.com"
+}
