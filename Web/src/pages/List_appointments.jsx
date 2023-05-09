@@ -80,7 +80,7 @@ function ListAppointments() {
                     <button className='dlt-btn' onClick={() => deleteAppointment(appointment.id)}>Delete</button>
                     {' '}
                     <Button className='edit-btn' color='warning' onClick={() => handleEdit(appointment.id)}>
-                      <Link to='/Update_appointments'>Edit</Link>
+                    <Link to= '/Lists'>Edit </Link>
                     </Button>
                   </td>
                 </tr>
