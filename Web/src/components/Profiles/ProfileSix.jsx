@@ -37,7 +37,7 @@ function ProfileSix() {
         </h5>
         <h4 className='specialties'> Specialties : Family conflicts, Communication Problems, Control Issues, Coping with Natural or Human-Caused Disaster, Disruptive Mood Dysregulation Disorder </h4>
         <p className='profile_desc'> I have 8 years of experience working with couples, families, and people of all ages as a 
-        licensed marriage and family therapist in Iowa. I've worked with people who had a variety of issues, including as depression, 
+        licensed marriage and family therapist. I've worked with people who had a variety of issues, including as depression, 
         anxiety, marital problems, parenting troubles, and pressures in general. All concerns are welcomed in my counseling without any bias. 
         I think everyone deserves to be treated with decency, kindness, and respect. Each client receives treatment from me according to their 
         specific needs, goals, and circumstances. Everyone has the capacity for change.

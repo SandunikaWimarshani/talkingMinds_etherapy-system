@@ -15,6 +15,10 @@
     font-weight:600;
 }
 
+.actions-column{
+    text-align: center;
+}
+
 .table{
     margin-left: 25px;
     border-radius: 5px;
@@ -24,19 +28,21 @@
 }
 
 .dlt-btn{
-    width: 80px;
-    height: 30px;
+    width: 100px;
+    height: 50px;
     font-size: 17px;
     font-weight:600;
+    margin-top: 20px;
     background-color: rgb(230, 96, 96);
     cursor: pointer;
 }
 
 .edit-btn{
-    width: 80px;
-    height: 30px;
+    width: 100px;
+    height: 50px;
     font-size: 17px;
     font-weight:600;
+    margin-top: 20px;
     background-color: rgb(104, 104, 199);
     cursor: pointer;
 }

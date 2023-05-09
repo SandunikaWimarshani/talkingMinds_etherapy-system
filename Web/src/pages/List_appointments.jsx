@@ -64,7 +64,7 @@ function ListAppointments() {
                 <th className='columns'>Date</th>
                 <th className='columns'>Time</th>
                 
-                <th className='columns'>Actions</th>
+                <th className='columns actions-column'>Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -80,7 +80,7 @@ function ListAppointments() {
                     <button className='dlt-btn' onClick={() => deleteAppointment(appointment.id)}>Delete</button>
                     {' '}
                     <Button className='edit-btn' color='warning' onClick={() => handleEdit(appointment.id)}>
-                      <Link to='/Edit_appointments'>Edit</Link>
+                      <Link to='/Update_appointments'>Edit</Link>
                     </Button>
                   </td>
                 </tr>

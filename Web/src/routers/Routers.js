@@ -40,7 +40,7 @@ import ProfileFive from '../components/Profiles/ProfileFive'
 import ProfileSix from '../components/Profiles/ProfileSix'
 
 import ListAppointments from '../pages/List_appointments'
-import EditAppointment from '../pages/Edit_appointments'
+import UpdateAppointments from '../pages/Update_appointments'
 import ConfirmAppointment from '../pages/Confirm_appointments'
 
 import Chatbot from '../pages/Chatbot'
@@ -81,8 +81,9 @@ function Routers() {
     <Route path='profileSix' element={<ProfileSix/>} />
 
     <Route path='List_appointments' element={<ListAppointments/>} />
-    <Route path='Edit_appointmnets' element = {<EditAppointment/>} />
+    <Route path='Update_appointments' element={<UpdateAppointments/>} />
     <Route path='Confirm_appointments' element = {<ConfirmAppointment/>} />
+     <Route path='Confirm_appointments' element = {<ConfirmAppointment/>} />
 
     <Route path='Chatbot' element = {<Chatbot/>} />
     <Route path='Session' element = {<Session/>} />

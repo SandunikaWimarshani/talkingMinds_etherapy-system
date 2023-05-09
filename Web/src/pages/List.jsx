@@ -136,14 +136,14 @@ function List() {
 
     <Col lg='3' md='4'>
            <div className='profile_item'>
-        <div className='profile_img3'>
+        <div className='profile_img4'>
           <img src={Listpro5} width= '300px' height='300px' alt='' />
 
-          <h3 className='profile_name2'><center><b>Miss. Isla Lauren</b></center></h3>
+          <h3 className='profile_name3'><center><b>Miss. Isla Lauren</b> </center></h3>
        
         <br></br>
         <span>
-        <motion.button whileTap={{scale:1.2}} className='work_btn'> <Link to = '/ProfileFive'> Work with me </Link></motion.button>
+            <motion.button whileTap={{scale:1.2}} className='work_btn'> <Link to = '/ProfileFive'> Work with me </Link></motion.button>
             </span>
             
         </div>
@@ -152,6 +152,8 @@ function List() {
         </div>
     
     </Col>
+
+    
 
     <Col lg='3' md='4'>
            <div className='profile_item'>

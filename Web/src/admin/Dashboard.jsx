@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col } from 'reactstrap';
 
+
 function AdminDashboard() {
   const [counselorsCount, setCounselorsCount] = useState(0);
   const [usersCount, setUsersCount] = useState(0);
@@ -54,6 +55,7 @@ function AdminDashboard() {
           <div className="dashboard-card">
             <h2>Progress</h2>
             <p>{progress}%</p>
+          
           </div>
         </Col>
       </Row>
