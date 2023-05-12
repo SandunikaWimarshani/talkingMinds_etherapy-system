@@ -81,7 +81,7 @@ class _NewState extends State<New> {
                   SizedBox(
                     height: 20,
                   ),
-                  Text("You are Not Alone!",
+                  Text("People who talk about their mental health struggles are not attention seeking, \nthey are Support Seeking.",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Color.fromARGB(255, 6, 117, 106),

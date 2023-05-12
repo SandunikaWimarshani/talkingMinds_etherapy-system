@@ -7,6 +7,7 @@ import 'package:therapy_application/pages/new.dart';
 import 'package:therapy_application/pages/quiz.dart/fourth_quiz.dart';
 import 'package:therapy_application/pages/schedule.dart';
 import 'package:therapy_application/pages/settings.dart';
+import 'package:therapy_application/pages/start.dart';
 import 'package:therapy_application/pages/welcome.dart';
 
 
@@ -346,7 +347,7 @@ class _FivethQuizState extends State<FivethQuiz> {
                   onTap: () {
                     Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => const Lists()),
+                        MaterialPageRoute(builder: (context) => const start()),
                       );
                    
                   },

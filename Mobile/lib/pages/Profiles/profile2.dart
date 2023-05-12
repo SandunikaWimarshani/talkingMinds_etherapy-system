@@ -183,6 +183,12 @@ class _profileTwoState extends State<profileTwo> {
             
             
             child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+            primary: Color.fromARGB(255, 84, 71, 88),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(200)
+            )
+          ),
               onPressed: () {
                 Navigator.push(
                   context,

@@ -184,6 +184,12 @@ class _profileOneState extends State<profileOne> {
             
             
             child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+            primary: Color.fromARGB(255, 78, 95, 101),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(200)
+            )
+          ),
               onPressed: () {
                 Navigator.push(
                   context,

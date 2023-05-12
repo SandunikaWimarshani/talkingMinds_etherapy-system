@@ -126,11 +126,9 @@ class _ListsState extends State<Lists> {
                       ),
                       Row(
                        children: [
-                    Icon(Icons.star, color: Colors.yellow),
-                    Icon(Icons.star, color: Colors.yellow),
-                    Icon(Icons.star, color: Colors.yellow),
-                    Icon(Icons.star, color: Colors.yellow),
-                    Icon(Icons.star, color: Colors.yellow),
+                        Text('5.3'),
+                    Icon(Icons.star, color: Color.fromARGB(255, 226, 209, 56)),
+                    
                     ],
 
                 ),
@@ -157,10 +155,19 @@ class _ListsState extends State<Lists> {
          
          
          child:ElevatedButton(
+          
           style: ElevatedButton.styleFrom(
-            primary: Color.fromARGB(255, 96, 81, 101),
+            primary: Color.fromARGB(255, 84, 71, 88),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(200)
+            )
           ),
-          child: const Text("Join with Me"),
+          child: const Text("View Profile",
+          style: TextStyle(
+            color: Colors.white
+          ),
+          
+          ),
           onPressed: () {
             Navigator.push(
               context,
@@ -206,9 +213,8 @@ class _ListsState extends State<Lists> {
                       ),
                       Row(
                        children: [
-                    Icon(Icons.star, color: Colors.yellow),
-                    Icon(Icons.star, color: Colors.yellow),
-                    Icon(Icons.star, color: Colors.yellow),
+                    Text('4.2'),
+                    Icon(Icons.star, color: Color.fromARGB(255, 226, 209, 56)),
                     
                     ],
 
@@ -232,9 +238,17 @@ class _ListsState extends State<Lists> {
          
          child:ElevatedButton(
           style: ElevatedButton.styleFrom(
-            primary: Color.fromARGB(255, 96, 81, 101),
+            primary: Color.fromARGB(255, 84, 71, 88),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(200)
+            )
           ),
-          child: const Text("Join with Me"),
+          child: const Text("View Profile",
+          style: TextStyle(
+            color: Colors.white
+          ),
+          
+          ),
           onPressed: () {
             Navigator.push(
               context,
@@ -280,10 +294,8 @@ class _ListsState extends State<Lists> {
                       ),
                       Row(
                        children: [
-                    Icon(Icons.star, color: Colors.yellow),
-                    Icon(Icons.star, color: Colors.yellow),
-                    Icon(Icons.star, color: Colors.yellow),
-                    Icon(Icons.star, color: Colors.yellow),
+                    Text('4.7'),
+                    Icon(Icons.star, color: Color.fromARGB(255, 226, 209, 56)),
                     
                     ],
 
@@ -307,9 +319,17 @@ class _ListsState extends State<Lists> {
          
          child:ElevatedButton(
           style: ElevatedButton.styleFrom(
-            primary: Color.fromARGB(255, 96, 81, 101),
+            primary: Color.fromARGB(255, 84, 71, 88),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(200)
+            )
           ),
-          child: const Text("Join with Me"),
+          child: const Text("View Profile",
+          style: TextStyle(
+            color: Colors.white
+          ),
+          
+          ),
           onPressed: () {
             Navigator.push(
               context,
@@ -354,8 +374,8 @@ class _ListsState extends State<Lists> {
                       ),
                       Row(
                        children: [
-                    Icon(Icons.star, color: Colors.yellow),
-                    Icon(Icons.star, color: Colors.yellow),
+                    Text('3.6'),
+                    Icon(Icons.star, color: Color.fromARGB(255, 226, 209, 56)),
                     
                     ],
 
@@ -379,9 +399,17 @@ class _ListsState extends State<Lists> {
          
          child:ElevatedButton(
           style: ElevatedButton.styleFrom(
-            primary: Color.fromARGB(255, 96, 81, 101),
+            primary: Color.fromARGB(255, 84, 71, 88),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(200)
+            )
           ),
-          child: const Text("Join with Me"),
+          child: const Text("View Profile",
+          style: TextStyle(
+            color: Colors.white
+          ),
+          
+          ),
           onPressed: () {
             Navigator.push(
               context,
@@ -426,9 +454,8 @@ class _ListsState extends State<Lists> {
                       ),
                       Row(
                        children: [
-                    Icon(Icons.star, color: Colors.yellow),
-                    Icon(Icons.star, color: Colors.yellow),
-                    Icon(Icons.star, color: Colors.yellow),
+                    Text('4.0'),
+                    Icon(Icons.star, color: Color.fromARGB(255, 226, 209, 56)),
                     
                     ],
 
@@ -452,9 +479,17 @@ class _ListsState extends State<Lists> {
          
          child:ElevatedButton(
           style: ElevatedButton.styleFrom(
-            primary: Color.fromARGB(255, 96, 81, 101),
+            primary: Color.fromARGB(255, 84, 71, 88),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(200)
+            )
           ),
-          child: const Text("Join with Me"),
+          child: const Text("View Profile",
+          style: TextStyle(
+            color: Colors.white
+          ),
+          
+          ),
           onPressed: () {
             Navigator.push(
               context,
@@ -500,10 +535,8 @@ class _ListsState extends State<Lists> {
                       ),
                       Row(
                        children: [
-                    Icon(Icons.star, color: Colors.yellow),
-                    Icon(Icons.star, color: Colors.yellow),
-                    Icon(Icons.star, color: Colors.yellow),
-                    Icon(Icons.star, color: Colors.yellow),
+                    Text('3.2'),
+                    Icon(Icons.star, color: Color.fromARGB(255, 226, 209, 56)),
                     
                     ],
 
@@ -527,13 +560,21 @@ class _ListsState extends State<Lists> {
          
          child:ElevatedButton(
           style: ElevatedButton.styleFrom(
-            primary: Color.fromARGB(255, 96, 81, 101),
+            primary: Color.fromARGB(255, 84, 71, 88),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(200)
+            )
           ),
-          child: const Text("Join with Me"),
+          child: const Text("View Profile",
+          style: TextStyle(
+            color: Colors.white
+          ),
+          
+          ),
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const profileSix()),
+              MaterialPageRoute(builder: (context) => const profileFive()),
             );
           },
          ),
