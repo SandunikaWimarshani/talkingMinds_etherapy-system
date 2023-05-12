@@ -2,12 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Table, Button } from 'reactstrap';
 import { db } from '../firebase config';
 import { collection, query, onSnapshot, orderBy, deleteDoc, doc } from 'firebase/firestore';
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import '../styles/list-appointments.css'
 
 function ListAppointments() {
   const [appointments, setAppointments] = useState([]);
   const [successMessage, setSuccessMessage] = useState('');
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const q = query(collection(db, 'appointment'), orderBy('date'));
@@ -35,6 +37,7 @@ function ListAppointments() {
   const handleEdit = (id) => {
     // Handle edit logic here
     console.log(`Editing appointment with id ${id}`);
+    navigate(`/Update_appointments/${id}`)
   };
 
   const deleteAppointment = async (id) => {
@@ -80,7 +83,8 @@ function ListAppointments() {
                     <button className='dlt-btn' onClick={() => deleteAppointment(appointment.id)}>Delete</button>
                     {' '}
                     <Button className='edit-btn' color='warning' onClick={() => handleEdit(appointment.id)}>
-                    <Link to= '/Lists'>Edit </Link>
+                    {/* <Link to= '/Update_appointments'>Edit </Link> */}
+                    Edit
                     </Button>
                   </td>
                 </tr>

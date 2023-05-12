@@ -81,7 +81,7 @@ function Routers() {
     <Route path='profileSix' element={<ProfileSix/>} />
 
     <Route path='List_appointments' element={<ListAppointments/>} />
-    <Route path='Update_appointments' element={<UpdateAppointments/>} />
+    <Route path='Update_appointments/:id' element={<UpdateAppointments/>} />
     <Route path='Confirm_appointments' element = {<ConfirmAppointment/>} />
     <Route path='Confirm_appointments' element = {<ConfirmAppointment/>} />
 
