@@ -58,7 +58,7 @@ function Admin() {
                                 </FormGroup>
 
                                
-                                <button type='submit' className='buy_btn auth_btn'><Link to= '/dashboard'> Create account </Link> </button>
+                                <button type='submit' className='buy_btn auth_btn1'><Link to= '/dashboard'> Create account </Link> </button>
                                
                             </Form>
                             </center>

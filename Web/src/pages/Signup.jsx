@@ -72,7 +72,7 @@ function Signup() {
                                     <input type='password' className='con_pass' placeholder='Confirm Password' value={confirmpassword} onChange={e => setConfirmPassword(e.target.value)}></input>
                                 </FormGroup>
 
-                                <button type='submit' className='buy_btn auth_btn'>
+                                <button type='submit' className='buy_btn auth_btn1'>
                                     Create an Account
                                 </button>
                                 <p> Already have an account? <Link to= '/signin'> LOGIN </Link></p>
