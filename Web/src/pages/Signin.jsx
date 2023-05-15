@@ -55,7 +55,7 @@ function Signin() {
                                     <input type='password' className='pass' placeholder='Enter Password' value={password} onChange={e => setPassword(e.target.value)}></input>
                                 </FormGroup>
 
-                                <button type='submit' className='buy_btn auth_btn'><Link to= '/Home'>
+                                <button type='submit' className='buy_btn auth_btn'><Link to= '/FrontScreen'>
                                     Login
                                 </Link></button>
                                 <p> Don't have an account? <Link to= '/signup'> <Link to ='/signup'></Link>Create an account</Link></p>

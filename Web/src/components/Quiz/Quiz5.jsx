@@ -7,7 +7,10 @@ import {db} from '../../firebase config';
 import { collection, addDoc,where,serverTimestamp, onSnapshot,query, orderBy, doc, updateDoc, getDocs, collectionRef } from 'firebase/firestore';
 import { useEffect, useState } from 'react'
 
+import start from '../../assets/images/start1.jpg'
+
 function Quiz5() {
+  const [showPopup, setShowPopup] = useState(false);
 
   const collectionRef = collection(db, "Clients");
   var docid;
@@ -40,8 +43,24 @@ function Quiz5() {
       
     };
   return (
+    
     <div>
-      <div>
+       <div>
+      <div className={showPopup ? 'overlay' : ''} onClick={() => setShowPopup(false)}>
+        {showPopup && (
+          <div className='popup'>
+            <center>
+            <img src={start} alt='' className='popupimg'/>
+
+            </center>
+            
+            <h2 className='wait'> We're waiting for you! Now you can choose your counselor...</h2>
+
+            <button onClick={() => setShowPopup(true)} className='btnpop'><Link to = '/List'>Ok</Link></button>
+            <button onClick={() => setShowPopup(false)} className='btnpop'>Close</button>
+          </div>
+        )}
+      </div>
         <div>
           <p>
             <span className='count'> Question 5 of 5</span>
@@ -62,7 +81,9 @@ function Quiz5() {
 
         <div className='button-container'>
           <button className='pre'><Link to = '/Quiz4'>Previous</Link></button>
-          <button className='submit'><Link to = '/List'>Done</Link></button>
+          <button className='submit'onClick={() => setShowPopup(true)}>Done</button>
+
+
           
         </div>
       </div>

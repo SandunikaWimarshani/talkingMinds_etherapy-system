@@ -4,7 +4,7 @@ import React, {useState} from 'react'
 import Head from '../components/head/Head'
 import { Container, Row, Col, Form, FormGroup } from 'reactstrap'
 import { Link, useNavigate } from 'react-router-dom';
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import {auth} from '../firebase config'
 
 
@@ -17,26 +17,46 @@ function Admin() {
     const [loading, setLoading] = useState(false)
     const navigate = useNavigate()
 
-    const Signin = async (e) => {
-        e.preventDefault()
-        setLoading(true)
-
+    const handleAdminLogin = async (e) => {
+        e.preventDefault();
+    
         try {
-
-            const userCredential = await signInWithEmailAndPassword(auth, username, password)
-
-            const user = userCredential.user
-            console.log(user)
-            setLoading(false)
-            
-            navigate('/')
-            
+          const adminCredential = await createUserWithEmailAndPassword(
+            auth,
+            username,
+            password
+          );
+    
+          // You can access the user data from the userCredential object
+          const user = adminCredential.user;
+          console.log(user);
+    
+          // Redirect the user to the home page after sign up
+          navigate('/list');
         } catch (error) {
-            setLoading(false)
-            
-            
+          console.error(error);
         }
-    }
+      };
+    // const Signin = async (e) => {
+    //     e.preventDefault()
+    //     setLoading(true)
+
+    //     try {
+
+    //         const userCredential = await signInWithEmailAndPassword(auth, username, password)
+
+    //         const user = userCredential.user
+    //         console.log(user)
+    //         setLoading(false)
+            
+    //         navigate('/')
+            
+    //     } catch (error) {
+    //         setLoading(false)
+            
+            
+    //     }
+    // }
   return (
     <Head title = 'login'>
         
@@ -47,7 +67,7 @@ function Admin() {
                     <Col lg='6' className='auto_text'>
                         <h3 className='login_title'>
                             <center>
-                            <Form className='auth_form' onSubmit={Signin}>
+                            <Form className='auth_form' onSubmit={handleAdminLogin}>
                             <h1> ADMIN LOGIN </h1>
                                 <FormGroup className='form_group'>
                                     <input type='text' className='user' placeholder='Enter Username' value={username} onChange={e => setUsername(e.target.value)}></input>

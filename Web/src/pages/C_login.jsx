@@ -7,19 +7,18 @@ import { auth } from '../firebase config';
 
 import '../styles/login.css';
 
-function C_login() {
+function CounselorLogin() {
   const [name, setname] = useState('');
   const [email, setemail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  const C_login = async (e) => {
+  const handleCounselorLogin = async (e) => {
     e.preventDefault();
 
     try {
       const userCredential = await createUserWithEmailAndPassword(
         auth,
-        name,
         email,
         password
       );
@@ -29,9 +28,9 @@ function C_login() {
       console.log(user);
 
       // Redirect the user to the home page after sign up
-      navigate('/');
+      navigate('/list');
     } catch (error) {
-      console.error(false);
+      console.error(error);
     }
   };
 
@@ -42,7 +41,7 @@ function C_login() {
           <Col lg="6" className="auto_text">
             <h3 className="login_title">
               <center>
-                <Form className="auth_form" onSubmit={C_login}>
+                <Form className="auth_form" onSubmit={handleCounselorLogin}>
                   <h1> COUNSELOR LOGIN </h1>
 
                   <FormGroup className="form_group">
@@ -76,13 +75,13 @@ function C_login() {
                   </FormGroup>
 
                   <button type="submit" className="buy_btn auth_btn">
-                    <Link to="/list"> Login</Link>
+                    Login
                   </button>
 
                   <p>
                     Don't have an account?{' '}
                     <Link to="/create_couns">
-                      <Link to="/create_couns"></Link>Create your profile
+                      Create your profile
                     </Link>
                   </p>
                 </Form>
@@ -95,4 +94,4 @@ function C_login() {
   );
 }
 
-export default C_login;
+export default CounselorLogin;

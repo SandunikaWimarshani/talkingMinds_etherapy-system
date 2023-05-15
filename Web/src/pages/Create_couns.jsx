@@ -7,7 +7,8 @@ import { getStorage, ref, uploadBytes } from 'firebase/storage';
 import {  storage } from '../firebase config';
 import { Link } from 'react-router-dom'
 
-import '../styles/createprofile.css'
+import '../styles/createprofile.css';
+
 
 
 function CreateCouns() {
@@ -16,56 +17,38 @@ function CreateCouns() {
   const [specialties, setSpecialties] = useState('');
   const [licening, setLicening] = useState('');
   const [description, setDescription] = useState('');
-  const [image, setImage] = useState(null);
+  //const [image, setImage] = useState(null);
+
+
+
+ 
 
 //   const [password, setPassword] = useState('');
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
+
+ 
 
   const handleCreateProfile = async (e) => {
     e.preventDefault();
-  
-   
-     try {
-      // Create a new document in the "counselors" collection
-      const docRef = await addDoc(collection(db, 'counselors'), {
-        name,
-        email,
-        specialties,
-        licening,
-        description,
-        imageUrl: await uploadImage(),
-      });
-      console.log('Counselor profile created with ID:', docRef.id);
 
-  
-       // Redirect the user to the home page after creating the profile
-       navigate('/');
-    } catch (error) {
-      console.error('Error creating counselor profile:', error);
-    }
-  };
+    if (name == '' || email == '' || specialties == '' || licening == '' || description == '' ) return;
+ 
 
-  // Function to upload image to Firebase Storage and get its download URL
-    const uploadImage = async () => {
-    // Create a reference to the Firebase Storage root directory
-    const storageRef = ref(storage, 'images');
-  
-    // Create a reference to the selected image file
-    const fileRef = storageRef.child(image.name);
-  
-    // Upload the image bytes to Firebase Storage
-    await uploadBytes(fileRef, image);
-  
-    // Get the download URL of the uploaded image
-    return await fileRef.getDownloadURL();
+    try{
+      await addDoc(collection(db, "counselors"),
+       {
+        name: name,
+        email: email,
+        specialties: specialties,
+        licening: licening,
+        description: description,
+        image: "image",
+    });
+  }catch(error){
+console.log(error)
   }
-
-  const handleImageChange = (e) => {
-    if (e.target.files[0]) {
-      setImage(e.target.files[0]);
-    }
-  };
-
+  }
+   
   
   
 
@@ -80,7 +63,7 @@ function CreateCouns() {
                   <h1>Create Counselor Profile</h1>
                     <h4> We appreciate your participation. We require passionate, qualified counselors. We're interested in finding out more about you.</h4>
 
-                  <FormGroup className="form_group">
+                    <FormGroup className="form_group">
                     <input
                       type="text"
                       className="user"
@@ -100,15 +83,7 @@ function CreateCouns() {
                     />
                   </FormGroup>
 
-                  <FormGroup className="form_group">
-                    <input
-                      type="password"
-                      className="pass"
-                      placeholder="Enter Password"
-                    //   value={password}
-                    //   onChange={(e) => setPassword(e.target.value)}
-                    />
-                  </FormGroup>
+                  
 
                   <FormGroup className="form_group">
                     <input
@@ -145,13 +120,13 @@ function CreateCouns() {
                       type="file"
                       className='img_class'
                      
-                      onChange={(e) => setImage(e.target.files[0])}
+                     // onChange={(e) => setImage(e.target.files[0])}
                     />
                   </FormGroup>
-
                   
 
-                  <button type="submit" className="create_btn"><Link to= '/Counselor_Profile'>
+                  <button type="submit" className="create_btn">
+                    <Link to= '/Counselor_Profile'>
                     Create Profile
                     </Link>
                   </button>

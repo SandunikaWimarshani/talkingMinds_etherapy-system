@@ -27,10 +27,7 @@ const nav_links = [
     path: 'signin',
     display: 'SIGNIN'
   },
-  {
-    path: 'signout',
-    display: 'SIGNOUT'
-  },
+  
 ]
 
 function Header() {
