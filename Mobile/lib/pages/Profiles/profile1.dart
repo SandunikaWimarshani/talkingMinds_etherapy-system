@@ -58,7 +58,6 @@ class _profileOneState extends State<profileOne> {
             ),
           ],
         ),
-       
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -77,29 +76,32 @@ class _profileOneState extends State<profileOne> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(top: 30, left: 10, right: 10),
+                    padding:
+                        const EdgeInsets.only(top: 30, left: 10, right: 10),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     ),
                   ),
-                  
                 ],
               ),
             ),
-            const SizedBox(height: 10,),
+            const SizedBox(
+              height: 10,
+            ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Column(
-                children:  [
-                  const Text("Mr. Henry Wilson",
-                  style: TextStyle(
-                    fontSize: 22,
-                    fontWeight: FontWeight.w500,
-                    color: Color.fromARGB(255, 83, 58, 80)
+                children: [
+                  const Text(
+                    "Mr. Henry Wilson",
+                    style: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.w500,
+                        color: Color.fromARGB(255, 83, 58, 80)),
                   ),
-                  
+                  const SizedBox(
+                    height: 5,
                   ),
-                  const SizedBox(height: 5,),
                   Container(
                     padding: EdgeInsets.all(10.0),
                     decoration: BoxDecoration(
@@ -108,25 +110,22 @@ class _profileOneState extends State<profileOne> {
                     ),
                     child: RichText(
                       text: TextSpan(
-                        style: TextStyle(
-                          fontSize: 16.0,
-                          color: Colors.black
-                        ),
+                        style: TextStyle(fontSize: 16.0, color: Colors.black),
                         children: [
                           TextSpan(
-                            text:'Specialties : \n', style: TextStyle(fontWeight: FontWeight.bold)
-                          ),
-                          TextSpan(text: 'Depression, Coping with life changes, Family of Origin Issues, Forgiveness, Men\'s Issues, Sexuality, Social Anxiety and Phobia'),
+                              text: 'Specialties : \n',
+                              style: TextStyle(fontWeight: FontWeight.bold)),
+                          TextSpan(
+                              text:
+                                  'Depression, Coping with life changes, Family of Origin Issues, Forgiveness, Men\'s Issues, Sexuality, Social Anxiety and Phobia'),
                         ],
                       ),
                     ),
                   ),
-                  
-                  
 
-                
-
-                  const SizedBox(height: 15,),
+                  const SizedBox(
+                    height: 15,
+                  ),
                   Row(
                     children: [
                       Expanded(
@@ -146,121 +145,127 @@ class _profileOneState extends State<profileOne> {
                                   fontSize: 18,
                                 ),
                               ),
-                              SizedBox(height: 10,),
+                              SizedBox(
+                                height: 10,
+                              ),
                               Text(
-                                'I have expertise assisting people with difficulties relating to stress and anxiety, relationships, and intimate relationships. In my opinion, you are the authority on your experience, and you possess a variety of skills that will help you go through difficult situations. It requires bravery to start the process of looking for a more rewarding and happy existence. To help you with that process, I am here.'
-                              )
+                                  'I have expertise assisting people with difficulties relating to stress and anxiety, relationships, and intimate relationships. In my opinion, you are the authority on your experience, and you possess a variety of skills that will help you go through difficult situations. It requires bravery to start the process of looking for a more rewarding and happy existence. To help you with that process, I am here.')
                             ],
                           ),
                         ),
                       )
                     ],
-                    
                   ),
-                  const SizedBox(height: 15,),
+                  const SizedBox(height: 15),
                   const Text(
                     "License number : KY LPCC 103842",
                     style: TextStyle(
-                      color: Color.fromARGB(255, 78, 52, 80),
-                      fontWeight: FontWeight.bold
-                    ),
+                        color: Color.fromARGB(255, 78, 52, 80),
+                        fontWeight: FontWeight.bold),
                     textAlign: TextAlign.justify,
-
-                    ),
-                    
-                    
-              
-                
-
-                  const SizedBox(height: 30,),
-          // ignore: sized_box_for_whitespace
-          Container(
-            width: MediaQuery.of(context).size.width*0.75,
-            padding: const EdgeInsets.symmetric(
-              vertical: 10,
-              horizontal: 10,
-            ),
-           
-            
-            
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-            primary: Color.fromARGB(255, 78, 95, 101),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(200)
-            )
-          ),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const Schedule()
                   ),
-                );
-              },
-              child: const Text('Book Appointment'),
-            ),
-          )
-          
-          
-          ]
-          )
-          )
-          ]
-          ),
-                    
-
-               
+                  const SizedBox(height: 30),
+                  Container(
+                    width: MediaQuery.of(context).size.width * 0.75,
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 10,
+                      horizontal: 10,
+                    ),
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          primary: Color.fromARGB(255, 78, 95, 101),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(200))),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const Schedule()),
+                        );
+                      },
+                      child: const Text('Book Appointment'),
+                    ),
+                  ),
+                  const SizedBox(height: 30),
+// Available Dates and Slots
+                  const SizedBox(height: 15),
+                  const Text(
+                    'Available Time slots',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  GridView.builder(
+                    shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 3,
+                      crossAxisSpacing: 10,
+                      mainAxisSpacing: 10,
+                    ),
+                    itemCount: 9,
+                    itemBuilder: (context, index) {
+                      return Container(
+                        decoration: BoxDecoration(
+                          color: Colors.grey[200],
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Center(
+                          child: Text(
+                            'Date ${index + 1}',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ],
               ),
-           
-          
-        
-     
+            ),
+          ],
+        ),
+      ),
       bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
+          type: BottomNavigationBarType.fixed,
           onTap: (index) {
-            if(index == 0){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const Welcome()));
-            } 
-            if(index ==1){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const Lists()));
+            if (index == 0) {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const Welcome()));
             }
-            if(index ==2){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const Appointment()));
+            if (index == 1) {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const Lists()));
             }
-            if(index ==3){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const Settings()));
+            if (index == 2) {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const Appointment()));
+            }
+            if (index == 3) {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const Settings()));
             }
             setState(() {
               myIndex = index;
             });
-            
           },
           currentIndex: myIndex,
           items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'Home',
             ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.list_alt_outlined),
-            label: 'List'
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.task_alt),
-            label: 'Schedule'
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Settings'
-          )
-        ]),
-    
-      
-      
-      
+            BottomNavigationBarItem(
+                icon: Icon(Icons.list_alt_outlined), label: 'List'),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.task_alt), label: 'Schedule'),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.settings), label: 'Settings')
+          ]),
     );
-
-    
-    
   }
 }

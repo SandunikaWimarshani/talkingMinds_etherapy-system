@@ -173,47 +173,72 @@ class _profileFiveState extends State<profileFive> {
               
                 
 
-                  const SizedBox(height: 30,),
-          // ignore: sized_box_for_whitespace
-          Container(
-            width: MediaQuery.of(context).size.width*0.75,
-            padding: const EdgeInsets.symmetric(
-              vertical: 10,
-              horizontal: 10,
-            ),
-           
-            
-            
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-            primary: Color.fromARGB(255, 84, 71, 88),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(200)
-            )
-          ),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const Schedule()
+                  const SizedBox(height: 30),
+                  Container(
+                    width: MediaQuery.of(context).size.width * 0.75,
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 10,
+                      horizontal: 10,
+                    ),
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          primary: Color.fromARGB(255, 78, 95, 101),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(200))),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const Schedule()),
+                        );
+                      },
+                      child: const Text('Book Appointment'),
+                    ),
                   ),
-                );
-              },
-              child: const Text('Book Appointment'),
-            ),
-          )
-          
-          
-          ]
-          )
-          )
-          ]
-          ),
-                    
-
-               
+                  const SizedBox(height: 30),
+// Available Dates and Slots
+                  const SizedBox(height: 15),
+                  const Text(
+                    'Available Time slots',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  GridView.builder(
+                    shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 3,
+                      crossAxisSpacing: 10,
+                      mainAxisSpacing: 10,
+                    ),
+                    itemCount: 9,
+                    itemBuilder: (context, index) {
+                      return Container(
+                        decoration: BoxDecoration(
+                          color: Colors.grey[200],
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Center(
+                          child: Text(
+                            'Date ${index + 1}',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ],
               ),
-           
-          
+            ),
+          ],
+        ),
+      ),
         
      
       bottomNavigationBar: BottomNavigationBar(
