@@ -30,6 +30,23 @@ function CounselorProfile() {
   //   getAppointments();
   // }, []);
 
+  const renderNewCounselors = () => {
+    // Placeholder for the new counselors list
+    const newCounselors = [
+      { id: 1, name: 'John Doe' },
+      { id: 2, name: 'Jane Smith' },
+      { id: 3, name: 'Michael Johnson' },
+    ];
+
+    return (
+      <ul>
+        {newCounselors.map((counselor) => (
+          <li key={counselor.id}>{counselor.name}</li>
+        ))}
+      </ul>
+    );
+  };
+
   return (
     <Container>
       <Row>
@@ -41,13 +58,19 @@ function CounselorProfile() {
             <Button
               color="link"
               className={classnames({ active: activeTab === '1' })}
-              onClick={() => { toggleTab('1'); }}>
+              onClick={() => {
+                toggleTab('1');
+              }}
+            >
               New Counselors
             </Button>
             <Button
               color="link"
               className={classnames({ active: activeTab === '2' })}
-              onClick={() => { toggleTab('2'); }}>
+              onClick={() => {
+                toggleTab('2');
+              }}
+            >
               Appointments
             </Button>
           </div>
@@ -56,7 +79,7 @@ function CounselorProfile() {
           <TabContent activeTab={activeTab}>
             <TabPane tabId="1">
               <h3>New Counselors</h3>
-              <p>List of new counselors goes here...</p>
+              {renderNewCounselors()}
             </TabPane>
             <TabPane tabId="2">
               <h3>Appointments</h3>

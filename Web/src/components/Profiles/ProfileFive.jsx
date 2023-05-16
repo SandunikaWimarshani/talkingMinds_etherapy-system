@@ -9,6 +9,16 @@ import Head from '../head/Head'
 import ProFive from '../../assets/images/pro5.jpg'
 
 function ProfileFive() {
+
+  const timeSlots = [
+    { date: '2023-05-22', time: '11:00 AM' },
+    { date: '2023-05-23', time: '10:30 AM' },
+    { date: '2023-05-24', time: '01:00 PM' },
+    { date: '2023-05-25', time: '09:00 AM' },
+    { date: '2023-05-26', time: '08:30 PM' },
+    { date: '2023-05-27', time: '10:00 AM' },
+    { date: '2023-05-29', time: '09:00 AM' },
+  ];
   return (
     <Head>
       <section>
@@ -81,6 +91,21 @@ function ProfileFive() {
             </Col>
           </Row>
         </Container>
+
+        <div className='time_slots'>
+          <h6 className='profile_title'>
+           
+              <u>AVAILABLE TIME SLOTS</u>
+          
+          </h6>
+          <ul>
+            {timeSlots.map((slot, index) => (
+              <li key={index}>
+                <span>{slot.date}</span> - <span>{slot.time}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
         <button className='btn_book'><Link to = '/Appointment'> BOOK APPOINTMENTS </Link></button>
       </section>
 

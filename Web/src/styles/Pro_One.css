@@ -30,6 +30,11 @@
     margin-left: 20px;
     
 }
+.profile_title{
+    margin-left: 20px;
+    font-size: 20px;
+    
+}
 
 .ri-star-fill{
     color: rgb(183, 183, 78);
@@ -55,3 +60,37 @@
     cursor: pointer;
     align-items: center;
 }
+
+.time_slots {
+    margin-top: 20px;
+  }
+  
+  .time_slots ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-gap: 10px;
+    list-style: none;
+    padding: 0;
+  }
+  
+  .time_slots li {
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin-left: 50px;
+  }
+  
+  .time_slots li span {
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .time_slots li:hover {
+    background-color: #f2f2f2;
+    cursor: pointer;
+  }
+  

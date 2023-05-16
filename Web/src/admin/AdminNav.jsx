@@ -8,18 +8,19 @@ import Cover from '../../src/assets/images/cover.png'
 
 const admin_nav = [
   {
-    display: 'Dashboard',
-    path: '/dashboard'
+    display: 'DASHBOARD',
+    path: '/dashboard',
   },
 
   {
-    display: 'Counselor Profile',
+    display: 'COUNSELOR',
     path: '/counselor_profile'
   },
 
+
   {
-    display: 'User Profile',
-    path: '/user_profile'
+    display: 'APPOINTMENTS',
+    path: '/list_appointments'
   },
 
   
