@@ -594,7 +594,7 @@ class _ListsState extends State<Lists> {
               Navigator.push(context, MaterialPageRoute(builder: (context) => const Lists()));
             }
             if(index ==2){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const Appointment()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => Appointment()));
             }
             if(index ==3){
               Navigator.push(context, MaterialPageRoute(builder: (context) => const Settings()));

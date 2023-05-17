@@ -74,7 +74,7 @@ class _ScheduleState extends State<Schedule> {
         backgroundColor: Colors.white,
         leading: IconButton(
           onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) =>  const Appointment()));
+            Navigator.push(context, MaterialPageRoute(builder: (context) =>  Appointment()));
           },
           icon: const Icon(Icons.arrow_back_ios_new_sharp),
           iconSize: 20,
@@ -92,7 +92,7 @@ class _ScheduleState extends State<Schedule> {
               backgroundColor: Colors.transparent
             ),
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) =>  const Appointment()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) =>  Appointment()));
             },
           ),
           
@@ -285,7 +285,7 @@ class _ScheduleState extends State<Schedule> {
                 addAppointmentToFirebase(Name, Email, counselorName, selectedDate);
 
                 // navigate to the next page
-                Navigator.push(context, MaterialPageRoute(builder: (context) => const Appointment()));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => Appointment()));
               }
             },
 
@@ -324,10 +324,10 @@ class _ScheduleState extends State<Schedule> {
               Navigator.push(context, MaterialPageRoute(builder: (context) => const Lists()));
             }
             if(index ==2){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const Appointment()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => Appointment()));
             }
             if(index ==3){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const Appointment()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => Appointment()));
             }
             setState(() {
               myIndex = index;
