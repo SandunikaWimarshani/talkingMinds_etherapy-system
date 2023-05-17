@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:therapy_application/pages/Chat/Messages.dart';
 import 'package:therapy_application/pages/Chat/chatScreen.dart';
-import 'package:therapy_application/pages/MessagePage.dart';
 import 'package:therapy_application/pages/Video/videocall.dart';
 import 'package:therapy_application/pages/appointment.dart';
 import 'package:therapy_application/pages/confirm.dart';
@@ -12,14 +11,14 @@ import 'package:therapy_application/pages/settings.dart';
 import 'package:therapy_application/pages/welcome.dart';
 
 
-class Confirm extends StatefulWidget {
-  const Confirm({super.key});
+class MessagePage extends StatefulWidget {
+  const MessagePage({super.key});
 
   @override
-  State<Confirm> createState() => _ConfirmState();
+  State<MessagePage> createState() => _MessagePageState();
 }
 
-class _ConfirmState extends State<Confirm> {
+class _MessagePageState extends State<MessagePage> {
   int myIndex = 0;
   
   @override
@@ -89,7 +88,7 @@ class _ConfirmState extends State<Confirm> {
           children:  [
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 15),
-              child: Text("Confirm Appointments",
+              child: Text("Chat with your therapist",
               style: TextStyle(
                 fontSize: 32,
                 fontWeight: FontWeight.w500

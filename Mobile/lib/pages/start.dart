@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:therapy_application/pages/Chat/Messages.dart';
 import 'package:therapy_application/pages/Chat/chatScreen.dart';
-import 'package:therapy_application/pages/Message/MessagePage.dart';
 import 'package:therapy_application/pages/Video/videocall.dart';
 import 'package:therapy_application/pages/appointment.dart';
 import 'package:therapy_application/pages/confirm.dart';
