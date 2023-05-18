@@ -3,6 +3,7 @@ import 'package:therapy_application/pages/Chat/Messages.dart';
 import 'package:therapy_application/pages/Chat/chatScreen.dart';
 import 'package:therapy_application/pages/MessagePage.dart';
 import 'package:therapy_application/pages/Video/videocall.dart';
+import 'package:therapy_application/pages/Videocall.dart';
 import 'package:therapy_application/pages/appointment.dart';
 import 'package:therapy_application/pages/confirm.dart';
 import 'package:therapy_application/pages/list.dart';
@@ -89,7 +90,7 @@ class _ConfirmState extends State<Confirm> {
           children:  [
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 15),
-              child: Text("Confirm Appointments",
+              child: Text("Chat with your Therapist",
               style: TextStyle(
                 fontSize: 32,
                 fontWeight: FontWeight.w500
@@ -113,11 +114,32 @@ class _ConfirmState extends State<Confirm> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) =>  MessagePage()
+                  MaterialPageRoute(builder: (context) =>  ChatApp()
                   ),
                 );
               },
               child: const Text('Chat'),
+            ),
+          ),
+
+            Container(
+            width: MediaQuery.of(context).size.width*0.75,
+            padding: const EdgeInsets.symmetric(
+              vertical: 10,
+              horizontal: 10,
+            ),
+           
+            
+            
+            child: ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) =>  ChatApp()
+                  ),
+                );
+              },
+              child: const Text('video'),
             ),
           )
             

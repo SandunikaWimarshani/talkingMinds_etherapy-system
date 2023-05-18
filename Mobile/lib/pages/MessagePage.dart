@@ -1,26 +1,48 @@
 import 'package:flutter/material.dart';
-import 'package:therapy_application/pages/Chat/Messages.dart';
-import 'package:therapy_application/pages/Chat/chatScreen.dart';
-import 'package:therapy_application/pages/Video/videocall.dart';
 import 'package:therapy_application/pages/appointment.dart';
 import 'package:therapy_application/pages/confirm.dart';
 import 'package:therapy_application/pages/list.dart';
 import 'package:therapy_application/pages/meeting.dart';
-import 'package:therapy_application/pages/schedule.dart';
-import 'package:therapy_application/pages/settings.dart';
 import 'package:therapy_application/pages/welcome.dart';
 
-
-class MessagePage extends StatefulWidget {
-  const MessagePage({super.key});
-
-  @override
-  State<MessagePage> createState() => _MessagePageState();
+void main() {
+  runApp(ChatApp());
 }
 
-class _MessagePageState extends State<MessagePage> {
+class ChatApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Chat App',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: ChatScreen(),
+    );
+  }
+}
+
+class ChatScreen extends StatefulWidget {
+  @override
+  _ChatScreenState createState() => _ChatScreenState();
+}
+
+class _ChatScreenState extends State<ChatScreen> {
   int myIndex = 0;
-  
+
+
+  final List<String> messages = [];
+
+  TextEditingController messageController = TextEditingController();
+
+  void _sendMessage() {
+    setState(() {
+      final message = messageController.text;
+      messages.add(message);
+      messageController.clear();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
      double kDefaultPadding = 12.0;
@@ -34,7 +56,7 @@ class _MessagePageState extends State<MessagePage> {
         backgroundColor: Colors.white,
         leading: IconButton(
           onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) =>  const Meeting()));
+            Navigator.push(context, MaterialPageRoute(builder: (context) =>  const Confirm()));
           },
           icon: const Icon(Icons.arrow_back_ios_new_sharp),
           iconSize: 20,
@@ -57,6 +79,8 @@ class _MessagePageState extends State<MessagePage> {
           ),
           
         ],
+        
+        
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -80,97 +104,94 @@ class _MessagePageState extends State<MessagePage> {
                 ],
         ),
       ),
-
-      body: Padding(
-        padding: const EdgeInsets.only(top: 40),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children:  [
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 15),
-              child: Text("Chat with your therapist",
-              style: TextStyle(
-                fontSize: 32,
-                fontWeight: FontWeight.w500
-              ),
-          
-          
-              ),
-              
-              
-            ),
-               Container(
-            width: MediaQuery.of(context).size.width*0.75,
-            padding: const EdgeInsets.symmetric(
-              vertical: 10,
-              horizontal: 10,
-            ),
-           
-            
-            
-            child: ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) =>  MessagePage()
-                  ),
+      body: Column(
+        children: [
+          Expanded(
+            child: ListView.builder(
+              itemCount: messages.length,
+              itemBuilder: (context, index) {
+                final message = messages[index];
+                return ListTile(
+                  title: Text(message),
                 );
               },
-              child: const Text('Chat'),
             ),
-          )
-            
-          
-          ]
-        )
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                Expanded(
+                  child: TextField(
+                    controller: messageController,
+                    decoration: InputDecoration(
+                      hintText: 'Type your message...',
+                      border: OutlineInputBorder(),
+                    ),
+                  ),
+                ),
+                SizedBox(width: 8.0),
+                ElevatedButton(
+                  onPressed: _sendMessage,
+                  child: Text('Send'),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
-      
-   
 
-    
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
-          onTap: (index) {
-            if(index == 0){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const Welcome()));
-            } 
-            if(index ==1){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const Lists()));
-            }
-            if(index ==2){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => Appointment()));
-            }
-            if(index ==3){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const Settings()));
-            }
-            setState(() {
-              myIndex = index;
-            });
-            
-          },
-          currentIndex: myIndex,
-          items: const [
+        onTap: (index) {
+          if (index == 0) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const Welcome()),
+            );
+          }
+          if (index == 1) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const Lists()),
+            );
+          }
+          if (index == 2) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const Appointment()),
+            );
+          }
+          if (index == 3) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const Appointment()),
+            );
+          }
+          setState(() {
+            myIndex = index;
+          });
+        },
+        currentIndex: myIndex,
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
-            ),
-          
+          ),
           BottomNavigationBarItem(
             icon: Icon(Icons.list_alt_outlined),
-            label: 'List'
+            label: 'List',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.task_alt),
-            label: 'Schedule'
+            label: 'Schedule',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),
-            label: 'Settings'
-          )
-      
-        ])
-         );
-       
-   
+            label: 'Settings',
+          ),
+        ],
+      ),
+    );
   }
 }
