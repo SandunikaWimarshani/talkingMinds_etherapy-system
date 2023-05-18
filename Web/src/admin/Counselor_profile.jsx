@@ -1,100 +1,96 @@
-import React from 'react';
-import { Container, Row, Col, Button, TabContent, TabPane } from 'reactstrap';
-import classnames from 'classnames';
-// import firebase from 'firebase';
-
-import '../styles/counselor.css';
-import counselor from '../assets/images/counselor.jpg';
+import React, { useState, useEffect } from 'react';
+import { Container, Row, Col, Table, Button } from 'reactstrap';
+import { db } from '../firebase config';
+import { collection, query, onSnapshot, orderBy, deleteDoc, doc } from 'firebase/firestore';
+import { Link, useNavigate } from 'react-router-dom'
+import '../styles/viewUser.css'
 
 function CounselorProfile() {
-  const [activeTab, setActiveTab] = React.useState('1');
-  const [appointments, setAppointments] = React.useState([]);
+  const [counselors, setClients] = useState([]);
+  const [successMessage, setSuccessMessage] = useState('');
 
-  const toggleTab = (tab) => {
-    if (activeTab !== tab) setActiveTab(tab);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const q = query(collection(db, 'counselors'), orderBy('email'));
+
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      const counselorsData = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setClients(counselorsData);
+    });
+
+    return unsubscribe;
+  }, []);
+
+  const handleDelete = async (id) => {
+    try {
+      await deleteDoc(doc(db, 'counselors', id));
+      setSuccessMessage('Appointment deleted successfully');
+    } catch (error) {
+      console.error('Error removing document: ', error);
+    }
   };
 
-  // const getAppointments = () => {
-  //   const appointmentsRef = firebase.database().ref('appointments');
-  //   appointmentsRef.on('value', (snapshot) => {
-  //     const appointments = snapshot.val();
-  //     const appointmentsList = [];
-  //     for (let id in appointments) {
-  //       appointmentsList.push(appointments[id]);
-  //     }
-  //     setAppointments(appointmentsList);
-  //   });
-  // };
 
-  // React.useEffect(() => {
-  //   getAppointments();
-  // }, []);
-
-  const renderNewCounselors = () => {
-    // Placeholder for the new counselors list
-    const newCounselors = [
-      { id: 1, name: 'John Doe' },
-      { id: 2, name: 'Jane Smith' },
-      { id: 3, name: 'Michael Johnson' },
-    ];
-
-    return (
-      <ul>
-        {newCounselors.map((counselor) => (
-          <li key={counselor.id}>{counselor.name}</li>
-        ))}
-      </ul>
-    );
+  const deletecounselors = async (id) => {
+    const confirmDelete = window.confirm('Are you sure you want to delete this appointment?');
+    if (confirmDelete) {
+      try {
+        await deleteDoc(doc(db, 'counselors', id));
+        setSuccessMessage('Appointment deleted successfully');
+      } catch (error) {
+        console.error('Error removing document: ', error);
+      }
+    }
   };
 
+  
+  
   return (
     <Container>
       <Row>
-        <Col lg="3">
-          <div className="user_img">
-            <img src={counselor} alt=""></img>
-          </div>
-          <div className="profile_tabs">
-            <Button
-              color="link"
-              className={classnames({ active: activeTab === '1' })}
-              onClick={() => {
-                toggleTab('1');
-              }}
-            >
-              New Counselors
-            </Button>
-            <Button
-              color="link"
-              className={classnames({ active: activeTab === '2' })}
-              onClick={() => {
-                toggleTab('2');
-              }}
-            >
-              Appointments
-            </Button>
-          </div>
-        </Col>
-        <Col lg="9">
-          <TabContent activeTab={activeTab}>
-            <TabPane tabId="1">
-              <h3>New Counselors</h3>
-              {renderNewCounselors()}
-            </TabPane>
-            <TabPane tabId="2">
-              <h3>Appointments</h3>
-              <ul>
-                {appointments.map((appointment) => (
-                  <li key={appointment.id}>
-                    <div>Date: {appointment.date}</div>
-                    <div>Time: {appointment.time}</div>
-                    <div>Counselor: {appointment.counselor}</div>
-                    <div>Client: {appointment.client}</div>
-                  </li>
-                ))}
-              </ul>
-            </TabPane>
-          </TabContent>
+        <Col lg='12'>
+          <h1 className='booking_title'>Recent Counselors</h1>
+          {successMessage && <p>{successMessage}</p>}
+          <Table className='table'>
+            <thead>
+              <tr>
+               
+                <th className='columns'>Email</th>
+                <th className='columns'>Spacialities</th>
+                <th className='columns'>Licening</th>
+                <th className='columns'>Decription</th>
+                
+              
+              </tr>
+            </thead>
+            <tbody>
+              {counselors.map((counselors) => (
+                <tr key={counselors.id}>
+                 
+                  <td>{counselors.email}</td>
+                  <td>{counselors.spacialties}</td>
+                  <td>{counselors.licening}</td>
+                  <td>{counselors.description}</td>
+                  
+                  
+                  
+                  <td>
+                    <button className='dlt-btn' onClick={() => deletecounselors(counselors.id)}>
+                    <i class="ri-delete-bin-line"></i>
+                    </button>
+                    {' '}
+                    
+                  </td>
+
+                  
+                </tr>
+              ))}
+            </tbody>
+          </Table>
         </Col>
       </Row>
     </Container>

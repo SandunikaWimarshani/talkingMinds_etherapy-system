@@ -6,6 +6,12 @@ import { collection, query, onSnapshot, orderBy, deleteDoc, doc } from 'firebase
 import { Link, useNavigate } from 'react-router-dom'
 import { Container, Row, Col, Table, Button } from 'reactstrap';
 
+
+import { CircularProgressbar } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
+import Userprofile from './User_profile';
+
+
 function Dashboard() {
 
   const [Clients, setClients] = useState([]);
@@ -62,9 +68,26 @@ function Dashboard() {
         </div>
       </div>
 
-      <div className='chart'>
+      <Userprofile/>
+
+      {/* <div className='charts'>
+        <div className='top'>
+          <h1 className='title'> Average Customer</h1>
+         
+        </div>
+        <div className='bottom'>
+          <div className='featuredChart'>
+            <CircularProgressbar value={70} text={'70%'} strokeWidth={5}/>
+
+          </div>
+          </div>  
+        
+        
+        
+        
+        <h2> chart </h2> */}
       
-        <Container>
+        {/* <Container>
       <Row>
         <Col lg='12'>
           <h1 className='booking_title'>Recent Users</h1>
@@ -93,7 +116,7 @@ function Dashboard() {
           </Table>
         </Col>
       </Row>
-    </Container>
+    </Container> */}
         {/* <ResponsiveContainer width= '100%' aspect = {4 / 1}>
           <LineChart data={data}>
 
@@ -101,7 +124,7 @@ function Dashboard() {
         </ResponsiveContainer> */}
         
       </div>
-    </div>
+    // </div>
   );
 }
 

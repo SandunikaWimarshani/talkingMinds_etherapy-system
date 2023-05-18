@@ -1,73 +1,49 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React from 'react'
+import { Fragment } from 'react'
+import { Container, Row, Col, Form, FormGroup } from 'reactstrap'
 
-import '../styles/chatbot.css'
+import {Link} from 'react-router-dom';
 
-const Chatbot = () => {
-  const [messages, setMessages] = useState([]);
-  const [input, setInput] = useState('');
+import cover from '../assets/images/cover.png'
 
-  useEffect(() => {
-    const welcomeMessage = {
-      text: 'Hello! How can I assist you today?',
-      sender: 'bot',
-    };
-    setMessages([welcomeMessage]);
-  }, []);
-
-  const handleInput = (e) => {
-    setInput(e.target.value);
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (input.trim() === '') return;
-
-    const message = { text: input, sender: 'user' };
-    setMessages([...messages, message]);
-    setInput('');
-
-    try {
-      const response = await axios.post(
-        'https://api.dialogflow.com/v1/query?v=20150910',
-        {
-          query: input,
-          lang: 'en',
-          sessionId: '12345',
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${process.env.REACT_APP_DIALOGFLOW_API_KEY}`,
-          },
-        }
-      );
-      const botMessage = { text: response.data.result.fulfillment.speech, sender: 'bot' };
-      setMessages([...messages, botMessage]);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
+function Chatbot() {
   return (
-    <div>
-      <div className='bot_window'>
-        {messages.map((message, index) => (
-          <div key={index}>
-            {message.sender === 'user' ? (
-              <p>You: {message.text}</p>
-            ) : (
-              <p>Bot: {message.text}</p>
-            )}
-          </div>
-        ))}
-      </div>
-      <form className='form_bot' onSubmit={handleSubmit}>
-        <input type="text" value={input} className='text_bot' onChange={handleInput} />
-        <button className='submit_bot' type="submit">Send</button>
-      </form>
-    </div>
-  );
-};
+    <Fragment>
+        <section>
+            <div>
+                <span className='front-icon'>
+                    <center>
+                    <div className='front-img'>
+                    <img src= {cover} alt='cover' width={120} height={120} />
 
-export default Chatbot;
+                    </div>
+                    
 
+                    </center>
+                
+
+                </span>
+                <h1 className='hello'><center>Welcome to the Chat!</center></h1>
+                <h3><center>Let's talk with your therapist</center></h3>
+               
+                <Container>
+                    <Row>
+                        <Col lg='8'>
+                            <Form classname='box'>
+                           
+                            <button className='lets-start-btn'><Link to = '/chatScreen'>  Let's Start </Link></button>
+
+                            
+
+                            </Form>
+                            
+                        </Col>
+                    </Row>
+                </Container>
+            </div>
+        </section>
+    </Fragment>
+  )
+}
+
+export default Chatbot

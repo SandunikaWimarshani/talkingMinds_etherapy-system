@@ -24,6 +24,7 @@ import FrontScreen from '../components/Quiz/Frontscreen'
 import Dashboard  from '../admin/Dashboard'
 import Counselor_profile  from '../admin/Counselor_profile'
 import User_profile  from '../admin/User_profile'
+import View_user  from '../admin/View_user'
 
 
 
@@ -44,6 +45,8 @@ import UpdateAppointments from '../pages/Update_appointments'
 import ConfirmAppointment from '../pages/Confirm_appointments'
 
 import Chatbot from '../pages/Chatbot'
+import ChatScreen from '../pages/Screen'
+import Profileuser from '../pages/Profileuser'
 import Session from '../pages/Session'
 import Meeting from '../pages/Meeting'
 
@@ -70,6 +73,7 @@ function Routers() {
     <Route path='admin' element={<Admin/>} />
     <Route path='Counselor_profile' element={<Counselor_profile/>} />
     <Route path='User_profile' element={<User_profile/>} />
+    <Route path='View_user' element={<View_user/>} />
 
     <Route path='video' element={<Video/>} />
     
@@ -85,9 +89,13 @@ function Routers() {
     <Route path='Confirm_appointments' element = {<ConfirmAppointment/>} />
     <Route path='Confirm_appointments' element = {<ConfirmAppointment/>} />
 
+  
     <Route path='Chatbot' element = {<Chatbot/>} />
+    <Route path='ChatScreen' element = {< ChatScreen/>} />
+    <Route path='Profileuser' element = {<Profileuser/>} />
     <Route path='Session' element = {<Session/>} />
     <Route path='Meeting' element = {<Meeting/>} />
+    
   
     <Route path='view' element={<View/>} />
 

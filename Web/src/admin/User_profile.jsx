@@ -1,38 +1,99 @@
-import React from 'react';
-import { Container, Row, Col } from 'reactstrap';
+import React, { useState, useEffect } from 'react';
+import { Container, Row, Col, Table, Button } from 'reactstrap';
+import { db } from '../firebase config';
+import { collection, query, onSnapshot, orderBy, deleteDoc, doc } from 'firebase/firestore';
+import { Link, useNavigate } from 'react-router-dom'
+import '../styles/viewUser.css'
 
-import '../styles/user.css';
-import user from '../assets/images/user.jpg';
+function Userprofile() {
+  const [Clients, setClients] = useState([]);
+  const [successMessage, setSuccessMessage] = useState('');
 
-function User_profile() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const q = query(collection(db, 'Clients'), orderBy('email'));
+
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      const ClientsData = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setClients(ClientsData);
+    });
+
+    return unsubscribe;
+  }, []);
+
+  const handleDelete = async (id) => {
+    try {
+      await deleteDoc(doc(db, 'Clients', id));
+      setSuccessMessage('Appointment deleted successfully');
+    } catch (error) {
+      console.error('Error removing document: ', error);
+    }
+  };
+
+
+  const deleteClients = async (id) => {
+    const confirmDelete = window.confirm('Are you sure you want to delete this appointment?');
+    if (confirmDelete) {
+      try {
+        await deleteDoc(doc(db, 'Clients', id));
+        setSuccessMessage('Appointment deleted successfully');
+      } catch (error) {
+        console.error('Error removing document: ', error);
+      }
+    }
+  };
+
+  
+  
   return (
-    <div>
-      <div className="user_img">
-        <img src={user} alt="" />
-      </div>
-      <Container>
-        <Row>
-          <Col md={6}>
-            <div className="user_info">
-              <h3>User Information</h3>
-              <p>Name: John Doe</p>
-              <p>Email: johndoe@gmail.com</p>
-              <p>Phone: 123-456-7890</p>
-              <p>Address: 123 Main St, Anytown, USA</p>
-            </div>
-          </Col>
-          <Col md={6}>
-            <div className="user_actions">
-              <h3>User Actions</h3>
-              <button className="btn">Edit Profile</button>
-              <button className="btn">Change Password</button>
-              <button className="btn">Delete Account</button>
-            </div>
-          </Col>
-        </Row>
-      </Container>
-    </div>
+    <Container>
+      <Row>
+        <Col lg='12'>
+          <h1 className='booking_title'>Recent Clients</h1>
+          {successMessage && <p>{successMessage}</p>}
+          <Table className='table'>
+            <thead>
+              <tr>
+                <th className='columns'>Username</th>
+                <th className='columns'>Email</th>
+                
+              
+              </tr>
+            </thead>
+            <tbody>
+              {Clients.map((Clients) => (
+                <tr key={Clients.id}>
+                  <td>{Clients.username}</td>
+                  <td>{Clients.email}</td>
+                  
+                  <td>
+                    <button className='view-btn'><Link to = '/View_user'> View Profile </Link> 
+                    </button>
+                    {' '}
+                   
+                  </td>
+                  
+                  <td>
+                    <button className='dlt-btn' onClick={() => deleteClients(Clients.id)}>
+                    <i class="ri-delete-bin-line"></i>
+                    </button>
+                    {' '}
+                    
+                  </td>
+
+                  
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+        </Col>
+      </Row>
+    </Container>
   );
 }
 
-export default User_profile;
+export default Userprofile;

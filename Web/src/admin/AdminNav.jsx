@@ -23,6 +23,11 @@ const admin_nav = [
     path: '/list_appointments'
   },
 
+  {
+    display: 'SIGNOUT',
+    path: '/signout'
+  },
+
   
  
 ]
