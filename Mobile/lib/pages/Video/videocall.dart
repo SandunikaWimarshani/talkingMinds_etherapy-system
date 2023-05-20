@@ -1,60 +1,84 @@
-// import 'package:firebase_core/firebase_core.dart';
 // import 'package:flutter/material.dart';
 // import 'package:flutter_webrtc/flutter_webrtc.dart';
-// import 'package:therapy_application/pages/Video/signaling.dart';
 
-
-// Future<void> main() async {
-//   WidgetsFlutterBinding.ensureInitialized();
-//   await Firebase.initializeApp();
-//   runApp(MyApp());
-// }
-
-// class MyApp extends StatelessWidget {
-//   // This widget is the root of your application.
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       title: 'Flutter Demo',
-//       theme: ThemeData(
-//         primarySwatch: Colors.blue,
-//       ),
-//       home: MyHomePage(),
-//     );
-//   }
-// }
-
-// class MyHomePage extends StatefulWidget {
-//   MyHomePage({Key? key}) : super(key: key);
+// class VideoCallApp extends StatefulWidget {
+//   const VideoCallApp({Key? key}) : super(key: key);
 
 //   @override
-//   _MyHomePageState createState() => _MyHomePageState();
+//   _VideoCallAppState createState() => _VideoCallAppState();
 // }
 
-// class _MyHomePageState extends State<MyHomePage> {
-//   Signaling signaling = Signaling();
-//   RTCVideoRenderer _localRenderer = RTCVideoRenderer();
-//   RTCVideoRenderer _remoteRenderer = RTCVideoRenderer();
-//   String? roomId;
-//   TextEditingController textEditingController = TextEditingController(text: '');
+// class _VideoCallAppState extends State<VideoCallApp> {
+//   late RTCPeerConnection _peerConnection;
+//   MediaStream? _localStream;
+//   MediaStream? _remoteStream;
+//   bool _isCameraOn = true;
+//   bool _isMicOn = true;
 
 //   @override
 //   void initState() {
-//     _localRenderer.initialize();
-//     _remoteRenderer.initialize();
+//     super.initState();
+//     _initCall();
+//   }
 
-//     signaling.onAddRemoteStream = ((stream) {
-//       _remoteRenderer.srcObject = stream;
-//       setState(() {});
+//   void _initCall() async {
+//     // Create a peer connection
+//     _peerConnection = await createPeerConnection();
+
+//     // Get the local media stream
+//     _localStream = await navigator.mediaDevices.getUserMedia({
+//       'audio': true,
+//       'video': {
+//         'facingMode': 'user',
+//       },
 //     });
 
-//     super.initState();
+//     // Add local stream to the peer connection
+//     _localStream!.getTracks().forEach((track) {
+//       _peerConnection.addTrack(track, _localStream!);
+//     });
+
+//     // Set the remote stream to display video
+//     _peerConnection.onTrack = (event) {
+//       if (event.track.kind == 'video') {
+//         setState(() {
+//           _remoteStream = event.streams[0];
+//         });
+//       }
+//     };
+//   }
+
+//   Future<RTCPeerConnection> createPeerConnection([Map<String, dynamic>? configuration]) async {
+//     final Map<String, dynamic> configuration = {
+//       'iceServers': [
+//         {'url': 'stun:stun.l.google.com:19302'},
+//       ],
+//     };
+
+//     final peerConnection = await createPeerConnection(configuration);
+
+//     return peerConnection;
+//   }
+
+//   void _toggleCamera() {
+//     setState(() {
+//       _isCameraOn = !_isCameraOn;
+//       _localStream!.getVideoTracks()[0].enabled = _isCameraOn;
+//     });
+//   }
+
+//   void _toggleMic() {
+//     setState(() {
+//       _isMicOn = !_isMicOn;
+//       _localStream!.getAudioTracks()[0].enabled = _isMicOn;
+//     });
 //   }
 
 //   @override
 //   void dispose() {
-//     _localRenderer.dispose();
-//     _remoteRenderer.dispose();
+//     _localStream?.dispose();
+//     _remoteStream?.dispose();
+//     _peerConnection.dispose();
 //     super.dispose();
 //   }
 
@@ -62,84 +86,39 @@
 //   Widget build(BuildContext context) {
 //     return Scaffold(
 //       appBar: AppBar(
-//         title: Text("Welcome to Flutter Explained - WebRTC"),
+//         title: const Text('Video Call App'),
 //       ),
 //       body: Column(
 //         children: [
-//           SizedBox(height: 8),
+//           Expanded(
+//             child: _remoteStream != null
+//                 ? RTCVideoView(_remoteStream! as RTCVideoRenderer)
+//                 : Container(),
+//           ),
 //           Row(
 //             mainAxisAlignment: MainAxisAlignment.center,
 //             children: [
-//               ElevatedButton(
-//                 onPressed: () {
-//                   signaling.openUserMedia(_localRenderer, _remoteRenderer);
-//                 },
-//                 child: Text("Open camera & microphone"),
+//               IconButton(
+//                 icon: Icon(_isCameraOn ? Icons.videocam : Icons.videocam_off),
+//                 onPressed: _toggleCamera,
 //               ),
-//               SizedBox(
-//                 width: 8,
+//               IconButton(
+//                 icon: Icon(_isMicOn ? Icons.mic : Icons.mic_off),
+//                 onPressed: _toggleMic,
 //               ),
-//               ElevatedButton(
-//                 onPressed: () async {
-//                   roomId = await signaling.createRoom(_remoteRenderer);
-//                   textEditingController.text = roomId!;
-//                   setState(() {});
-//                 },
-//                 child: Text("Create room"),
-//               ),
-//               SizedBox(
-//                 width: 8,
-//               ),
-//               ElevatedButton(
-//                 onPressed: () {
-//                   // Add roomId
-//                   signaling.joinRoom(textEditingController.text.trim(),
-//                   _remoteRenderer,
-//                   );
-//                 },
-//                 child: Text("Join room"),
-//               ),
-//               SizedBox(
-//                 width: 8,
-//               ),
-//               ElevatedButton(
-//                 onPressed: () {
-//                   signaling.hangUp(_localRenderer);
-//                 },
-//                 child: Text("Hangup"),
-//               )
 //             ],
 //           ),
-//           SizedBox(height: 8),
 //           Expanded(
-//             child: Padding(
-//               padding: const EdgeInsets.all(8.0),
-//               child: Row(
-//                 mainAxisAlignment: MainAxisAlignment.center,
-//                 children: [
-//                   Expanded(child: RTCVideoView(_localRenderer, mirror: true)),
-//                   Expanded(child: RTCVideoView(_remoteRenderer)),
-//                 ],
-//               ),
-//             ),
+//             child: RTCVideoView(_localStream! as RTCVideoRenderer),
 //           ),
-//           Padding(
-//             padding: const EdgeInsets.all(8.0),
-//             child: Row(
-//               mainAxisAlignment: MainAxisAlignment.center,
-//               children: [
-//                 Text("Join the following Room: "),
-//                 Flexible(
-//                   child: TextFormField(
-//                     controller: textEditingController,
-//                   ),
-//                 )
-//               ],
-//             ),
-//           ),
-//           SizedBox(height: 8)
 //         ],
 //       ),
 //     );
 //   }
+// }
+
+// void main() {
+//   runApp(const MaterialApp(
+//     home: VideoCallApp(),
+//   ));
 // }

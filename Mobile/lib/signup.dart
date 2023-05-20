@@ -173,7 +173,7 @@ class _SignupState extends State<Signup> {
                           borderRadius: BorderRadius.circular(130),
                         ),
                         child: const Text(
-                          "Login",
+                          "Sign Up",
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
                             fontSize: 18,

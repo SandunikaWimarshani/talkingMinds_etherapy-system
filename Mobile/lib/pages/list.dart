@@ -1,6 +1,7 @@
 // ignore_for_file: unused_import
 
 import 'package:flutter/material.dart';
+import 'package:therapy_application/pages/MessagePage.dart';
 import 'package:therapy_application/pages/Profiles/profile1.dart';
 import 'package:therapy_application/pages/Profiles/profile2.dart';
 import 'package:therapy_application/pages/Profiles/profile3.dart';
@@ -594,7 +595,7 @@ class _ListsState extends State<Lists> {
               Navigator.push(context, MaterialPageRoute(builder: (context) => const Lists()));
             }
             if(index ==2){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => Appointment()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => ChatApp()));
             }
             if(index ==3){
               Navigator.push(context, MaterialPageRoute(builder: (context) => const Settings()));
@@ -616,8 +617,8 @@ class _ListsState extends State<Lists> {
             label: 'List'
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.task_alt),
-            label: 'Schedule'
+            icon: Icon(Icons.message_outlined),
+            label: 'Chat'
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),

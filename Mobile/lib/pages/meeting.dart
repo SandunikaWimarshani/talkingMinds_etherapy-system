@@ -1,149 +1,75 @@
-import 'package:flutter/material.dart';
-import 'package:therapy_application/pages/appointment.dart';
-import 'package:therapy_application/pages/Chat/chatScreen.dart';
-import 'package:therapy_application/pages/confirm.dart';
-import 'package:therapy_application/pages/list.dart';
-import 'package:therapy_application/pages/meeting.dart';
-import 'package:therapy_application/pages/schedule.dart';
-import 'package:therapy_application/pages/settings.dart';
-import 'package:therapy_application/pages/welcome.dart';
+// import 'package:flutter/material.dart';
+// import 'package:flutter_webrtc/flutter_webrtc.dart';
 
+// class VideoConference extends StatefulWidget {
+//   @override
+//   _VideoConferenceState createState() => _VideoConferenceState();
+// }
 
-class Meeting extends StatefulWidget {
-  const Meeting({super.key});
+// class _VideoConferenceState extends State<VideoConference> {
+//   MediaStream? _localStream;
+//   final _localRenderer = RTCVideoRenderer();
 
-  @override
-  State<Meeting> createState() => _MeetingState();
-}
+//   @override
+//   void initState() {
+//     super.initState();
+//     initWebRTC();
+//   }
 
-class _MeetingState extends State<Meeting> {
-  int myIndex = 0;
-  
-  @override
-  Widget build(BuildContext context) {
-     double kDefaultPadding = 12.0;
-    return  Scaffold(
-      resizeToAvoidBottomInset: false,
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        elevation: 0,
-        // ignore: deprecated_member_use
-        brightness: Brightness.light,
-        backgroundColor: Colors.white,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) =>  Confirm()));
-          },
-          icon: const Icon(Icons.arrow_back_ios_new_sharp),
-          iconSize: 20,
-          color: Colors.black,
-        ),
-        actions: [
-          TextButton(
-            // ignore: sort_child_properties_last
-            child: const Text('Next'),
-            style: TextButton.styleFrom(
-              textStyle: const TextStyle(fontSize: 10,
-              color: Colors. black
-              ),
-              
-              backgroundColor: Colors.transparent
-            ),
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) =>  Confirm()));
-            },
-          ),
-          
-        ],
-        title: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-                  Row(
-                    children: const [
-                       CircleAvatar(
-                        radius: 20,
-                        backgroundImage: AssetImage('assets/Images/cover.png'),
-                      ),
-                       Text("talkingMinds",
-                       textAlign: TextAlign.start,
-                       style: TextStyle(
-                        color: Color.fromARGB(255, 97, 3, 72),
-                        fontWeight: FontWeight.bold
-                       ),
-                       )
-                      
-                    ],
-                  ),
-                  
-                ],
-        ),
-      ),
+//   Future<void> initWebRTC() async {
+//     await _localRenderer.initialize();
+//     await _getUserMedia();
+//   }
 
-      body: Padding(
-        padding: const EdgeInsets.only(top: 40),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children:  [
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 15),
-              child: Text("Session Page",
-              style: TextStyle(
-                fontSize: 32,
-                fontWeight: FontWeight.w500
-              ),
-          
-          
-              ),
-            ),
-          ]
-        )
-      ),
-   
+//   Future<void> _getUserMedia() async {
+//     final mediaConstraints = <String, dynamic>{
+//       'audio': true,
+//       'video': {
+//         'facingMode': 'user',
+//       },
+//     };
 
-    
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-          onTap: (index) {
-            if(index == 0){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const Welcome()));
-            } 
-            if(index ==1){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const Lists()));
-            }
-            if(index ==2){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => Appointment()));
-            }
-            if(index ==3){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const Settings()));
-            }
-            setState(() {
-              myIndex = index;
-            });
-            
-          },
-          currentIndex: myIndex,
-          items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-            ),
-          
-          BottomNavigationBarItem(
-            icon: Icon(Icons.list_alt_outlined),
-            label: 'List'
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.task_alt),
-            label: 'Schedule'
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Settings'
-          )
-      
-        ])
-         );
-       
-   
-  }
-}
+//     MediaStream stream = await navigator.mediaDevices.getUserMedia(mediaConstraints);
+//     _localRenderer.srcObject = stream;
+//     setState(() {
+//       _localStream = stream;
+//     });
+//   }
+
+//   @override
+//   void dispose() {
+//     super.dispose();
+//     _localRenderer.dispose();
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: const Text('Video Conference'),
+//       ),
+//       body: Column(
+//         children: [
+//           Expanded(
+//             child: RTCVideoView(
+//               _localRenderer,
+//               mirror: true,
+//             ),
+//           ),
+//           ElevatedButton(
+//             onPressed: _hangUp,
+//             child: const Text('Hang Up'),
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+
+//   Future<void> _hangUp() async {
+//     _localStream?.getTracks().forEach((track) {
+//       track.stop();
+//     });
+//     _localRenderer.srcObject = null;
+//     Navigator.pop(context);
+//   }
+// }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:therapy_application/pages/MessagePage.dart';
 import 'package:therapy_application/pages/appointment.dart';
 
 import 'package:therapy_application/pages/list.dart';
@@ -251,7 +252,7 @@ class _profileFiveState extends State<profileFive> {
               Navigator.push(context, MaterialPageRoute(builder: (context) => const Lists()));
             }
             if(index ==2){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const Appointment()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) =>  ChatApp()));
             }
             if(index ==3){
               Navigator.push(context, MaterialPageRoute(builder: (context) => const Settings()));
@@ -272,8 +273,8 @@ class _profileFiveState extends State<profileFive> {
             label: 'List'
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.task_alt),
-            label: 'Schedule'
+            icon: Icon(Icons.chat_bubble_outline),
+            label: 'Chat'
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),

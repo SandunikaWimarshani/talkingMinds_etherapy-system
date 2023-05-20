@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:therapy_application/pages/MessagePage.dart';
 import 'package:therapy_application/pages/appointment.dart';
 import 'package:therapy_application/pages/list.dart';
 import 'package:therapy_application/pages/welcome.dart';
@@ -21,11 +22,10 @@ class _ScheduleState extends State<Schedule> {
   TextEditingController _emailController = TextEditingController();
   TextEditingController _counselorNameController = TextEditingController();
 
-  void addAppointmentToFirebase(
-      String name, String email, String counselorName, DateTime selectedDate) async {
+  void addAppointmentToFirebase(String name, String email, String counselorName,
+      DateTime selectedDate) async {
     final appointmentCollection =
         FirebaseFirestore.instance.collection('appointments');
-
     final newAppointment = appointmentCollection.doc();
 
     final formattedDate = DateFormat('yyyy-MM-dd').format(selectedDate);
@@ -115,7 +115,7 @@ class _ScheduleState extends State<Schedule> {
                 Column(
                   children: const [
                     Text(
-                      "Appoinment Page",
+                      "Appointment Page",
                       style: TextStyle(
                         fontSize: 30,
                         fontWeight: FontWeight.bold,
@@ -123,7 +123,7 @@ class _ScheduleState extends State<Schedule> {
                     ),
                     SizedBox(height: 10),
                     Text(
-                      "Please reserve your appoinment here",
+                      "Please reserve your appointment here",
                       style: TextStyle(
                         fontSize: 15,
                         color: Color.fromARGB(255, 75, 73, 73),
@@ -217,7 +217,8 @@ class _ScheduleState extends State<Schedule> {
                       lastDate: DateTime.now().add(const Duration(days: 365)),
                     );
                     if (date != null) {
-                      _dateController.text = DateFormat('yyyy-MM-dd').format(date);
+                      _dateController.text =
+                          DateFormat('yyyy-MM-dd').format(date);
                     }
                   },
                   validator: (value) {
@@ -241,13 +242,30 @@ class _ScheduleState extends State<Schedule> {
                         final name = _nameController.text;
                         final email = _emailController.text;
                         final counselorName = _counselorNameController.text;
-                        final selectedDate = DateTime.parse(_dateController.text);
+                        final selectedDate =
+                            DateTime.parse(_dateController.text);
+                        addAppointmentToFirebase(
+                            name, email, counselorName, selectedDate);
 
-                        addAppointmentToFirebase(name, email, counselorName, selectedDate);
-
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => Appointment()),
+                        showDialog(
+                          context: context,
+                          builder: (context) => AlertDialog(
+                            title: const Text('Thank you for your reservation'),
+                            actions: [
+                              TextButton(
+                                child: const Text('View'),
+                                onPressed: () {
+                                  // Handle 'View' button tap
+                                },
+                              ),
+                              TextButton(
+                                child: const Text('Next'),
+                                onPressed: () {
+                                  // Handle 'Next' button tap
+                                },
+                              ),
+                            ],
+                          ),
                         );
                       }
                     },
@@ -274,13 +292,17 @@ class _ScheduleState extends State<Schedule> {
         type: BottomNavigationBarType.fixed,
         onTap: (index) {
           if (index == 0) {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => const Welcome()));
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const Welcome()));
           } else if (index == 1) {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => const Lists()));
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const Lists()));
           } else if (index == 2) {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => Appointment()));
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => ChatApp()));
           } else if (index == 3) {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => Appointment()));
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => Appointment()));
           }
           setState(() {
             myIndex = index;
@@ -297,8 +319,8 @@ class _ScheduleState extends State<Schedule> {
             label: 'List',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.task_alt),
-            label: 'Schedule',
+            icon: Icon(Icons.chat_bubble_outline),
+            label: 'Chat',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),

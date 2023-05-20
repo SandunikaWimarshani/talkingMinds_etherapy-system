@@ -3,8 +3,9 @@ import 'package:therapy_application/pages/Chat/Messages.dart';
 import 'package:therapy_application/pages/Chat/chatScreen.dart';
 import 'package:therapy_application/pages/MessagePage.dart';
 import 'package:therapy_application/pages/Video/videocall.dart';
-import 'package:therapy_application/pages/Videocall.dart';
+import 'package:therapy_application/pages/Video/Videocall.dart';
 import 'package:therapy_application/pages/appointment.dart';
+import 'package:therapy_application/pages/chatScreen.dart';
 import 'package:therapy_application/pages/confirm.dart';
 import 'package:therapy_application/pages/list.dart';
 import 'package:therapy_application/pages/meeting.dart';
@@ -12,9 +13,8 @@ import 'package:therapy_application/pages/schedule.dart';
 import 'package:therapy_application/pages/settings.dart';
 import 'package:therapy_application/pages/welcome.dart';
 
-
 class Confirm extends StatefulWidget {
-  const Confirm({super.key});
+  const Confirm({Key? key});
 
   @override
   State<Confirm> createState() => _ConfirmState();
@@ -22,21 +22,20 @@ class Confirm extends StatefulWidget {
 
 class _ConfirmState extends State<Confirm> {
   int myIndex = 0;
-  
+
   @override
   Widget build(BuildContext context) {
-     double kDefaultPadding = 12.0;
-    return  Scaffold(
+    double kDefaultPadding = 12.0;
+    return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
       appBar: AppBar(
         elevation: 0,
-        // ignore: deprecated_member_use
         brightness: Brightness.light,
         backgroundColor: Colors.white,
         leading: IconButton(
           onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) =>  const Meeting()));
+            Navigator.push(context, MaterialPageRoute(builder: (context) => chatScreen()));
           },
           icon: const Icon(Icons.arrow_back_ios_new_sharp),
           iconSize: 20,
@@ -44,156 +43,132 @@ class _ConfirmState extends State<Confirm> {
         ),
         actions: [
           TextButton(
-            // ignore: sort_child_properties_last
             child: const Text('Next'),
             style: TextButton.styleFrom(
-              textStyle: const TextStyle(fontSize: 10,
-              color: Colors. black
-              ),
-              
-              backgroundColor: Colors.transparent
+              textStyle: const TextStyle(fontSize: 10, color: Colors.black),
+              backgroundColor: Colors.transparent,
             ),
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) =>  const Meeting()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => chatScreen()));
             },
           ),
-          
         ],
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-                  Row(
-                    children: const [
-                       CircleAvatar(
-                        radius: 20,
-                        backgroundImage: AssetImage('assets/Images/cover.png'),
-                      ),
-                       Text("talkingMinds",
-                       textAlign: TextAlign.start,
-                       style: TextStyle(
-                        color: Color.fromARGB(255, 97, 3, 72),
-                        fontWeight: FontWeight.bold
-                       ),
-                       )
-                      
-                    ],
+            Row(
+              children: const [
+                CircleAvatar(
+                  radius: 20,
+                  backgroundImage: AssetImage('assets/Images/cover.png'),
+                ),
+                Text(
+                  "talkingMinds",
+                  textAlign: TextAlign.start,
+                  style: TextStyle(
+                    color: Color.fromARGB(255, 97, 3, 72),
+                    fontWeight: FontWeight.bold,
                   ),
-                  
-                ],
+                ),
+              ],
+            ),
+          ],
         ),
       ),
-
-      body: Padding(
-        padding: const EdgeInsets.only(top: 40),
+      body: SafeArea(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children:  [
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 15),
-              child: Text("Chat with your Therapist",
-              style: TextStyle(
-                fontSize: 32,
-                fontWeight: FontWeight.w500
+          children: [
+            Expanded(
+              flex: 1,
+              child: Container(
+                child: Column(
+                  children: [
+                    Spacer(
+                      flex: 2,
+                    ),
+                    Text(
+                      "Chat with a Counselor Now",
+                      style: TextStyle(
+                        fontSize: 35,
+                        color: Color.fromARGB(255, 234, 180, 199),
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    Spacer(),
+                    Spacer(),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => chatScreen()));
+                      },
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Chat with Me",
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Spacer(),
+                  ],
+                ),
               ),
-          
-          
+            ),
+            Expanded(
+              flex: 3,
+              child: Container(
+                child: Image.asset(
+                  'assets/Images/chat.jpg',
+                  fit: BoxFit.cover,
+                ),
               ),
-              
-              
-            ),
-               Container(
-            width: MediaQuery.of(context).size.width*0.75,
-            padding: const EdgeInsets.symmetric(
-              vertical: 10,
-              horizontal: 10,
-            ),
-           
-            
-            
-            child: ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) =>  ChatApp()
-                  ),
-                );
-              },
-              child: const Text('Chat'),
-            ),
-          ),
-
-            Container(
-            width: MediaQuery.of(context).size.width*0.75,
-            padding: const EdgeInsets.symmetric(
-              vertical: 10,
-              horizontal: 10,
-            ),
-           
-            
-            
-            child: ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) =>  ChatApp()
-                  ),
-                );
-              },
-              child: const Text('video'),
-            ),
-          )
-            
-          
-          ]
-        )
+            )
+          ],
+        ),
       ),
-      
-   
-
-    
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
-          onTap: (index) {
-            if(index == 0){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const Welcome()));
-            } 
-            if(index ==1){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const Lists()));
-            }
-            if(index ==2){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => Appointment()));
-            }
-            if(index ==3){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const Settings()));
-            }
-            setState(() {
-              myIndex = index;
-            });
-            
-          },
-          currentIndex: myIndex,
-          items: const [
+        onTap: (index) {
+          if (index == 0) {
+            Navigator.push(context, MaterialPageRoute(builder: (context) => const Welcome()));
+          }
+          if (index == 1) {
+            Navigator.push(context, MaterialPageRoute(builder: (context) => const Lists()));
+          }
+          if (index == 2) {
+            Navigator.push(context, MaterialPageRoute(builder: (context) => ChatApp()));
+          }
+          if (index == 3) {
+            Navigator.push(context, MaterialPageRoute(builder: (context) => const Settings()));
+          }
+          setState(() {
+            myIndex = index;
+          });
+        },
+        currentIndex: myIndex,
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
-            ),
-          
-          BottomNavigationBarItem(
-            icon: Icon(Icons.list_alt_outlined),
-            label: 'List'
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.task_alt),
-            label: 'Schedule'
+            icon: Icon(Icons.list_alt_outlined),
+            label: 'List',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.chat_bubble_outline),
+            label: 'Chat',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),
-            label: 'Settings'
-          )
-      
-        ])
-         );
-       
-   
+            label: 'Settings',
+          ),
+        ],
+      ),
+    );
   }
 }

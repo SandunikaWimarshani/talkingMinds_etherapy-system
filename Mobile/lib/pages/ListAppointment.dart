@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:therapy_application/pages/MessagePage.dart';
 import 'package:therapy_application/pages/appointment.dart';
 import 'package:therapy_application/pages/list.dart';
 import 'package:therapy_application/pages/settings.dart';
@@ -16,43 +17,24 @@ class ListAppointment extends StatefulWidget {
 class _ListAppointmentState extends State<ListAppointment> {
   int myIndex = 0;
 
-  // Define variables to store the appointment data
-  TextEditingController _nameController = TextEditingController();
-  TextEditingController _emailController = TextEditingController();
-  TextEditingController _counselorNameController = TextEditingController();
-  TextEditingController _dateController = TextEditingController();
-  TextEditingController _timeController = TextEditingController();
-
   final _formKey = GlobalKey<FormState>();
 
-  void navigateToUpdateForm() {
-    // Pass the appointment data to the update form page
+  void navigateToUpdateForm(DocumentSnapshot appointment) {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => UpdateForm(
-          name: _nameController.text,
-          email: _emailController.text,
-          counselorName: _counselorNameController.text,
-          date: _dateController.text,
-          time: _timeController.text,
-        ),
+        builder: (context) => UpdateForm(appointment: appointment),
       ),
     ).then((updatedData) {
       if (updatedData != null) {
-        // Update the appointment data with the updated values
         setState(() {
-          _nameController.text = updatedData['name'];
-          _emailController.text = updatedData['email'];
-          _counselorNameController.text = updatedData['counselorName'];
-          _dateController.text = updatedData['date'];
-          _timeController.text = updatedData['time'];
+          appointment.reference.update(updatedData);
         });
       }
     });
   }
 
-   void deleteAppointment(DocumentSnapshot appointment) {
+  void deleteAppointment(DocumentSnapshot appointment) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -69,14 +51,9 @@ class _ListAppointmentState extends State<ListAppointment> {
             TextButton(
               child: const Text('Delete'),
               onPressed: () {
-                FirebaseFirestore.instance
-                    .collection('appointments')
-                    .doc(appointment.id)
-                    .delete()
-                    .then((value) {
+                appointment.reference.delete().then((value) {
                   Navigator.of(context).pop();
-                })
-                .catchError((error) {
+                }).catchError((error) {
                   showDialog(
                     context: context,
                     builder: (BuildContext context) {
@@ -115,7 +92,9 @@ class _ListAppointmentState extends State<ListAppointment> {
         leading: IconButton(
           onPressed: () {
             Navigator.push(
-                context, MaterialPageRoute(builder: (context) => Appointment()));
+              context,
+              MaterialPageRoute(builder: (context) => Appointment()),
+            );
           },
           icon: const Icon(Icons.arrow_back_ios_new_sharp),
           iconSize: 20,
@@ -130,7 +109,9 @@ class _ListAppointmentState extends State<ListAppointment> {
             ),
             onPressed: () {
               Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => Appointment()));
+                context,
+                MaterialPageRoute(builder: (context) => Appointment()),
+              );
             },
           ),
         ],
@@ -151,186 +132,115 @@ class _ListAppointmentState extends State<ListAppointment> {
                     fontWeight: FontWeight.bold,
                   ),
                 )
-              ],
+                              ],
             ),
-          ],
-        ),
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Form(
-              key: _formKey,
-              child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 40),
-                height: MediaQuery.of(context).size.height - 10,
-                width: double.infinity,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Column(
-                      children: const [
-                        Text(
-                          'Appointment List',
-                          style: TextStyle(
-                            fontSize: 30,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        SizedBox(height: 20),
-                        Text(
-                          'You can view and manage your appointments here.',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Colors.grey,
-                          ),
-                        ),
-                      ],
-                    ),
-                    SafeArea(
-                      child: StreamBuilder<QuerySnapshot>(
-                        stream: FirebaseFirestore.instance
-                            .collection('appointments')
-                            .snapshots(),
-                        builder: (context, snapshot) {
-                          if (!snapshot.hasData) {
-                            return const Text('Loading appointments...');
-                          } else {
-                            return ListView.builder(
-                              shrinkWrap: true,
-                              itemCount: snapshot.data!.docs.length,
-                              itemBuilder: (context, index) {
-                                DocumentSnapshot appointment =
-                                    snapshot.data!.docs[index];
-                                String appointmentDate = DateFormat('yyyy-MM-dd')
-                                    .format(appointment['date'].toDate());
-                                String appointmentTime = DateFormat('HH:mm')
-                                    .format(appointment['date'].toDate());
-                                return ListTile(
-                                  title: Text(appointment['name']),
-                                  subtitle: Text(
-                                    'Date: $appointmentDate\nTime: $appointmentTime',
-                                  ),
-                                  onTap: () {
-                                    deleteAppointment(appointment);
-                                    // Set the appointment data to the form controllers
-                                    _nameController.text = appointment['name'];
-                                    _emailController.text = appointment['email'];
-                                    _counselorNameController.text =
-                                        appointment['counselorName'];
-                                    _dateController.text = appointmentDate;
-                                    _timeController.text = appointmentTime;
-                    
-                                    // Navigate to the update form page
-                                    navigateToUpdateForm();
-                                  },
-                                );
-                              },
-                            );
-                          }
-                        },
-                      ),
-                    ),
-                  ],
-                ),
+            const Text(
+              "Appointments",
+              style: TextStyle(
+                fontSize: 16,
+                color: Colors.grey,
               ),
             ),
           ],
         ),
       ),
-     bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        onTap: (index) {
-          if (index == 0) {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const Welcome()),
+      body: StreamBuilder<QuerySnapshot>(
+        stream: FirebaseFirestore.instance.collection('appointments').snapshots(),
+        builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+          if (snapshot.hasError) {
+            return Text('Error: ${snapshot.error}');
+          }
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(
+              child: CircularProgressIndicator(),
             );
           }
-          if (index == 1) {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const Lists()),
+          if (snapshot.data == null || snapshot.data!.docs.isEmpty) {
+            return const Center(
+              child: Text('No appointments found.'),
             );
           }
-          if (index == 2) {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const Appointment()),
-            );
-          }
-          if (index == 3) {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const Appointment()),
-            );
-          }
-          setState(() {
-            myIndex = index;
-          });
+
+          return ListView(
+            children: snapshot.data!.docs.map((DocumentSnapshot document) {
+              Map<String, dynamic> data = document.data() as Map<String, dynamic>;
+              DateTime appointmentDate = data['date'].toDate();
+              String formattedDate = DateFormat.yMMMMd().format(appointmentDate);
+              String formattedTime = DateFormat.jm().format(appointmentDate);
+
+              return ListTile(
+                title: Text('${data['name']}'),
+                subtitle: Text('$formattedDate at $formattedTime'),
+                onTap: () {
+                  navigateToUpdateForm(document);
+                },
+                trailing: IconButton(
+                  icon: const Icon(Icons.delete),
+                  onPressed: () {
+                    deleteAppointment(document);
+                  },
+                ),
+              );
+            }).toList(),
+          );
         },
-        currentIndex: myIndex,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.list_alt_outlined),
-            label: 'List',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.task_alt),
-            label: 'Schedule',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Settings',
-          ),
-        ],
       ),
     );
   }
 }
 
-
 class UpdateForm extends StatefulWidget {
-  final String name;
-  final String email;
-  final String counselorName;
-  final String date;
-  final String time;
+  final DocumentSnapshot appointment;
 
-  const UpdateForm({
-    required this.name,
-    required this.email,
-    required this.counselorName,
-    required this.date,
-    required this.time,
-  });
+  const UpdateForm({required this.appointment});
 
   @override
-  State<UpdateForm> createState() => _UpdateFormState();
+  _UpdateFormState createState() => _UpdateFormState();
 }
 
 class _UpdateFormState extends State<UpdateForm> {
-  TextEditingController _nameController = TextEditingController();
-  TextEditingController _emailController = TextEditingController();
-  TextEditingController _counselorNameController = TextEditingController();
-  TextEditingController _dateController = TextEditingController();
-  TextEditingController _timeController = TextEditingController();
-
   final _formKey = GlobalKey<FormState>();
+
+  String _name = '';
+  DateTime _date = DateTime.now();
+  TimeOfDay _time = TimeOfDay.now();
 
   @override
   void initState() {
     super.initState();
-    // Set the initial values from the passed appointment data
-    _nameController.text = widget.name;
-    _emailController.text = widget.email;
-    _counselorNameController.text = widget.counselorName;
-    _dateController.text = widget.date;
-    _timeController.text = widget.time;
+    Map<String, dynamic> data = widget.appointment.data() as Map<String, dynamic>;
+    _name = data['name'];
+    _date = data['date'].toDate();
+    _time = TimeOfDay.fromDateTime(data['date'].toDate());
+  }
+
+  void updateAppointment() {
+    if (_formKey.currentState!.validate()) {
+      widget.appointment.reference.update({
+        'name': _name,
+        'date': DateTime(_date.year, _date.month, _date.day, _time.hour, _time.minute),
+      }).then((value) {
+        Navigator.of(context).pop();
+      }).catchError((error) {
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: const Text('Error'),
+              content: Text('Failed to update the appointment: $error'),
+              actions: [
+                TextButton(
+                  child: const Text('OK'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            );
+          },
+        );
+      });
+    }
   }
 
   @override
@@ -339,122 +249,79 @@ class _UpdateFormState extends State<UpdateForm> {
       appBar: AppBar(
         title: const Text('Update Appointment'),
       ),
-      body: SingleChildScrollView(
-        child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
-          child: Form(
-            key: _formKey,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
-                  'Name',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                TextFormField(
-                  controller: _nameController,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter a name';
-                    }
-                    return null;
-                  },
-                ),
-                SizedBox(height: 20),
-                const Text(
-                  'Email',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                TextFormField(
-                  controller: _emailController,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter an email';
-                    }
-                    return null;
-                  },
-                ),
-                SizedBox(height: 20),
-                const Text(
-                  'Counselor Name',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                TextFormField(
-                  controller: _counselorNameController,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter a counselor name';
-                    }
-                    return null;
-                  },
-                ),
-                SizedBox(height: 20),
-                const Text(
-                  'Date',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                TextFormField(
-                  controller: _dateController,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter a date';
-                    }
-                    return null;
-                  },
-                ),
-                SizedBox(height: 20),
-                const Text(
-                  'Time',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                TextFormField(
-                  controller: _timeController,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter a time';
-                    }
-                    return null;
-                  },
-                ),
-                SizedBox(height: 20),
-                ElevatedButton(
-                  onPressed: () {
-                    if (_formKey.currentState!.validate()) {
-                      // Perform the update operation with the updated data
-                      Map<String, dynamic> updatedData = {
-                        'name': _nameController.text,
-                        'email': _emailController.text,
-                        'counselorName': _counselorNameController.text,
-                        'date': _dateController.text,
-                        'time': _timeController.text,
-                      };
-
-                      // Pass the updated data back to the list page
-                      Navigator.pop(context, updatedData);
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Form(
+          key: _formKey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              TextFormField(
+                initialValue: _name,
+                decoration: const InputDecoration(labelText: 'Name'),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter a name';
+                  }
+                  return null;
+                },
+                onChanged: (value) {
+                  setState(() {
+                    _name = value;
+                  });
+                },
+              ),
+              const SizedBox(height: 16),
+              ListTile(
+                title: const Text('Date'),
+                subtitle: Text(DateFormat.yMMMMd().format(_date)),
+                trailing: IconButton(
+                  icon: const Icon(Icons.calendar_today),
+                  onPressed: () async {
+                    final selectedDate = await showDatePicker(
+                      context: context,
+                      initialDate: _date,
+                      firstDate: DateTime.now(),
+                      lastDate: DateTime.now().add(const Duration(days: 365)),
+                    );
+                    if (selectedDate != null) {
+                      setState(() {
+                        _date = selectedDate;
+                      });
                     }
                   },
-                  child: const Text('Update Appointment'),
                 ),
-              ],
-            ),
+              ),
+              const SizedBox(height: 16),
+              ListTile(
+                title: const Text('Time'),
+                subtitle: Text(_time.format(context)),
+                trailing: IconButton(
+                  icon: const Icon(Icons.access_time),
+                  onPressed: () async {
+                    final selectedTime = await showTimePicker(
+                      context: context,
+                      initialTime: _time,
+                    );
+                    if (selectedTime != null) {
+                      setState(() {
+                        _time = selectedTime;
+                      });
+                    }
+                  },
+                ),
+              ),
+              const SizedBox(height: 16),
+              ElevatedButton(
+                onPressed: updateAppointment,
+                child: const Text('Update Appointment'),
+              ),
+            ],
           ),
         ),
       ),
     );
   }
 }
+
+

@@ -1,28 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:therapy_application/pages/ListAppointment.dart';
+import 'package:therapy_application/pages/MessagePage.dart';
 import 'package:therapy_application/pages/confirm.dart';
 import 'package:therapy_application/pages/list.dart';
 import 'package:therapy_application/pages/schedule.dart';
 import 'package:therapy_application/pages/welcome.dart';
-
-void fetchAppointments() async {
-  FirebaseFirestore firestore = FirebaseFirestore.instance;
-
-  try {
-    QuerySnapshot querySnapshot =
-        await firestore.collection('appointment').get();
-
-    List<DocumentSnapshot> documents = querySnapshot.docs;
-    for (DocumentSnapshot document in documents) {
-      Map<String, dynamic> data = document.data() as Map<String, dynamic>;
-      // Process the retrieved data here
-      print(data);
-    }
-  } catch (e) {
-    print('Error fetching appointments: $e');
-  }
-}
 
 class Appointment extends StatefulWidget {
   const Appointment({Key? key});
@@ -33,6 +16,53 @@ class Appointment extends StatefulWidget {
 
 class _AppointmentState extends State<Appointment> {
   int myIndex = 0;
+
+  void deleteAppointment(String appointmentId) async {
+    FirebaseFirestore firestore = FirebaseFirestore.instance;
+
+    try {
+      await firestore.collection('appointment').doc(appointmentId).delete();
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: const Text('Appointment deleted successfully.'),
+        ),
+      );
+    } catch (e) {
+      print('Error deleting appointment: $e');
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: const Text('Failed to delete appointment.'),
+        ),
+      );
+    }
+  }
+
+  Future<void> _showDeleteConfirmationDialog(String appointmentId) async {
+    return showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Confirm Delete'),
+          content: const Text('Are you sure you want to delete this appointment?'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(); // Close the dialog
+              },
+              child: const Text('Cancel'),
+            ),
+            TextButton(
+              onPressed: () {
+                deleteAppointment(appointmentId);
+                Navigator.of(context).pop(); // Close the dialog
+              },
+              child: const Text('Delete'),
+            ),
+          ],
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -105,19 +135,16 @@ class _AppointmentState extends State<Appointment> {
             SizedBox(height: 15),
             Expanded(
               child: StreamBuilder<QuerySnapshot>(
-                stream: FirebaseFirestore.instance
-                    .collection('appointment')
-                    .snapshots(),
+                stream: FirebaseFirestore.instance.collection('appointment').snapshots(),
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
-                    final appointments =
-                        snapshot.data?.docs.reversed.toList();
+                    final appointments = snapshot.data?.docs.reversed.toList();
 
                     return ListView.builder(
                       itemCount: appointments!.length,
                       itemBuilder: (context, index) {
-                        final data =
-                            appointments[index].data() as Map<String, dynamic>;
+                        final data = appointments[index].data() as Map<String, dynamic>;
+                        final appointmentId = appointments[index].id;
                         final name = data['name'];
                         final email = data['email'];
                         final counselorName = data['counselorName'];
@@ -148,19 +175,20 @@ class _AppointmentState extends State<Appointment> {
                                 Text('Time: $time'),
                                 SizedBox(height: 8),
                                 Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
                                     ElevatedButton(
                                       onPressed: () {
-                                        // Handle delete button action
+                                        _showDeleteConfirmationDialog(appointmentId);
                                       },
                                       child: Text('Delete'),
                                     ),
                                     ElevatedButton(
                                       onPressed: () {
-                                        Navigator.push(context, MaterialPageRoute(builder: (context) =>  ListAppointment ()));
-                                        // Handle update button action
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(builder: (context) => ListAppointment()),
+                                        );
                                       },
                                       child: Text('Update'),
                                     ),
@@ -199,7 +227,7 @@ class _AppointmentState extends State<Appointment> {
           if (index == 2) {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const Appointment()),
+              MaterialPageRoute(builder: (context) =>  ChatApp()),
             );
           }
           if (index == 3) {
@@ -223,8 +251,8 @@ class _AppointmentState extends State<Appointment> {
             label: 'List',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.task_alt),
-            label: 'Schedule',
+            icon: Icon(Icons.chat_bubble_outline),
+            label: 'Chat',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),
@@ -234,4 +262,12 @@ class _AppointmentState extends State<Appointment> {
       ),
     );
   }
+}
+
+void main() {
+  runApp(
+    MaterialApp(
+      home: Appointment(),
+    ),
+  );
 }

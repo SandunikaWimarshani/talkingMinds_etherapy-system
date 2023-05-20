@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:therapy_application/pages/Chat/feedbackPage.dart';
+import 'package:therapy_application/pages/MessagePage.dart';
 
 import 'package:therapy_application/pages/Settings/event.dart';
 import 'package:therapy_application/pages/Settings/profile.dart';
@@ -239,7 +240,7 @@ class _SettingsState extends State<Settings> {
               Navigator.push(context, MaterialPageRoute(builder: (context) => const Lists()));
             }
             if(index ==2){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const Appointment()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => ChatApp()));
             }
             if(index ==3){
               Navigator.push(context, MaterialPageRoute(builder: (context) => const Settings()));
@@ -261,8 +262,8 @@ class _SettingsState extends State<Settings> {
             label: 'List'
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.task_alt),
-            label: 'Schedule'
+            icon: Icon(Icons.chat_bubble_outline),
+            label: 'Chat'
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),

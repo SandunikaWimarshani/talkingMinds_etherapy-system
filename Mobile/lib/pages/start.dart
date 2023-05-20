@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:therapy_application/pages/Chat/Messages.dart';
 import 'package:therapy_application/pages/Chat/chatScreen.dart';
+import 'package:therapy_application/pages/MessagePage.dart';
 import 'package:therapy_application/pages/Video/videocall.dart';
 import 'package:therapy_application/pages/appointment.dart';
 import 'package:therapy_application/pages/confirm.dart';
@@ -80,26 +81,7 @@ class _startState extends State<start> {
                   
                     
                     ),
-                    // SizedBox(
-                    //   height: 20,
-                    // ),
-                    // Text(
-                    //   "    Words of comfort, skillfully administered, are the \noldest therapy known to man. ",
-                    //   textAlign: TextAlign.center,
-                    //   style: TextStyle(
-                    //     fontSize: 16,
-                    //     fontWeight: FontWeight.w400
-                    //   ),
-                    // ),
-                    // Text('       – Louis Nizer-',
-                    // style: TextStyle(
-                    //   fontSize: 14,
-                    //   fontWeight: FontWeight.w600,
-                    //   wordSpacing: 3.0
-                      
-                    // ),
                     
-                    // ),
                      const Spacer(),
                      const Spacer(),
                     
@@ -139,14 +121,68 @@ class _startState extends State<start> {
             )
           ],
         ),
-      )
+      ),
+
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        onTap: (index) {
+          if (index == 0) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const Welcome()),
+            );
+          }
+          if (index == 1) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const Lists()),
+            );
+          }
+          if (index == 2) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) =>  ChatApp()),
+            );
+          }
+          if (index == 3) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const Appointment()),
+            );
+          }
+          setState(() {
+            myIndex = index;
+          });
+        },
+        currentIndex: myIndex,
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.list_alt_outlined),
+            label: 'List',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.chat_bubble_outline),
+            label: 'Chat',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: 'Settings',
+          ),
+        ],
+      ),
+    );
+  }
+}
       
    
 
     
       
-         );
+         
        
-   
-  }
-}
+
+  
