@@ -1,47 +1,44 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import '../styles/confirm.css'
+import {motion} from 'framer-motion'
 
-import '../styles/appointment.css'
+import { Container, Row, Col } from 'reactstrap'
+import Chat from '../assets/images/chat.jpg'
 
 
-const AppointmentConfirmation = ({ appointment }) => {
-  const navigate = useNavigate();
-  const [session, setSession] = useState(null);
-  
-  const handleConfirmAppointment = () => {
-    const counselorName = appointment?.counselor?.name; // fix for error
-    const newSession = {
-      counselorName: counselorName,
-      appointmentDate: appointment.date,
-      appointmentTime: appointment.time,
-    };
-    setSession(newSession);
-  };
-  
-  const handleStartSession = () => {
-    navigate('/sessions', { session });
-  };
-  
+function Confirm_appointments() {
   return (
-    <div>
-      <h2><center>Confirm Your Appointment</center></h2>
-      <p className='para'>
-        You are scheduled for an appointment with {appointment?.counselor?.name} on {appointment?.date} at {appointment?.time}.
-      </p>
-      <button className='book_btn'><Link to = '/List_appointments'>  VIEW </Link></button>
-      <button className='book_btn'><Link to = '/Session'>CONFIRM APPOINTMENT</Link></button>
-      {session && (
-        <div>
-          <p>Your appointment has been confirmed. Click the button below to start your session.</p>
-          <button onClick={handleStartSession}>Start Session</button>
+   
+      
+        <Container>
+          <Row>
+            <Col lg='6' md='6'>
+              
+            </Col>
 
-          
-        </div>
-        
-      )}
-    </div>
-  );
-};
+            <Col lg='8' md='8'>
+              <div className='cimg'>
+                <img src={Chat} alt=''/>
+                <div className='ccontent1'>
+                
+                <h2 className='cht'>Chat with a Counselor Now </h2>
+                <h4 className='pchat'> Online consultation with a psychiatrist or psychologist without leaving your home. To get in touch with your therapist, you can message them whenever you want and set up live sessions for whenever it's convenient for you.</h4>
 
-export default AppointmentConfirmation;
+                <motion.button whileTap={{scale:1.2}} className='start_btn1'> <Link to = '/chatbot'>Chat With Me</Link> </motion.button>
+
+              </div>
+
+
+              </div>
+            </Col>
+
+          </Row>
+        </Container>
+
+  )
+}
+
+
+export default Confirm_appointments;

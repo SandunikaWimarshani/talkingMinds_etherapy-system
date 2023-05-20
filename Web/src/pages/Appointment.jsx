@@ -1,5 +1,7 @@
 import React, {useState,} from 'react'
 import { Container, Row, Col, Form, FormGroup } from 'reactstrap'
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import '../styles/appointment.css'
 
@@ -9,7 +11,7 @@ import Head from '../components/head/Head';
 import {db, auth} from '../firebase config';
 import { collection, addDoc,where,serverTimestamp, onSnapshot,query, orderBy } from 'firebase/firestore';
 
-
+import right from '../assets/images/right.jpg'
 
 
 function Appointments() {
@@ -19,6 +21,7 @@ function Appointments() {
   const [entercounselorname, setEntercounselorname] = useState('')
   const [enterdate, setEnterdate] = useState('')
   const [entertime, setEntertime] = useState('')
+  const [showPopup, setShowPopup] = useState(false);
  
   
   const appointmentRef = collection (db, 'appointment')
@@ -63,6 +66,22 @@ function Appointments() {
   
   return (
     <Head title='Appointment'>
+
+<div className={showPopup ? 'overlay' : ''} onClick={() => setShowPopup(false)}>
+        {showPopup && (
+          <div className='popup'>
+            <center>
+            <img src={right} alt='' className='right'/> 
+
+            </center>
+            
+            <h2 className='wait'> <center>Thank you for your reservation</center></h2>
+
+            <button onClick={() => setShowPopup(true)} className='btnpop'><Link to = '/List_appointments'>View</Link></button>
+            <button onClick={() => setShowPopup(false)} className='btnpop'><Link to = '/Confirm_appointments'>Next</Link></button>
+          </div>
+        )}
+      </div>
       
       <section>
     <Container>
@@ -106,7 +125,7 @@ function Appointments() {
              </select>
             </FormGroup> */}
 
-            <button className='book_btn'><Link to = '/Confirm_appointments'>  SUBMIT </Link></button>
+            <button className='book_btn' onClick={() => setShowPopup(true)}> SUBMIT </button>
             
             
           </Form>

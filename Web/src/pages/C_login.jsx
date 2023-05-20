@@ -75,7 +75,9 @@ function CounselorLogin() {
                   </FormGroup>
 
                   <button type="submit" className="buy_btn auth_btn">
+                  <Link to="/dashboard">
                     Login
+                    </Link>
                   </button>
 
                   <p>

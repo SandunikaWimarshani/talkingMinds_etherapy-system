@@ -57,7 +57,7 @@ function Quiz5() {
             
             <h2 className='wait'> We're waiting for you! Now you can choose your counselor...</h2>
 
-            <button onClick={() => setShowPopup(true)} className='btnpop'><Link to = '/List'>Ok</Link></button>
+            <button onClick={() => setShowPopup(true)} className='btnpop'><Link to = '/List'>OK</Link></button>
             <button onClick={() => setShowPopup(false)} className='btnpop'>Close</button>
           </div>
         )}

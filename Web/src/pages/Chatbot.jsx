@@ -31,7 +31,8 @@ function Chatbot() {
                         <Col lg='8'>
                             <Form classname='box'>
                            
-                            <button className='lets-start-btn'><Link to = '/chatScreen'>  Let's Start </Link></button>
+                            <button className='lets-start-btn'><Link to = '/chatScreen'>  Chat with message </Link></button>
+                            <button className='lets-start-btn'><Link to = '/session'>  Let's Meeting </Link></button>
 
                             
 

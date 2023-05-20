@@ -126,7 +126,7 @@ console.log(error)
                   
 
                   <button type="submit" className="create_btn">
-                    <Link to= '/Counselor_Profile'>
+                    <Link to= '/dashboard'>
                     Create Profile
                     </Link>
                   </button>

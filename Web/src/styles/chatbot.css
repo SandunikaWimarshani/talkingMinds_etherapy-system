@@ -1,26 +1,72 @@
-.bot_window{
-    margin-left: 100px;
-    font-size: 20px;
-    margin-bottom: 155px;
-}
-
-.form_bot{
-    margin-left: 100px;
-    margin-top: 250px;
-    height: 50px;
-}
-
-.text_bot{
-    width: 350px;
-    height: 25px;
-}
-
-.submit_bot{
-    width:90px;
-    height: 40px;
-    margin-left: 15px;
-    font-size: 20px;
-    font-weight: 600;
-    background-color: cadetblue;
+.chat-screen {
+    width: 800px;
+    height: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #e7a957;
+    border-radius: 5px;
+  }
+  
+  .messages {
+    height: 650px;
+    overflow-y: scroll;
+    border-bottom: 1px solid #ecbd67;
+    margin-bottom: 10px;
+  }
+  
+  .message {
+    background-color: #f2f2f2;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+  }
+  
+  .input-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .input-container input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #f9c88b;
+    border-radius: 5px;
+    margin-right: 10px;
+  }
+  
+  .input-container button {
+    padding: 8px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
+  }
+  
+  .input-container button:hover {
+    background-color: #0056b3;
+  }
+
+  .pre1{
+    width: 150px;
+    height:50px;
+    font-size: 25px;
+    margin-bottom: 50px;
+    margin-left: 50px;
+    margin-top: -250px;
+    cursor: pointer;
+    
 }
+
+.next1{
+    width: 250px;
+    height:50px;
+    font-size: 25px;
+    margin-bottom: 70px;
+    margin-left: 1300px;
+    margin-top: -250px;
+    cursor: pointer;
+    font-family: 'Times New Roman', Times, serif;
+    
+}
+  

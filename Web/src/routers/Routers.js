@@ -48,7 +48,6 @@ import Chatbot from '../pages/Chatbot'
 import ChatScreen from '../pages/Screen'
 import Profileuser from '../pages/Profileuser'
 import Session from '../pages/Session'
-import Meeting from '../pages/Meeting'
 
 
 
@@ -94,13 +93,10 @@ function Routers() {
     <Route path='ChatScreen' element = {< ChatScreen/>} />
     <Route path='Profileuser' element = {<Profileuser/>} />
     <Route path='Session' element = {<Session/>} />
-    <Route path='Meeting' element = {<Meeting/>} />
+   
     
   
     <Route path='view' element={<View/>} />
-
-
-
     
 
     <Route path='quiz' element={<Quiz/>} />
@@ -112,7 +108,7 @@ function Routers() {
     
     <Route path='/*' element={<AppointmentRoute/>} />
       
-      <Route path='dashboard' element={<Dashboard/>} />
+    <Route path='dashboard' element={<Dashboard/>} />
     
    
      

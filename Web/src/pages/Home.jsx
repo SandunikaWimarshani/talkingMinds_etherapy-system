@@ -23,7 +23,7 @@ function Home() {
               <div className='hero_content'>
                 
                 <h2> Welcome to talkingMinds</h2>
-                <p> People who talk about their mental health struggles are not attention seeking, they are Support Seeking.</p>
+                <p> People who talk about their mental health struggles are not attention seeking, they are <br></br>Support Seeking.</p>
 
                 <motion.button whileTap={{scale:1.2}} className='start_btn'> <Link to = '/Signin'>Get Started</Link> </motion.button>
 
