@@ -25,24 +25,19 @@ function Session() {
   const navigate = useNavigate();
 
   const saveSessionId = async () => {
-    const sessionData = {
-      sessionId: roomId.current,
-    };
-    await addDoc(collection(db, 'sessions'), sessionData);
+    try {
+      const sessionData = {
+        sessionId: roomId.current,
+      };
+      const docRef = await addDoc(collection(db, 'sessions'), sessionData);
+      console.log('Session ID saved with ID: ', docRef.id);
+    } catch (error) {
+      console.error('Error saving session ID:', error);
+    }
   };
 
   useEffect(() => {
     roomId.current = uuidv4();
-    saveSessionId();
-  }, []);
-
-  useEffect(() => {
-    const saveSessionId = async () => {
-      const sessionData = {
-        sessionId: roomId.current,
-      };
-      await addDoc(collection(db, 'session'), sessionData);
-    };
     saveSessionId();
   }, []);
 
@@ -134,7 +129,7 @@ function Session() {
     setInitiator(false);
     setLocalStream(null);
     setRemoteStream(null);
-    navigate('/Feedback'); // Use navigate to redirect to the "/feedback" route
+    navigate('/Feedback');
   };
 
   const toggleVideo = () => {

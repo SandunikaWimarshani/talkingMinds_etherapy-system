@@ -10,6 +10,7 @@ function Userprofile() {
   const [successMessage, setSuccessMessage] = useState('');
   const [sessionId, setSessionId] = useState('');
   const [sessionDate, setSessionDate] = useState('');
+  const [sessionDetails, setSessionDetails] = useState(null);
 
   const navigate = useNavigate();
 
@@ -34,6 +35,7 @@ function Userprofile() {
         const sessionData = sessionSnapshot.docs[0].data();
         setSessionId(sessionData.sessionId);
         setSessionDate(sessionData.date);
+        setSessionDetails(sessionData.details);
       }
     };
 
@@ -95,12 +97,18 @@ function Userprofile() {
               ))}
             </tbody>
           </Table>
-          {/* {sessionId && (
+          {sessionId && (
             <div className='session-id'>
               <h3>Session ID: {sessionId}</h3>
               <p>Date: {sessionDate}</p>
+              {sessionDetails && (
+                <div>
+                  <h4>Session Details:</h4>
+                  <p>{sessionDetails}</p>
+                </div>
+              )}
             </div>
-          )} */}
+          )}
         </Col>
       </Row>
     </Container>
