@@ -17,7 +17,7 @@
 .option-container{
     display: inline-block;
     width: 500px;
-    height: 100px;
+    height: 160px;
     margin-left: 700px;
 }
 
@@ -25,7 +25,7 @@
     background-color: rgba(183, 187, 191, 0.863);
     border-radius: 30px;
     font-size: 25px;
-    height: 40px;
+    height: 60px;
     margin-top: 15px;
     text-align: center;
     cursor: pointer;
@@ -121,4 +121,29 @@
     size: 25px;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
   }
+
+  .count {
+    font-size: 16px;
+  }
+  
+  .q1 {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .option-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+  
+
+  
+  .selected {
+    background-color: #052e4f;
+    color: #ffffff;
+  }
+  
+  
+  
 

@@ -1,47 +1,53 @@
-import React from 'react'
-import '../../styles/quiz.css'
-import {Link} from 'react-router-dom';
-import { getAuth, onAuthStateChanged } from "firebase/auth";
-
-import {db} from '../../firebase config';
-import { collection, addDoc,where,serverTimestamp, onSnapshot,query, orderBy, doc, updateDoc, getDocs, collectionRef } from 'firebase/firestore';
-import { useEffect, useState } from 'react'
+import React, { useState } from 'react';
+import '../../styles/quiz.css';
+import { Link } from 'react-router-dom';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { db } from '../../firebase config';
+import {
+  collection,
+  addDoc,
+  where,
+  serverTimestamp,
+  onSnapshot,
+  query,
+  orderBy,
+  doc,
+  updateDoc,
+  getDocs,
+  collectionRef,
+} from 'firebase/firestore';
 
 function Quiz() {
-  const collectionRef = collection(db, "Clients");
+  const collectionRef = collection(db, 'Clients');
   var docid;
-  //const email = firebase.auth().currentUser.email;
 
-  
-    const updateClient = async (val) => {
-      var email;
-      const auth = getAuth();
-      onAuthStateChanged(auth, (user) => {
-        if (user) {
-          email = user.email;
-        } 
-      });
-      const filteredRef = query(
-        collectionRef,
-        where(`email`, "!=", `${email}`)
-      );
+  const [selectedAnswer, setSelectedAnswer] = useState('');
 
-      const querySnapshot = await getDocs(filteredRef);
-      docid = await querySnapshot.docs[0].id;
-      console.log(docid);
+  const updateClient = async (val) => {
+    var email;
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        email = user.email;
+      }
+    });
+    const filteredRef = query(collectionRef, where('email', '!=', `${email}`));
 
+    const querySnapshot = await getDocs(filteredRef);
+    docid = await querySnapshot.docs[0].id;
+    console.log(docid);
 
-      const taskDocRef = doc(db, 'Clients', docid);
-      await updateDoc(taskDocRef, {
-        typeOfTherapy: val,
-      });
+    const taskDocRef = doc(db, 'Clients', docid);
+    await updateDoc(taskDocRef, {
+      typeOfTherapy: val,
+    });
+  };
 
-      
-    };
+  const handleAnswerClick = (val) => {
+    setSelectedAnswer(val);
+    updateClient(val); // Store the selected answer to Firebase
+  };
 
-  
-
-  
   return (
     <div>
       <div>
@@ -52,20 +58,34 @@ function Quiz() {
         </div>
         <h2 className='q1'> What type of therapy are you looking for?</h2>
         <div className='option-container'>
-          <p className='option' onClick={(e) => updateClient("Individual")}>Individual</p>
-          <p className='option' onClick={(e) => updateClient("Couple")}>Couple</p>
-          <p className='option' onClick={(e) => updateClient("Group")}>Group</p>
-
+          <p
+            className={`option ${selectedAnswer === 'Individual' ? 'selected' : ''}`}
+            onClick={() => handleAnswerClick('Individual')}
+          >
+            Individual
+          </p>
+          <p
+            className={`option ${selectedAnswer === 'Couple' ? 'selected' : ''}`}
+            onClick={() => handleAnswerClick('Couple')}
+          >
+            Couple
+          </p>
+          <p
+            className={`option ${selectedAnswer === 'Group' ? 'selected' : ''}`}
+            onClick={() => handleAnswerClick('Group')}
+          >
+            Group
+          </p>
         </div>
 
         <div className='button-container'>
-          
-          
-          <button className='next'><Link to = '/Quiz2'>Next</Link></button>
+          <button className='next'>
+            <Link to='/Quiz2'>Next</Link>
+          </button>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default Quiz
+export default Quiz;

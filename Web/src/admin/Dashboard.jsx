@@ -70,61 +70,7 @@ function Dashboard() {
 
       <Userprofile/>
 
-      {/* <div className='charts'>
-        <div className='top'>
-          <h1 className='title'> Average Customer</h1>
-         
-        </div>
-        <div className='bottom'>
-          <div className='featuredChart'>
-            <CircularProgressbar value={70} text={'70%'} strokeWidth={5}/>
-
-          </div>
-          </div>  
-        
-        
-        
-        
-        <h2> chart </h2> */}
-      
-        {/* <Container>
-      <Row>
-        <Col lg='12'>
-          <h1 className='booking_title'>Recent Users</h1>
-          
-          <Table className='table'>
-            <thead>
-              <tr>
-                <th className='columns'>Username</th>
-                <th className='columns'>Email</th>
-               
-                
-                <th className='columns actions-column'>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {Clients.map((Clients) => (
-                <tr key={Clients.id}>
-                  <td>{Clients.username}</td>
-                  <td>{Clients.email}</td>
-                  
-                  
-                 
-                </tr>
-              ))}
-            </tbody>
-          </Table>
-        </Col>
-      </Row>
-    </Container> */}
-        {/* <ResponsiveContainer width= '100%' aspect = {4 / 1}>
-          <LineChart data={data}>
-
-          </LineChart>
-        </ResponsiveContainer> */}
-        
       </div>
-    // </div>
   );
 }
 

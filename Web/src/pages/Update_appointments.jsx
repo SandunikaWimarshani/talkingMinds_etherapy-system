@@ -3,6 +3,7 @@ import { db } from '../firebase config';
 import { Container, Row, Col, Form, FormGroup } from 'reactstrap'
 import { collection, query, onSnapshot, orderBy, deleteDoc, doc, where, getDoc, updateDoc } from 'firebase/firestore';
 import { useParams } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 import '../styles/update.css'
  // assuming you have already initialized Firebase in a separate file
@@ -26,6 +27,7 @@ const UpdateDetails = ( props ) => {
   date,
   time
   } = data;
+  const [showPopup, setShowPopup] = useState(false);
 
   useEffect(() =>{
     id && getSingleUser();
@@ -151,6 +153,22 @@ const handleSubmit = async (e) =>{
         <form classname='box1' onSubmit={handleSubmit}>
         <h1><center> EDIT APPOINTMENT </center> </h1>
 
+        <div className={showPopup ? 'overlay' : ''} onClick={() => setShowPopup(false)}>
+        {showPopup && (
+          <div className='popup'>
+            <center>
+           
+
+            </center>
+            
+            <h2 className='wait'> <center>Your appointment has successfully updated</center></h2>
+
+            
+            <button onClick={() => setShowPopup(false)} className='btnpop'><Link to = '/Confirm_appointments'>Next</Link></button>
+          </div>
+        )}
+      </div>
+
         <FormGroup className='box_group1'>
       <label htmlFor="name" className='topic1'>Your Name:</label>
       <input className='tboxName1' type="text" id="name" value={name} onChange={handleChange} />
@@ -176,7 +194,7 @@ const handleSubmit = async (e) =>{
       <input className='tboxTime1' type="time" id="time" value={time} onChange={handleChange} />
       </FormGroup>
 
-      <button className='book_btn1'>Update </button>
+      <button className='book_btn1' onClick={() => setShowPopup(true)}> UPDATE </button>
     </form>
 
         </Col>

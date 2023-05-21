@@ -50,7 +50,7 @@ import Profileuser from '../pages/Profileuser'
 import Session from '../pages/Session'
 
 
-
+import CListAppointments from '../admin/CList_appointments'
 import View from '../pages/View'
 
 
@@ -109,6 +109,7 @@ function Routers() {
     <Route path='/*' element={<AppointmentRoute/>} />
       
     <Route path='dashboard' element={<Dashboard/>} />
+    <Route path='CListAppointments' element={<CListAppointments/>} />
     
    
      

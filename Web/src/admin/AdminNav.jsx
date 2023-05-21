@@ -20,7 +20,7 @@ const admin_nav = [
 
   {
     display: 'APPOINTMENTS',
-    path: '/list_appointments'
+    path: '/CListAppointments'
   },
 
   {

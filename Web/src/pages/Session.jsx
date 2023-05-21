@@ -1,13 +1,15 @@
 import React, { useState, useRef, useEffect } from 'react';
 import SimplePeer from 'simple-peer';
+import { useNavigate } from 'react-router-dom';
 import { BsCameraVideoFill, BsCameraVideoOffFill, BsMicFill, BsMicMuteFill } from 'react-icons/bs';
 import { v4 as uuidv4 } from 'uuid';
-import { Container, Row, Col } from 'reactstrap'
+import { Container, Row, Col } from 'reactstrap';
 import '../styles/meeting.css';
-
-import Video from '../assets/images/video.jpg'
-import {motion} from 'framer-motion'
-import {Link} from 'react-router-dom';
+import Video from '../assets/images/video.jpg';
+import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import { db } from '../firebase config';
+import { collection, addDoc } from 'firebase/firestore';
 
 function Session() {
   const [peer, setPeer] = useState(null);
@@ -16,13 +18,32 @@ function Session() {
   const [remoteStream, setRemoteStream] = useState(null);
   const [isVideoOn, setVideoOn] = useState(true);
   const [isAudioOn, setAudioOn] = useState(true);
-  const [isScreenSharing, setScreenSharing] = useState(false); // New state for screen sharing
+  const [isScreenSharing, setScreenSharing] = useState(false);
   const localVideoRef = useRef();
   const remoteVideoRef = useRef();
   const roomId = useRef('');
+  const navigate = useNavigate();
+
+  const saveSessionId = async () => {
+    const sessionData = {
+      sessionId: roomId.current,
+    };
+    await addDoc(collection(db, 'sessions'), sessionData);
+  };
 
   useEffect(() => {
-    roomId.current = uuidv4(); // Generate a unique room ID
+    roomId.current = uuidv4();
+    saveSessionId();
+  }, []);
+
+  useEffect(() => {
+    const saveSessionId = async () => {
+      const sessionData = {
+        sessionId: roomId.current,
+      };
+      await addDoc(collection(db, 'session'), sessionData);
+    };
+    saveSessionId();
   }, []);
 
   const createPeer = () => {
@@ -30,7 +51,6 @@ function Session() {
       .then((stream) => {
         setLocalStream(stream);
         localVideoRef.current.srcObject = stream;
-
         const newPeer = new SimplePeer({ initiator: true, stream });
         setPeer(newPeer);
         setInitiator(true);
@@ -40,7 +60,6 @@ function Session() {
           remoteVideoRef.current.srcObject = stream;
         });
 
-        // Create and share the room ID with the other participant
         const roomData = {
           roomId: roomId.current,
         };
@@ -53,7 +72,6 @@ function Session() {
 
   const joinPeer = () => {
     const preferredMedia = window.prompt('Do you prefer an audio or video meeting? (audio/video)');
-
     if (preferredMedia === 'audio') {
       navigator.mediaDevices.getUserMedia({ audio: true })
         .then((stream) => {
@@ -68,7 +86,6 @@ function Session() {
           });
 
           newPeer.on('signal', (data) => {
-            // Send the room ID to the other participant
             const roomData = {
               roomId: roomId.current,
             };
@@ -93,7 +110,6 @@ function Session() {
           });
 
           newPeer.on('signal', (data) => {
-            // Send the room ID to the other participant
             const roomData = {
               roomId: roomId.current,
             };
@@ -104,7 +120,6 @@ function Session() {
           console.error('Error accessing media devices:', error);
         });
     } else {
-      // User canceled or entered an invalid preference
       return;
     }
   };
@@ -119,6 +134,7 @@ function Session() {
     setInitiator(false);
     setLocalStream(null);
     setRemoteStream(null);
+    navigate('/Feedback'); // Use navigate to redirect to the "/feedback" route
   };
 
   const toggleVideo = () => {
@@ -162,16 +178,11 @@ function Session() {
 
   return (
     <div className='vimg'>
-                <img src={Video} alt=''/>
-                <div className='videoimg'>
-                
-                <h1 className='vtopic'>Chat with a Counselor Now </h1>
-                <h4 className='vchat'> An innovative, practical, and cost-effective replacement for traditional in-person treatment is online video therapy. We are here to offer our clients effective mental assistance and treatment while also assisting them in coping with the problems of daily life. To start improving your life, get in touch with our online video therapist!</h4>
-
-               
-
-              </div>
-
+      <img src={Video} alt=''/>
+      <div className='videoimg'>
+        <h1 className='vtopic'>Chat with a Counselor Now</h1>
+        <h4 className='vchat'>An innovative, practical, and cost-effective replacement for traditional in-person treatment is online video therapy. We are here to offer our clients effective mental assistance and treatment while also assisting them in coping with the problems of daily life. To start improving your life, get in touch with our online video therapist!</h4>
+      </div>
       {localStream && (
         <div className="video-container">
           <video ref={localVideoRef} autoPlay playsInline muted={isVideoOn} />
@@ -179,28 +190,19 @@ function Session() {
         </div>
       )}
 
+      <div className="session-id">
+        {roomId.current && (
+          <h3>Session ID: {roomId.current}</h3>
+        )}
+      </div>
+
       {!peer && (
         <div className="button-container">
-          <motion.button whileTap={{scale:1.2}} button onClick={joinPeer} className="startbtn">Join Video Chat</motion.button>
-           
+          <motion.button whileTap={{ scale: 1.2 }} button onClick={joinPeer} className="startbtn">Join Video Chat</motion.button>
         </div>
       )}
 
-      {/* {initiator && (
-        <div className="info-container">
-          <p>Share the following room ID with the person you want to chat with:</p>
-          <pre>{roomId.current}</pre>
-        </div>
-      )}
-
-      {!initiator && (
-        <div className="info-container">
-          <p>Provide the received room ID to join the video chat:</p>
-          <textarea onChange={(e) => handleSignal(e.target.value)}></textarea>
-        </div>
-      )} */}
-
-      {peer && <button className="hangup-button" onClick={handleHangUp}><Link to = '/Feedback'>Hang Up</Link></button>}
+      {peer && <button className="hangup-button" onClick={handleHangUp}><Link to='/Feedback'>Hang Up</Link></button>}
 
       {peer && (
         <div className="controls">
