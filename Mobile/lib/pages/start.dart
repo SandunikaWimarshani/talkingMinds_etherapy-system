@@ -6,9 +6,7 @@ import 'package:therapy_application/pages/Video/videocall.dart';
 import 'package:therapy_application/pages/appointment.dart';
 import 'package:therapy_application/pages/confirm.dart';
 import 'package:therapy_application/pages/list.dart';
-import 'package:therapy_application/pages/meeting.dart';
 import 'package:therapy_application/pages/schedule.dart';
-import 'package:therapy_application/pages/settings.dart';
 import 'package:therapy_application/pages/welcome.dart';
 
 

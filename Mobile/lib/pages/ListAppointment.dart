@@ -3,7 +3,6 @@ import 'package:intl/intl.dart';
 import 'package:therapy_application/pages/MessagePage.dart';
 import 'package:therapy_application/pages/appointment.dart';
 import 'package:therapy_application/pages/list.dart';
-import 'package:therapy_application/pages/settings.dart';
 import 'package:therapy_application/pages/welcome.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -320,6 +319,7 @@ class _UpdateFormState extends State<UpdateForm> {
           ),
         ),
       ),
+      
     );
   }
 }

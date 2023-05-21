@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:therapy_application/pages/Settings/profile.dart';
 import 'package:therapy_application/pages/appointment.dart';
 import 'package:therapy_application/pages/chatScreen.dart';
 import 'package:therapy_application/pages/confirm.dart';
 import 'package:therapy_application/pages/list.dart';
-import 'package:therapy_application/pages/meeting.dart';
-import 'package:therapy_application/pages/settings.dart';
 import 'package:therapy_application/pages/welcome.dart';
 
 void main() {
@@ -76,7 +75,7 @@ class _ChatScreenState extends State<ChatScreen> {
               backgroundColor: Colors.transparent
             ),
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) =>  chatScreen()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) =>  Profile()));
             },
           ),
           
@@ -167,7 +166,7 @@ class _ChatScreenState extends State<ChatScreen> {
           if (index == 3) {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const Settings()),
+              MaterialPageRoute(builder: (context) => const Profile()),
             );
           }
           setState(() {

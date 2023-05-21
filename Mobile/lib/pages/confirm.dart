@@ -2,15 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:therapy_application/pages/Chat/Messages.dart';
 import 'package:therapy_application/pages/Chat/chatScreen.dart';
 import 'package:therapy_application/pages/MessagePage.dart';
-import 'package:therapy_application/pages/Video/videocall.dart';
-import 'package:therapy_application/pages/Video/Videocall.dart';
+import 'package:therapy_application/pages/Settings/profile.dart';
 import 'package:therapy_application/pages/appointment.dart';
 import 'package:therapy_application/pages/chatScreen.dart';
 import 'package:therapy_application/pages/confirm.dart';
 import 'package:therapy_application/pages/list.dart';
-import 'package:therapy_application/pages/meeting.dart';
 import 'package:therapy_application/pages/schedule.dart';
-import 'package:therapy_application/pages/settings.dart';
 import 'package:therapy_application/pages/welcome.dart';
 
 class Confirm extends StatefulWidget {
@@ -35,7 +32,7 @@ class _ConfirmState extends State<Confirm> {
         backgroundColor: Colors.white,
         leading: IconButton(
           onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => chatScreen()));
+            Navigator.push(context, MaterialPageRoute(builder: (context) => Appointment()));
           },
           icon: const Icon(Icons.arrow_back_ios_new_sharp),
           iconSize: 20,
@@ -49,7 +46,7 @@ class _ConfirmState extends State<Confirm> {
               backgroundColor: Colors.transparent,
             ),
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => chatScreen()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => ChatApp()));
             },
           ),
         ],
@@ -98,7 +95,7 @@ class _ConfirmState extends State<Confirm> {
                     Spacer(),
                     GestureDetector(
                       onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => chatScreen()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => ChatApp()));
                       },
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -143,7 +140,7 @@ class _ConfirmState extends State<Confirm> {
             Navigator.push(context, MaterialPageRoute(builder: (context) => ChatApp()));
           }
           if (index == 3) {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => const Settings()));
+            Navigator.push(context, MaterialPageRoute(builder: (context) => const Profile()));
           }
           setState(() {
             myIndex = index;

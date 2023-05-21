@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:therapy_application/pages/MessagePage.dart';
+import 'package:therapy_application/pages/Settings/profile.dart';
 import 'package:therapy_application/pages/appointment.dart';
 import 'package:therapy_application/pages/list.dart';
 import 'package:therapy_application/pages/quiz.dart/fiveth_quiz.dart';
 import 'package:therapy_application/pages/schedule.dart';
-import 'package:therapy_application/pages/settings.dart';
 import 'package:therapy_application/pages/welcome.dart';
 
 class New extends StatefulWidget {
@@ -128,7 +128,7 @@ class _NewState extends State<New> {
               Navigator.push(context, MaterialPageRoute(builder: (context) => ChatApp()));
             }
             if(index ==3){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const Settings()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const Profile()));
             }
             setState(() {
               myIndex = index;

@@ -3,7 +3,7 @@ import 'package:therapy_application/pages/appointment.dart';
 import 'package:therapy_application/pages/first.dart';
 import 'package:therapy_application/pages/list.dart';
 import 'package:therapy_application/pages/schedule.dart';
-import 'package:therapy_application/pages/settings.dart';
+
 
 class Welcome extends StatefulWidget {
   const Welcome({super.key});

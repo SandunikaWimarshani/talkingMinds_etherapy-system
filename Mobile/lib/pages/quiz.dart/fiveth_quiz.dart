@@ -6,7 +6,6 @@ import 'package:therapy_application/pages/list.dart';
 import 'package:therapy_application/pages/new.dart';
 import 'package:therapy_application/pages/quiz.dart/fourth_quiz.dart';
 import 'package:therapy_application/pages/schedule.dart';
-import 'package:therapy_application/pages/settings.dart';
 import 'package:therapy_application/pages/start.dart';
 import 'package:therapy_application/pages/welcome.dart';
 
@@ -378,46 +377,6 @@ class _FivethQuizState extends State<FivethQuiz> {
       ),
       
     ),
-    // bottomNavigationBar: BottomNavigationBar(
-    //   type: BottomNavigationBarType.fixed,
-    //       onTap: (index) {
-    //         if(index == 0){
-    //           Navigator.push(context, MaterialPageRoute(builder: (context) => const Welcome()));
-    //         } 
-    //         if(index ==1){
-    //           Navigator.push(context, MaterialPageRoute(builder: (context) => const Lists()));
-    //         }
-    //         if(index ==2){
-    //           Navigator.push(context, MaterialPageRoute(builder: (context) => const Appointment()));
-    //         }
-    //         if(index ==3){
-    //           Navigator.push(context, MaterialPageRoute(builder: (context) => const Settings()));
-    //         }
-    //         setState(() {
-    //           myIndex = index;
-    //         });
-            
-    //       },
-    //       currentIndex: myIndex,
-    //       items: const [
-    //       BottomNavigationBarItem(
-    //         icon: Icon(Icons.home),
-    //         label: 'Home',
-    //         ),
-          
-    //       BottomNavigationBarItem(
-    //         icon: Icon(Icons.list_alt_outlined),
-    //         label: 'List'
-    //       ),
-    //       BottomNavigationBarItem(
-    //         icon: Icon(Icons.feedback_outlined),
-    //         label: 'Feedback'
-    //       ),
-    //       BottomNavigationBarItem(
-    //         icon: Icon(Icons.settings),
-    //         label: 'Settings'
-    //       )
-    //     ]),
     
     
     );

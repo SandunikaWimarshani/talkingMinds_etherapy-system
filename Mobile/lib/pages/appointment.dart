@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:therapy_application/pages/ListAppointment.dart';
 import 'package:therapy_application/pages/MessagePage.dart';
+import 'package:therapy_application/pages/Settings/profile.dart';
 import 'package:therapy_application/pages/confirm.dart';
 import 'package:therapy_application/pages/list.dart';
 import 'package:therapy_application/pages/schedule.dart';
@@ -233,7 +234,7 @@ class _AppointmentState extends State<Appointment> {
           if (index == 3) {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const Appointment()),
+              MaterialPageRoute(builder: (context) => const Profile()),
             );
           }
           setState(() {

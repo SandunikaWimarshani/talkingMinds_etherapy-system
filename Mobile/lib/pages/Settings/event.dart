@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:therapy_application/pages/settings.dart';
+import 'package:therapy_application/pages/Settings/profile.dart';
+
 
 class Event extends StatefulWidget {
   const Event({Key? key}) : super(key: key);
@@ -22,7 +23,7 @@ class _EventState extends State<Event> {
         backgroundColor: Colors.white,
         leading: IconButton(
           onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => const Settings()));
+            Navigator.push(context, MaterialPageRoute(builder: (context) => const Profile()));
           },
           icon: const Icon(Icons.arrow_back_ios_new_sharp),
           iconSize: 20,

@@ -8,10 +8,9 @@ import 'package:therapy_application/pages/Profiles/profile3.dart';
 import 'package:therapy_application/pages/Profiles/profile4.dart';
 import 'package:therapy_application/pages/Profiles/profile5.dart';
 import 'package:therapy_application/pages/Profiles/profile6.dart';
+import 'package:therapy_application/pages/Settings/profile.dart';
 import 'package:therapy_application/pages/appointment.dart';
-
 import 'package:therapy_application/pages/schedule.dart';
-import 'package:therapy_application/pages/settings.dart';
 import 'package:therapy_application/pages/welcome.dart';
 
 
@@ -598,7 +597,7 @@ class _ListsState extends State<Lists> {
               Navigator.push(context, MaterialPageRoute(builder: (context) => ChatApp()));
             }
             if(index ==3){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const Settings()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const Profile()));
             }
             setState(() {
               myIndex = index;

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:therapy_application/pages/MessagePage.dart';
+import 'package:therapy_application/pages/Settings/profile.dart';
 import 'package:therapy_application/pages/appointment.dart';
 import 'package:therapy_application/pages/list.dart';
 import 'package:therapy_application/pages/welcome.dart';
@@ -62,6 +63,8 @@ class _ScheduleState extends State<Schedule> {
           iconSize: 20,
           color: Colors.black,
         ),
+
+        
         actions: [
           TextButton(
             child: const Text('Next'),
@@ -302,7 +305,7 @@ class _ScheduleState extends State<Schedule> {
                 context, MaterialPageRoute(builder: (context) => ChatApp()));
           } else if (index == 3) {
             Navigator.push(context,
-                MaterialPageRoute(builder: (context) => Appointment()));
+                MaterialPageRoute(builder: (context) => Profile()));
           }
           setState(() {
             myIndex = index;

@@ -44,9 +44,7 @@ dependencies:
   go_router: ^6.2.0
   intl:
   flutter_rating_bar: ^4.0.1
-  # flutter_webrtc: ^0.9.30+hotfix.2
  
-  # web_socket_channel: ^2.1.0
  
   
   
@@ -90,7 +88,7 @@ flutter:
      - assets/Images/pro4.jpg
      - assets/Images/pro5.jpg
      - assets/Images/pro6.jpg
-     - assets/Images/profile.jpg
+     - assets/Images/letter.png
      - assets/Images/start.jpg
      - assets/Images/chat.jpg
     

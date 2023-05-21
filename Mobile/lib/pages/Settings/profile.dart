@@ -1,5 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:therapy_application/pages/settings.dart';
+import 'package:therapy_application/pages/Chat/feedbackPage.dart';
+import 'package:therapy_application/pages/MessagePage.dart';
+import 'package:therapy_application/pages/Settings/changepswd.dart';
+import 'package:therapy_application/pages/Settings/event.dart';
+import 'package:therapy_application/pages/Settings/privacy.dart';
+import 'package:therapy_application/pages/Settings/signout.dart';
+import 'package:therapy_application/pages/list.dart';
+import 'package:therapy_application/pages/welcome.dart';
+
 
 class Profile extends StatefulWidget {
   const Profile({Key? key}) : super(key: key);
@@ -9,9 +17,22 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
-  final String _fullName = "Jane Andria";
-  final String _email = "jane45@gmail.com";
-  final String _about = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
+  int myIndex = 0;
+
+  final String _fullName = "Sandunika";
+  final String _email = "sandunika@gmail.com";
+
+  void _navigateToEditProfile() {
+    // Replace EditProfileScreen with the actual screen for editing the profile
+    Navigator.push(context, MaterialPageRoute(builder: (context) => EditProfileScreen()));
+  }
+
+  // Function to log out the user
+  void _logout() {
+    // Implement your logout logic here, such as clearing user session, etc.
+    // After logging out, navigate the user to the login or sign-up screen
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginScreen()));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,14 +43,7 @@ class _ProfileState extends State<Profile> {
         elevation: 0,
         brightness: Brightness.light,
         backgroundColor: Colors.white,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => const Settings()));
-          },
-          icon: const Icon(Icons.arrow_back_ios_new_sharp),
-          iconSize: 20,
-          color: Colors.black,
-        ),
+        
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -62,10 +76,10 @@ class _ProfileState extends State<Profile> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 CircleAvatar(
-                  radius: 56.0,
-                  backgroundImage: AssetImage('assets/Images/profile.jpg'),
+                  radius: 40.0,
+                  backgroundImage: AssetImage('assets/Images/letter.png'),
                 ),
-                const SizedBox(width: 16.0),
+                const SizedBox(width: 15.0),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -80,7 +94,10 @@ class _ProfileState extends State<Profile> {
                         style: const TextStyle(fontSize: 16.0, color: Colors.grey),
                       ),
                       const SizedBox(height: 8.0),
-                      
+                      ElevatedButton(
+                        onPressed: _navigateToEditProfile,
+                        child: Text('Edit Profile'),
+                      ),
                     ],
                   ),
                 ),
@@ -88,20 +105,141 @@ class _ProfileState extends State<Profile> {
             ),
             const SizedBox(height: 16.0),
             Text(
-              "About Me",
-              style: const TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+              'Settings',
+              style: TextStyle(
+                fontSize: 18.0,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-            const SizedBox(height: 8.0),
-            Text(
-              _about,
-              style: const TextStyle(fontSize: 16.0, color: Colors.grey),
+            ListTile(
+              leading: Icon(Icons.lock),
+              title: Text('Change Password'),
+              trailing: Icon(Icons.arrow_forward_ios_rounded),
+              onTap: () {
+               Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ChangePassword()),
+                );
+              },
             ),
-           
             
-          ]
-        )
-        )
-      );
+            ListTile(
+              leading: Icon(Icons.notifications),
+              title: Text('Notifications'),
+              trailing: Icon(Icons.arrow_forward_ios_rounded),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Event()),
+                );
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.privacy_tip),
+              title: Text('Privacy Policy'),
+              trailing: Icon(Icons.arrow_forward_ios_rounded),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Privacy()),
+                );
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.feedback),
+              title: Text('Feedback'),
+              trailing: Icon(Icons.arrow_forward_ios_rounded),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => FeedbackPage()),
+                );
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.logout_outlined),
+              title: Text('Signout'),
+              trailing: Icon(Icons.arrow_forward_ios_rounded),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Signout()),
+                );
+              },
+            ),
+          ],
+        ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+          onTap: (index) {
+            if(index == 0){
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const Welcome()));
+            } 
+            if(index ==1){
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const Lists()));
+            }
+            if(index ==2){
+              Navigator.push(context, MaterialPageRoute(builder: (context) => ChatApp()));
+            }
+            if(index ==3){
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const Profile()));
+            }
+            setState(() {
+              myIndex = index;
+            });
+            
+          },
+          currentIndex: myIndex,
+          items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+            ),
+          
+          BottomNavigationBarItem(
+            icon: Icon(Icons.list_alt_outlined),
+            label: 'List'
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.message_outlined),
+            label: 'Chat'
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: 'Settings'
+          )
+        ]),
+    );
   }
 }
-    
+
+class EditProfileScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // Implement the UI for editing the profile here
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Edit Profile'),
+      ),
+      body: Container(
+        // UI for editing the profile details
+      ),
+    );
+  }
+}
+
+class LoginScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // Implement the UI for the login or sign-up screen here
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Login'),
+      ),
+      body: Container(
+        // UI for the login or sign-up form
+      ),
+    );
+  }
+}
