@@ -56,7 +56,7 @@ class _ScheduleState extends State<Schedule> {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => Appointment()),
+              MaterialPageRoute(builder: (context) => Schedule()),
             );
           },
           icon: const Icon(Icons.arrow_back_ios_new_sharp),
@@ -302,7 +302,7 @@ class _ScheduleState extends State<Schedule> {
                 MaterialPageRoute(builder: (context) => const Lists()));
           } else if (index == 2) {
             Navigator.push(
-                context, MaterialPageRoute(builder: (context) => ChatApp()));
+                context, MaterialPageRoute(builder: (context) => Appointment()));
           } else if (index == 3) {
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => Profile()));
@@ -322,8 +322,8 @@ class _ScheduleState extends State<Schedule> {
             label: 'List',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.chat_bubble_outline),
-            label: 'Chat',
+            icon: Icon(Icons.schedule_outlined),
+            label: 'Schedule',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),

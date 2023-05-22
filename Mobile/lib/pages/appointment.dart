@@ -228,7 +228,7 @@ class _AppointmentState extends State<Appointment> {
           if (index == 2) {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) =>  ChatApp()),
+              MaterialPageRoute(builder: (context) =>  Appointment()),
             );
           }
           if (index == 3) {
@@ -252,8 +252,8 @@ class _AppointmentState extends State<Appointment> {
             label: 'List',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.chat_bubble_outline),
-            label: 'Chat',
+            icon: Icon(Icons.schedule_outlined),
+            label: 'Schedule',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),

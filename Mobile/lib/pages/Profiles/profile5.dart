@@ -251,7 +251,7 @@ class _profileFiveState extends State<profileFive> {
               Navigator.push(context, MaterialPageRoute(builder: (context) => const Lists()));
             }
             if(index ==2){
-              Navigator.push(context, MaterialPageRoute(builder: (context) =>  ChatApp()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) =>  Appointment()));
             }
             if(index ==3){
               Navigator.push(context, MaterialPageRoute(builder: (context) => const Profile()));
@@ -272,8 +272,8 @@ class _profileFiveState extends State<profileFive> {
             label: 'List'
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.chat_bubble_outline),
-            label: 'Chat'
+            icon: Icon(Icons.schedule_outlined),
+            label: 'Schedule'
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),

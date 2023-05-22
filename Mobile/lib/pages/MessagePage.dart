@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:therapy_application/pages/Settings/profile.dart';
 import 'package:therapy_application/pages/appointment.dart';
-import 'package:therapy_application/pages/chatScreen.dart';
 import 'package:therapy_application/pages/confirm.dart';
 import 'package:therapy_application/pages/list.dart';
 import 'package:therapy_application/pages/welcome.dart';
@@ -160,7 +159,7 @@ class _ChatScreenState extends State<ChatScreen> {
           if (index == 2) {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => ChatApp()),
+              MaterialPageRoute(builder: (context) => Appointment()),
             );
           }
           if (index == 3) {
@@ -184,8 +183,8 @@ class _ChatScreenState extends State<ChatScreen> {
             label: 'List',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.chat_bubble_outline),
-            label: 'ChatApp',
+            icon: Icon(Icons.schedule_outlined),
+            label: 'Schedule',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),

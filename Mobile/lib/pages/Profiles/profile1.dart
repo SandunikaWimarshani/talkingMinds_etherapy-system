@@ -243,7 +243,7 @@ class _profileOneState extends State<profileOne> {
             }
             if (index == 2) {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => ChatApp()));
+                  MaterialPageRoute(builder: (context) => Appointment()));
             }
             if (index == 3) {
               Navigator.push(context,
@@ -262,7 +262,7 @@ class _profileOneState extends State<profileOne> {
             BottomNavigationBarItem(
                 icon: Icon(Icons.list_alt_outlined), label: 'List'),
             BottomNavigationBarItem(
-                icon: Icon(Icons.message_outlined), label: 'Chat'),
+                icon: Icon(Icons.schedule_outlined), label: 'Schedule'),
                 
             BottomNavigationBarItem(
                 icon: Icon(Icons.settings), label: 'Settings')

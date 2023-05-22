@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:therapy_application/pages/Chat/Messages.dart';
-import 'package:therapy_application/pages/Chat/chatScreen.dart';
 import 'package:therapy_application/pages/MessagePage.dart';
 import 'package:therapy_application/pages/Settings/profile.dart';
 import 'package:therapy_application/pages/appointment.dart';
-import 'package:therapy_application/pages/chatScreen.dart';
 import 'package:therapy_application/pages/confirm.dart';
 import 'package:therapy_application/pages/list.dart';
 import 'package:therapy_application/pages/schedule.dart';
@@ -137,7 +135,7 @@ class _ConfirmState extends State<Confirm> {
             Navigator.push(context, MaterialPageRoute(builder: (context) => const Lists()));
           }
           if (index == 2) {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => ChatApp()));
+            Navigator.push(context, MaterialPageRoute(builder: (context) => Appointment()));
           }
           if (index == 3) {
             Navigator.push(context, MaterialPageRoute(builder: (context) => const Profile()));
@@ -157,8 +155,8 @@ class _ConfirmState extends State<Confirm> {
             label: 'List',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.chat_bubble_outline),
-            label: 'Chat',
+            icon: Icon(Icons.schedule_outlined),
+            label: 'Shedule',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),

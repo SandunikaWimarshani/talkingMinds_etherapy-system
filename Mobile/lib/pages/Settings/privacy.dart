@@ -63,13 +63,7 @@ class _PrivacyState extends State<Privacy> {
             ),
             const SizedBox(height: 16),
             Text(
-              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. '
-              'Suspendisse efficitur arcu in elit laoreet, sed faucibus justo euismod. '
-              'Nunc aliquet, elit sit amet cursus tempor, turpis nunc pulvinar odio, '
-              'eu fringilla velit urna sed metus. Ut vitae augue justo. Mauris iaculis '
-              'ex nec orci lacinia, eget aliquam lorem molestie. Curabitur interdum, '
-              'dui eget varius consectetur, lectus lacus auctor erat, ut lobortis augue '
-              'lorem et arcu. In hac habitasse platea dictumst.',
+              '........................................................',
               style: TextStyle(fontSize: 16),
             ),
             const SizedBox(height: 16),
@@ -82,13 +76,7 @@ class _PrivacyState extends State<Privacy> {
             ),
             const SizedBox(height: 16),
             Text(
-              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. '
-              'Suspendisse efficitur arcu in elit laoreet, sed faucibus justo euismod. '
-              'Nunc aliquet, elit sit amet cursus tempor, turpis nunc pulvinar odio, '
-              'eu fringilla velit urna sed metus. Ut vitae augue justo. Mauris iaculis '
-              'ex nec orci lacinia, eget aliquam lorem molestie. Curabitur interdum, '
-              'dui eget varius consectetur, lectus lacus auctor erat, ut lobortis augue '
-              'lorem et arcu. In hac habitasse platea dictumst.',
+              '......................................................',
               style: TextStyle(fontSize: 16),
             ),
           ],

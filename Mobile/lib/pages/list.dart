@@ -594,7 +594,7 @@ class _ListsState extends State<Lists> {
               Navigator.push(context, MaterialPageRoute(builder: (context) => const Lists()));
             }
             if(index ==2){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => ChatApp()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => Appointment()));
             }
             if(index ==3){
               Navigator.push(context, MaterialPageRoute(builder: (context) => const Profile()));
@@ -616,8 +616,8 @@ class _ListsState extends State<Lists> {
             label: 'List'
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.message_outlined),
-            label: 'Chat'
+            icon: Icon(Icons.schedule_outlined),
+            label: 'Shedule'
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),
