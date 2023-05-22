@@ -55,7 +55,7 @@ function ChatScreen() {
       </Row>
       <div className='button-container'>
           <button className='pre1'><Link to = '/Chatbot'>Back</Link></button>
-          <button className='next1'><Link to = '/Session'>Next</Link></button>
+          <button className='next1'><Link to = '/SessionUser'>Next</Link></button>
 
 
           

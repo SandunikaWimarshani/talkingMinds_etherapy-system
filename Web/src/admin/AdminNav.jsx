@@ -24,6 +24,11 @@ const admin_nav = [
   },
 
   {
+    display: 'Session',
+    path: '/Session'
+  },
+
+  {
     display: 'SIGNOUT',
     path: '/signout'
   },

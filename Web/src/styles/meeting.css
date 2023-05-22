@@ -118,3 +118,57 @@ textarea {
   font-weight: 500;
   color: #630f78;
 }
+
+
+.buttons1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  margin-left: 1400px;
+}
+
+.buttons1 button {
+  background-color: #550434;
+  color: #fff;
+  border: none;
+  outline: none;
+  padding: 10px 20px;
+  margin: 0 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 300px;
+  height: 50px;
+  margin-bottom: 20px;
+}
+
+.buttons button1:hover {
+  background-color: #0095e0;
+}
+
+.session-id {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.session-id input[type="text"] {
+  padding: 10px;
+  border: 1px solid #a6a6a6;
+  border-radius: 4px;
+  outline: none;
+}
+
+.session-id h3 {
+  margin: 0;
+  font-size: 18px;
+  color: #a6a6a6;
+  margin-top: 10px;
+}
+
+.txtsession{
+  width: 500px;
+  margin-top: 20px;
+}
+

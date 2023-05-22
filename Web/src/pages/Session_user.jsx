@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 import { db } from '../firebase config';
 import { collection, addDoc } from 'firebase/firestore';
 
-function Session() {
+function SessionUser() {
   const [peer, setPeer] = useState(null);
   const [initiator, setInitiator] = useState(false);
   const [localStream, setLocalStream] = useState(null);
@@ -19,20 +19,15 @@ function Session() {
   const [isVideoOn, setVideoOn] = useState(true);
   const [isAudioOn, setAudioOn] = useState(true);
   const [isScreenSharing, setScreenSharing] = useState(false);
+  const [sessionId, setSessionId] = useState('');
   const localVideoRef = useRef();
   const remoteVideoRef = useRef();
-  const roomId = useRef('');
   const navigate = useNavigate();
-
-  useEffect(() => {
-    roomId.current = uuidv4();
-    saveSessionId();
-  }, []);
 
   const saveSessionId = async () => {
     try {
       const sessionData = {
-        sessionId: roomId.current,
+        sessionId: sessionId,
       };
       const docRef = await addDoc(collection(db, 'sessions'), sessionData);
       console.log('Session ID saved with ID: ', docRef.id);
@@ -40,6 +35,12 @@ function Session() {
       console.error('Error saving session ID:', error);
     }
   };
+
+  useEffect(() => {
+    if (sessionId) {
+      saveSessionId();
+    }
+  }, [sessionId]);
 
   const createPeer = () => {
     navigator.mediaDevices.getUserMedia({ video: true, audio: true })
@@ -56,7 +57,7 @@ function Session() {
         });
 
         const roomData = {
-          roomId: roomId.current,
+          roomId: sessionId,
         };
         newPeer.signal(JSON.stringify(roomData));
       })
@@ -66,32 +67,57 @@ function Session() {
   };
 
   const joinPeer = () => {
-    const preferredMedia = window.prompt('Do you prefer an audio or video meeting? (audio/video)');
-    const constraints = preferredMedia === 'audio' ? { audio: true } : { video: true, audio: true };
+    if (sessionId) {
+      const preferredMedia = window.prompt('Do you prefer an audio or video meeting? (audio/video)');
+      if (preferredMedia === 'audio') {
+        navigator.mediaDevices.getUserMedia({ audio: true })
+          .then((stream) => {
+            setLocalStream(stream);
 
-    navigator.mediaDevices.getUserMedia(constraints)
-      .then((stream) => {
-        setLocalStream(stream);
-        localVideoRef.current.srcObject = stream;
+            const newPeer = new SimplePeer({ initiator: false, stream });
+            setPeer(newPeer);
 
-        const newPeer = new SimplePeer({ initiator: false, stream });
-        setPeer(newPeer);
+            newPeer.on('stream', (stream) => {
+              setRemoteStream(stream);
+              remoteVideoRef.current.srcObject = stream;
+            });
 
-        newPeer.on('stream', (stream) => {
-          setRemoteStream(stream);
-          remoteVideoRef.current.srcObject = stream;
-        });
+            newPeer.on('signal', (data) => {
+              const roomData = {
+                roomId: sessionId,
+              };
+              newPeer.signal(JSON.stringify(roomData));
+            });
+          })
+          .catch((error) => {
+            console.error('Error accessing audio device:', error);
+          });
+      } else if (preferredMedia === 'video') {
+        navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+          .then((stream) => {
+            setLocalStream(stream);
+            localVideoRef.current.srcObject = stream;
 
-        newPeer.on('signal', (data) => {
-          const roomData = {
-            roomId: roomId.current,
-          };
-          newPeer.signal(JSON.stringify(roomData));
-        });
-      })
-      .catch((error) => {
-        console.error('Error accessing media devices:', error);
-      });
+            const newPeer = new SimplePeer({ initiator: false, stream });
+            setPeer(newPeer);
+
+            newPeer.on('stream', (stream) => {
+              setRemoteStream(stream);
+              remoteVideoRef.current.srcObject = stream;
+            });
+
+            newPeer.on('signal', (data) => {
+              const roomData = {
+                roomId: sessionId,
+              };
+              newPeer.signal(JSON.stringify(roomData));
+            });
+          })
+          .catch((error) => {
+            console.error('Error accessing media devices:', error);
+          });
+      }
+    }
   };
 
   const handleSignal = (data) => {
@@ -146,6 +172,10 @@ function Session() {
     }
   };
 
+  const handleSessionIdChange = (event) => {
+    setSessionId(event.target.value);
+  };
+
   return (
     <div className='vimg'>
       <img src={Video} alt=''/>
@@ -161,8 +191,17 @@ function Session() {
       )}
 
       <div className="session-id">
-        {roomId.current && (
-          <h3>Session ID: {roomId.current}</h3>
+        {!peer && (
+          <input
+            type="text"
+            placeholder="Enter Session ID"
+            value={sessionId}
+            onChange={handleSessionIdChange}
+            className='txtsession'
+          />
+        )}
+        {sessionId && (
+          <h3>Session ID: {sessionId}</h3>
         )}
       </div>
 
@@ -194,4 +233,4 @@ function Session() {
   );
 }
 
-export default Session;
+export default SessionUser;

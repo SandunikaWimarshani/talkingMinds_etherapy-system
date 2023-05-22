@@ -32,7 +32,7 @@ function Chatbot() {
                             <Form classname='box'>
                            
                             <button className='lets-start-btn'><Link to = '/chatScreen'>  Chat with message </Link></button>
-                            <button className='lets-start-btn'><Link to = '/session'>  Let's Meeting </Link></button>
+                            <button className='lets-start-btn'><Link to = '/SessionUser'>  Let's Meeting </Link></button>
 
                             
 

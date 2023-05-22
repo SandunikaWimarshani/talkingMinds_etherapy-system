@@ -48,6 +48,7 @@ import Chatbot from '../pages/Chatbot'
 import ChatScreen from '../pages/Screen'
 import Profileuser from '../pages/Profileuser'
 import Session from '../pages/Session'
+import SessionUser from '../pages/Session_user'
 
 
 import CListAppointments from '../admin/CList_appointments'
@@ -93,8 +94,9 @@ function Routers() {
     <Route path='ChatScreen' element = {< ChatScreen/>} />
     <Route path='Profileuser' element = {<Profileuser/>} />
     <Route path='Session' element = {<Session/>} />
-   
+    <Route path='SessionUser' element = {<SessionUser/>} />
     
+  
   
     <Route path='view' element={<View/>} />
     
