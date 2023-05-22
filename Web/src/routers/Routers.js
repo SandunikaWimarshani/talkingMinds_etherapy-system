@@ -30,7 +30,6 @@ import View_user  from '../admin/View_user'
 
 // import User from '../admin/User'
 
-import Video from '../pages/video'
 
 
 import ProfileOne from '../components/Profiles/ProfileOne'
@@ -52,7 +51,7 @@ import SessionUser from '../pages/Session_user'
 
 
 import CListAppointments from '../admin/CList_appointments'
-import View from '../pages/View'
+
 
 
 
@@ -75,7 +74,6 @@ function Routers() {
     <Route path='User_profile' element={<User_profile/>} />
     <Route path='View_user' element={<View_user/>} />
 
-    <Route path='video' element={<Video/>} />
     
     <Route path='profileOne' element={<ProfileOne/>} />
     <Route path='profileTwo' element={<ProfileTwo/>} />
@@ -97,8 +95,6 @@ function Routers() {
     <Route path='SessionUser' element = {<SessionUser/>} />
     
   
-  
-    <Route path='view' element={<View/>} />
     
 
     <Route path='quiz' element={<Quiz/>} />

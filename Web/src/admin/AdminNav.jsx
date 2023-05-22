@@ -24,7 +24,7 @@ const admin_nav = [
   },
 
   {
-    display: 'Session',
+    display: 'SESSION',
     path: '/Session'
   },
 
