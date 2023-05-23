@@ -45,7 +45,6 @@ import ConfirmAppointment from '../pages/Confirm_appointments'
 
 import Chatbot from '../pages/Chatbot'
 import ChatScreen from '../pages/Screen'
-import Profileuser from '../pages/Profileuser'
 import Session from '../pages/Session'
 import SessionUser from '../pages/Session_user'
 
@@ -90,7 +89,6 @@ function Routers() {
   
     <Route path='Chatbot' element = {<Chatbot/>} />
     <Route path='ChatScreen' element = {< ChatScreen/>} />
-    <Route path='Profileuser' element = {<Profileuser/>} />
     <Route path='Session' element = {<Session/>} />
     <Route path='SessionUser' element = {<SessionUser/>} />
     

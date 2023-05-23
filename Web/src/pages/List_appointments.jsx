@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Row, Col, Table, Button } from 'reactstrap';
+import { Container, Row, Col, Table, Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { db } from '../firebase config';
 import { collection, query, onSnapshot, orderBy, deleteDoc, doc } from 'firebase/firestore';
-import { Link, useNavigate } from 'react-router-dom'
-import '../styles/list-appointments.css'
+import { Link, useNavigate } from 'react-router-dom';
+import '../styles/list-appointments.css';
 
 function ListAppointments() {
+  const [showPopup, setShowPopup] = useState(false);
   const [appointments, setAppointments] = useState([]);
   const [successMessage, setSuccessMessage] = useState('');
+  const [selectedAppointment, setSelectedAppointment] = useState(null);
+  const [showDetails, setShowDetails] = useState(false);
 
   const navigate = useNavigate();
 
@@ -35,9 +38,8 @@ function ListAppointments() {
   };
 
   const handleEdit = (id) => {
-    // Handle edit logic here
     console.log(`Editing appointment with id ${id}`);
-    navigate(`/Update_appointments/${id}`)
+    navigate(`/Update_appointments/${id}`);
   };
 
   const deleteAppointment = async (id) => {
@@ -51,11 +53,34 @@ function ListAppointments() {
       }
     }
   };
-  
+
+  const toggleDetailsModal = () => {
+    setShowDetails(!showDetails);
+  };
+
+  const openAppointmentDetails = (appointment) => {
+    setSelectedAppointment(appointment);
+    toggleDetailsModal();
+  };
+
   return (
+
+    
     <Container>
       <Row>
         <Col lg='12'>
+        <div className={showPopup ? 'overlay' : ''} onClick={() => setShowPopup(false)}>
+          {showPopup && (
+            <div className='popup'>
+              
+              <h2 className='wait'> Your Appointments is Confirmed!</h2>
+              <button onClick={() => setShowPopup(true)} className='btnpop'>
+              <Link to='/Confirm_appointments'>OK</Link>
+              </button>
+              
+            </div>
+          )}
+        </div>
           <h1 className='booking_title'>Appointments List</h1>
           {successMessage && <p>{successMessage}</p>}
           <Table className='table'>
@@ -66,7 +91,6 @@ function ListAppointments() {
                 <th className='columns'>Counselor Name</th>
                 <th className='columns'>Date</th>
                 <th className='columns'>Time</th>
-                
                 <th className='columns actions-column'>Actions</th>
               </tr>
             </thead>
@@ -78,21 +102,28 @@ function ListAppointments() {
                   <td>{appointment.counselorName}</td>
                   <td>{appointment.date}</td>
                   <td>{appointment.time}</td>
-                  
                   <td>
-                    <button className='dlt-btn' onClick={() => deleteAppointment(appointment.id)}>Delete</button>
+                    <button className='dlt-btn' onClick={() => deleteAppointment(appointment.id)}>
+                      Delete
+                    </button>
                     {' '}
                     <Button className='edit-btn' color='warning' onClick={() => handleEdit(appointment.id)}>
-                    {/* <Link to= '/Update_appointments'>Edit </Link> */}
-                    Edit
+                      Edit
+                    </Button>
+                    {' '}
+                    <Button className='view-btn' color='primary'  onClick={() => setShowPopup(true)}>
+                   
+                      View
                     </Button>
                   </td>
                 </tr>
               ))}
             </tbody>
           </Table>
+          
         </Col>
       </Row>
+      
     </Container>
   );
 }

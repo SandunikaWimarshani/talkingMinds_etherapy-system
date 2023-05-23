@@ -26,28 +26,7 @@ function Appointments() {
   
   const appointmentRef = collection (db, 'appointment')
 
-  // const AddAppointments = async(e)=>{
-  //   e.preventDefault()
-
-  //   const Appointment ={
-      // name:enteryourname,
-      // email: enteryouremail,
-      // counselorName: entercounselorname,
-      // date: enterdate,
-      // time: entertime,
-      // mode: entermode
-  //   };
-
-  //   //add appointments to the firebase database
-  //   try{
-
-  //   }catch(error){
-
-  //   }
-
-
-  //   console.log(Appointment);
-  // }
+  
 
   const AddAppointments = async(event) => {
     event.preventDefault();

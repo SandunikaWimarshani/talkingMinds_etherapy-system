@@ -4,7 +4,6 @@ import { db } from '../firebase config';
 import { collection, query, onSnapshot, orderBy, deleteDoc, doc, where } from 'firebase/firestore';
 import { Link, useNavigate } from 'react-router-dom';
 import '../styles/clist-appointments.css';
-
 function CListAppointments() {
   const [appointments, setAppointments] = useState([]);
   const [successMessage, setSuccessMessage] = useState('');
@@ -56,6 +55,16 @@ function CListAppointments() {
     setSearchQuery(event.target.value);
   };
 
+  const confirmAppointment = async (id) => {
+    try {
+      // TODO: Update the appointment in the database to mark it as confirmed
+      setSuccessMessage('Appointment confirmed successfully');
+      // TODO: Send a notification for confirming the appointment
+    } catch (error) {
+      console.error('Error confirming appointment: ', error);
+    }
+  };
+
   const filteredAppointments = appointments.filter((appointment) =>
     appointment.counselorName.toLowerCase().includes(searchQuery.toLowerCase())
   );
@@ -102,6 +111,12 @@ function CListAppointments() {
                     <Button className='edit-btn' color='warning' onClick={() => handleEdit(appointment.id)}>
                       Edit
                     </Button>
+                    {' '}
+                    {!appointment.confirmed && (
+                      <Button className='confirm-btn' color='success' onClick={() => confirmAppointment(appointment.id)}>
+                        Confirm
+                      </Button>
+                    )}
                   </td>
                 </tr>
               ))}
